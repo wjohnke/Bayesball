@@ -3,3 +3,12 @@ pssd: WhereAreYouRandall5?
 
 aws: RandallCapstone@gmail.com
 pssd: Capstone2?
+
+Mysql---->
+          UserName: capstone
+          Password: 12345678
+
+// CREATE USER 'capstone'@'localhost' IDENTIFIED BY '12345678';
+// GRANT ALL PRIVILEGES ON *.* TO 'capstone'@'localhost' IDENTIFIED BY '12345678';
+
+
