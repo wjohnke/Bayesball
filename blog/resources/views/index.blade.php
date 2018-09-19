@@ -36,27 +36,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					<nav class="pull">
 						<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 								<ul class="nav navbar-nav">
-									<li class="hvr-bounce-to-bottom"><a href="index.html" class="active">Home</a></li>
-									<li class="hvr-bounce-to-bottom"><a href="about.html">About</a></li>
-									<li><a href="codes.html">Codes</a></li>
-									<li><a href="#" class="menu1">Gallery<span class="glyphicon glyphicon-menu-down" aria-hidden="true"></span></a></li>
-										<ul class="nav-sub">
-											<li><a href="gallery.html">Gallery1</a></li>                                             
-											<li><a href="#" class="menu">Gallery2<span class="glyphicon glyphicon-menu-down" aria-hidden="true"></span></a></li>
-												<ul class="nav-sub1">
-													<li><a href="gallery.html">Gallery4</a></li>                                             
-													<li><a href="gallery.html">Gallery5</a></li>   
-													<li><a href="gallery.html">Gallery6</a></li> 
-												</ul>
-												<script>
-													$( "li a.menu" ).click(function() {
-													$( "ul.nav-sub1" ).slideToggle( 300, function() {
-													// Animation complete.
-													});
-													});
-												</script>
-											<li><a href="gallery.html">Gallery3</a></li> 
-										</ul>
+									<li class="hvr-bounce-to-bottom"><a href="{{url('/')}}"class="active">Home</a></li>
+									<li class="hvr-bounce-to-bottom"><a href="{{url('/about')}}">About</a></li>
+
+
 										<!-- script-for-menu -->
 										<script>
 											$( "li a.menu1" ).click(function() {
@@ -66,7 +49,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 											});
 										</script>
 									<li><a href="#news" class="scroll">News</a></li>
-									<li><a href="contact.html">Contact</a></li>
+									<li><a href="{{url('/contact')}}">Contact</a></li>
 								</ul>	
 								<div class="clearfix"> </div>
 							</div>
@@ -235,7 +218,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					</div>
 					<div class="rules-grids">
 						<div class="col-md-6 news-grid">
-							<a href="about.html">Integer vitae ligula sed lectus</a>
+							<a href="about.blade.php">Integer vitae ligula sed lectus</a>
 							<h6>10.00 - 12.00 | sep 24,2014</h6>
 							<img src="images/7.jpg" alt="">
 							<div class="news-info">
@@ -243,7 +226,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 							</div>
 						</div>
 						<div class="col-md-6 news-grid news-grid-text">
-							<a href="about.html">Integer vitae ligula sed lectus</a>
+							<a href="about.blade.php">Integer vitae ligula sed lectus</a>
 							<h6>09.00 - 11.00 | Jun 09,2014</h6>
 							<img src="images/8.jpg" alt="">
 							<div class="news-info">
@@ -311,12 +294,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						<div class="footer-bottom">
 							<div class="footer-nav">
 								<ul>
-									<li><a href="index.html" class="active">Home</a></li>
-									<li><a href="about.html">About</a></li>
-									<li><a href="codes.html">Codes</a></li>
-									<li><a href="gallery.html">Gallery</a></li>
+									<li><a href="{{url('/')}}" class="active">Home</a></li>
+									<li><a href="{{url('/about')}}">About</a></li>
 									<li><a href="#news" class="scroll">News</a></li>
-									<li><a href="contact.html">Contact</a></li>
+									<li><a href="{{url('/contact')}}">Contact</a></li>
 								</ul>
 							</div>
 							<div class="copyright">
