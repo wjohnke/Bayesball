@@ -75,7 +75,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		</div>
 		<div class="header-top">
 				<div class="head-logo">
-					<h1><a href="index.html">Baseball</a></h1>
+					<h1><a href="index.html">Bayes Ball</a></h1>
 				</div>
 				<div class="top-nav">
 					<div class="hero fa-navicon fa-2x nav_slide_button" id="hero">
@@ -106,7 +106,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				<div class="col-md-8 banner-top-slide">
 					<div class="banner-top-text">
 						<h2>PLAY</h2>
-						<h5>BASEBALL</h5>
+						<h5>Bayes Ball</h5>
 					</div>
 					<div class="banner-bottom-bottom">
 						<div class="banner-top-slide-grids">
@@ -172,7 +172,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			<div class="container-wrap">
 				<div class="about-grids">
 					<div class="col-md-6 about-left">
-						<h2>Find out more about baseball</h2>
+						<h2>Find out more about Bayes Ball</h2>
 						<h4>Lorem ipsum dolor sit amet conse ctetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolor.</h4>
 						<p>Donec ac ultrices turpis. Nunc ac ante dolor. Maecenas eget lectus vitae risus finibus aliquet. Maecenas in erat id elit convallis tristique. Mauris blandit sed metus vitae dignissim. Aliquam euismod ex vel faucibus viverra. Fusce quis efficitur libero, a facilisis magna.</p>
 					</div>
