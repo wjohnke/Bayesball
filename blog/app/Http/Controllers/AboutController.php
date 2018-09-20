@@ -6,7 +6,7 @@
  * Time: 5:32 PM
  */
 
-namespace App\Http\Controllers;
+namespace BayesBall\Http\Controllers;
 
 class AboutController extends Controller{
 

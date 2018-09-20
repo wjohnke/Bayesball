@@ -2,7 +2,23 @@
 <html>
 <head>
 <title>Home</title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
+	<!-- CSRF Token -->
+	<meta name="csrf-token" content="{{ csrf_token() }}">
+
+	<title>{{ config('app.name', 'BayesBall') }}</title>
+
+	<!-- Scripts -->
+	<script src="{{ asset('js/app.js') }}" defer></script>
+
+	<!-- Fonts
+    <link rel="dns-prefetch" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet" type="text/css">
+ -->
+	<!-- Styles -->
+	<link href="{{ asset('css/app.css') }}" rel="stylesheet">
+	<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+
+	<meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="keywords" content="Baseball Responsive web template, Bootstrap Web Templates, Flat Web Templates, Andriod Compatible web template, 
 Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design" />
@@ -72,6 +88,37 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 							<li><a href="#" class="facebook twitter"> </a></li>
 							<li><a href="#" class="facebook chrome"> </a></li>
 							<li><a href="#" class="facebook dribbble"> </a></li>
+							<ul>
+							<!-- Authentication Links -->
+							@guest
+								<li class="nav-item">
+									<a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+								</li>
+								<li class="nav-item">
+									@if (Route::has('register'))
+										<a  href="{{ route('register') }}">{{ __('Register') }}</a>
+									@endif
+								</li>
+							@else
+								<li class="nav-item dropdown">
+									<a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+										{{ Auth::user()->name }} <span class="caret"></span>
+									</a>
+
+									<div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+										<a class="dropdown-item" href="{{ route('logout') }}"
+										   onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+											{{ __('Logout') }}
+										</a>
+
+										<form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+											@csrf
+										</form>
+									</div>
+								</li>
+							@endguest
+							</ul>
 						</ul>
 					</div>
 					<div class="clearfix"> </div>

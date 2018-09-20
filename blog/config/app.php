@@ -13,7 +13,9 @@ return [
     |
     */
 
-    'name' => env('APP_NAME', 'Laravel'),
+    'name' => env('APP_NAME', 'BayesBall'),
+
+
 
     /*
     |--------------------------------------------------------------------------
@@ -154,11 +156,11 @@ return [
         /*
          * Application Service Providers...
          */
-        App\Providers\AppServiceProvider::class,
-        App\Providers\AuthServiceProvider::class,
-        // App\Providers\BroadcastServiceProvider::class,
-        App\Providers\EventServiceProvider::class,
-        App\Providers\RouteServiceProvider::class,
+        BayesBall\Providers\AppServiceProvider::class,
+        BayesBall\Providers\AuthServiceProvider::class,
+        // BayesBall\Providers\BroadcastServiceProvider::class,
+        BayesBall\Providers\EventServiceProvider::class,
+        BayesBall\Providers\RouteServiceProvider::class,
 
     ],
 
