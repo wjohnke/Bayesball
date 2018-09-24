@@ -11,7 +11,7 @@
 --
 DROP TABLE IF EXISTS games;
 CREATE TABLE `games` (
-  `date` date NOT NULL default '0000-00-00',
+  `date` DATETIME  default '1000-01-01',
   `game_number` char(1) NOT NULL default '',
   `day` char(3) NOT NULL default '',
   `visitor` char(3) NOT NULL default '',
@@ -174,6 +174,7 @@ CREATE TABLE `games` (
   `acquisition` char(1) NOT NULL default '',
   PRIMARY KEY  (`date`,`game_number`,`visitor`,`home`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
 
 
 --
