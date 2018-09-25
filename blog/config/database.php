@@ -41,11 +41,11 @@ return [
 
         'mysql' => [
             'driver' => 'mysql',
-            'host' => env('DB_HOST', '127.0.0.1'),
+            'host' => env('DB_HOST', 'ec2-52-6-86-207.compute-1.amazonaws.com'),
             'port' => env('DB_PORT', '3306'),
             'database' => env('DB_DATABASE', 'bayesball'),
-            'username' => env('DB_USERNAME', 'capstone'),
-            'password' => env('DB_PASSWORD', '12345'),
+            'username' => env('DB_USERNAME', 'capstoneAdmin'),
+            'password' => env('DB_PASSWORD', '12345678'),
             'unix_socket' => env('DB_SOCKET', ''),
             'charset' => 'utf8mb4',
             'collation' => 'utf8mb4_unicode_ci',
