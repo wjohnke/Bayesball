@@ -1,0 +1,2 @@
+DROP TABLE IF EXISTS Team;
+CREATE TABLE `games` (
