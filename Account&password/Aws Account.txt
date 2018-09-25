@@ -12,3 +12,8 @@ Mysql---->
 // GRANT ALL PRIVILEGES ON *.* TO 'capstone'@'localhost' IDENTIFIED BY '12345678';
 
 
+CREATE USER 'capstoneAdmin'@'%' IDENTIFIED BY '12345678';
+            capstoneAdmin
+            12345678
+GRANT ALL PRIVILEGES ON bayesball.* TO 'capstone'@'%' WITH GRANT OPTION;
+
