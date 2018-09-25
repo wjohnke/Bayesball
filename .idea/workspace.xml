@@ -2,12 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="98214578-5862-4e42-a0a5-680cce7b3f14" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog/app/Http/Controllers/AboutController.php" beforeDir="false" afterPath="$PROJECT_DIR$/blog/app/Http/Controllers/AboutController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog/config/app.php" beforeDir="false" afterPath="$PROJECT_DIR$/blog/config/app.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog/config/database.php" beforeDir="false" afterPath="$PROJECT_DIR$/blog/config/database.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog/resources/views/welcome.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/blog/resources/views/welcome.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/blog/routes/web.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog/resources/views/contact.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/blog/resources/views/contact.blade.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -31,13 +26,13 @@
       <usages-collector id="statistics.file.extensions.open">
         <counts>
           <entry key="env" value="2" />
-          <entry key="php" value="11" />
+          <entry key="php" value="12" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
           <entry key=".env file" value="1" />
-          <entry key="Blade" value="3" />
+          <entry key="Blade" value="4" />
           <entry key="PHP" value="8" />
           <entry key="PLAIN_TEXT" value="1" />
         </counts>
@@ -45,7 +40,7 @@
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="env" value="17" />
-          <entry key="php" value="230" />
+          <entry key="php" value="231" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.php.composer.command.options" />
@@ -55,7 +50,7 @@
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key=".env file" value="17" />
-          <entry key="Blade" value="40" />
+          <entry key="Blade" value="41" />
           <entry key="PHP" value="190" />
         </counts>
       </usages-collector>
@@ -107,11 +102,23 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/blog/config/app.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="291">
               <caret line="69" column="34" selection-start-line="69" selection-start-column="34" selection-end-line="69" selection-end-column="34" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/blog/resources/views/contact.blade.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-353">
+              <caret line="90" selection-start-line="90" selection-end-line="90" />
+              <folding>
+                <element signature="n#style#0;n#iframe#0;n#div#1;n#div#0;n#div#2;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -145,6 +152,11 @@
       </file>
     </leaf>
   </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>time</find>
+    </findStrings>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
@@ -159,6 +171,7 @@
         <option value="$PROJECT_DIR$/blog/app/Http/Controllers/Auth/LoginController.php" />
         <option value="$PROJECT_DIR$/blog/app/Http/Controllers/AboutController.php" />
         <option value="$PROJECT_DIR$/blog/config/app.php" />
+        <option value="$PROJECT_DIR$/blog/resources/views/contact.blade.php" />
       </list>
     </option>
   </component>
@@ -300,12 +313,6 @@
               <item name="BayesBall" type="b2602c69:ProjectViewProjectNode" />
               <item name="BayesBall" type="462c0819:PsiDirectoryNode" />
               <item name="blog" type="462c0819:PsiDirectoryNode" />
-              <item name="config" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="BayesBall" type="b2602c69:ProjectViewProjectNode" />
-              <item name="BayesBall" type="462c0819:PsiDirectoryNode" />
-              <item name="blog" type="462c0819:PsiDirectoryNode" />
               <item name="database" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -314,6 +321,19 @@
               <item name="blog" type="462c0819:PsiDirectoryNode" />
               <item name="database" type="462c0819:PsiDirectoryNode" />
               <item name="migrations" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="BayesBall" type="b2602c69:ProjectViewProjectNode" />
+              <item name="BayesBall" type="462c0819:PsiDirectoryNode" />
+              <item name="blog" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="BayesBall" type="b2602c69:ProjectViewProjectNode" />
+              <item name="BayesBall" type="462c0819:PsiDirectoryNode" />
+              <item name="blog" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="views" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="BayesBall" type="b2602c69:ProjectViewProjectNode" />
@@ -355,12 +375,12 @@
       <updated>1537417597467</updated>
       <workItem from="1537417600304" duration="1119000" />
       <workItem from="1537419294954" duration="429000" />
-      <workItem from="1537839418858" duration="2183000" />
+      <workItem from="1537839418858" duration="2704000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="2910000" />
+    <option name="totallyTimeSpent" value="3431000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -373,7 +393,6 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="140" y="43" width="1400" height="907" extended-state="0" />
-    <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2569956" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -491,6 +510,16 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="291">
           <caret line="69" column="34" selection-start-line="69" selection-start-column="34" selection-end-line="69" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/blog/resources/views/contact.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-353">
+          <caret line="90" selection-start-line="90" selection-end-line="90" />
+          <folding>
+            <element signature="n#style#0;n#iframe#0;n#div#1;n#div#0;n#div#2;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
