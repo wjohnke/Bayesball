@@ -11,26 +11,19 @@
 |
 */
 
-Route::get('/', function () {
-    return view('index');
+Route::get('/','PagesController@index'
+);
+
+Route::get('/about','PagesController@about');
+
+Route::get('/contact','PagesController@contact');
+Route::get('/test','PagesController@testPage');
+
+Route::get('/passwordreset',function (){
+   return view('auth.passwords.email');
 });
-
-Route::get('/about','AboutController@info');
-
-Route::get('/contact',function (){
-    return view('contact');
-});
-
 Auth::routes();
-
 Route::get('/home', 'HomeController@index')->name('home');
 
-Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
-
-Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
-
-Route::any('/test',['uses'=>'AboutController@test']);
+//Route::any('/test',['uses'=>'AboutController@test']);

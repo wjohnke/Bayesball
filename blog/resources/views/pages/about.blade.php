@@ -1,83 +1,5 @@
-<!DOCTYPE html>
-<html>
-<head>
-<title>About</title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="keywords" content="Baseball Responsive web template, Bootstrap Web Templates, Flat Web Templates, Andriod Compatible web template, 
-Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design" />
-<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
-<!-- bootstrap-css -->
-<link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
-<!--// bootstrap-css -->
-<!-- css -->
-<link rel="stylesheet" href="css/style.css" type="text/css" media="all" />
-<link href="css/styles.css?v=1.6" rel="stylesheet">
-<link rel="stylesheet" href="css/lightbox.css">
-<!--// css -->
-<script src="js/jquery-1.11.1.min.js"></script>
-<script src="js/scripts.js?v=1.7"></script>
-<script src="js/bootstrap.js"></script>
-<script type="text/javascript" src="js/move-top.js"></script>
-<script type="text/javascript" src="js/easing.js"></script>
-<script type="text/javascript">
-	jQuery(document).ready(function($) {
-		$(".scroll").click(function(event){		
-			event.preventDefault();
-			$('html,body').animate({scrollTop:$(this.hash).offset().top},1000);
-		});
-	});
-</script>	
-</head>
-<body>
-	<div class="main-content">
-		<!-- header -->
-		<div class="navigation">
-			<div class="container-wrap-fluid">
-					<nav class="pull">
-						<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-								<ul class="nav navbar-nav">
-									<li class="hvr-bounce-to-bottom"><a href="{{url('/')}}">Home</a></li>
-									<li class="hvr-bounce-to-bottom"><a href="{{url('/about')}}" class="active">About</a></li>
-
-										<!-- script-for-menu -->
-										<script>
-											$( "li a.menu1" ).click(function() {
-											$( "ul.nav-sub" ).slideToggle( 300, function() {
-											// Animation complete.
-											});
-											});
-										</script>
-									<li><a href="{{url('/contact')}}">Contact</a></li>
-								</ul>	
-								<div class="clearfix"> </div>
-							</div>
-					</nav>
-			</div>
-		</div>
-		<div class="header-top">
-				<div class="head-logo">
-					<h1><a href="{{url('/')}}">Bayes Ball</a></h1>
-				</div>
-				<div class="top-nav">
-					<div class="hero fa-navicon fa-2x nav_slide_button" id="hero">
-						<a href="#"><img src="images/menu.png" alt=""></a>
-					</div>	
-				</div>
-				<div class="header-right">
-					<div class="social">
-						<ul>
-							<li><a href="#" class="facebook"> </a></li>
-							<li><a href="#" class="facebook twitter"> </a></li>
-							<li><a href="#" class="facebook chrome"> </a></li>
-							<li><a href="#" class="facebook dribbble"> </a></li>
-						</ul>
-					</div>
-					<div class="clearfix"> </div>
-				</div>				
-				<div class="clearfix"> </div>
-		</div>
-		<!-- //header -->
+@extends('layouts.app')
+@section('content')
 		<!-- about -->
 		<!-- about-top -->
 		<div class="about-top">
@@ -233,5 +155,5 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 								</script>
 									<a href="#" id="toTop" style="display: block;"> <span id="toTopHover" style="opacity: 1;"> </span></a>
 	<!-- content-Get-in-touch -->
-</body>	
-</html>
+
+	@endsection
