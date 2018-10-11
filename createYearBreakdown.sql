@@ -30,8 +30,8 @@ INSERT INTO yearBreakdown
 	on (Team_Bating.Team = games.home or Team_Bating.Team = games.visitor);
 	
 ALTER TABLE yearBreakdown ADD Outcome boolean;
-
-UPDATE yearBreakdown SET Outcome = IF(id%2=0, IF(visitor_score>home_score, 1,0),IF(visitor_score<home_score,1,0) );
+/*Home Team ID: Even, Away Team ID: Odd*/
+UPDATE yearBreakdown SET Outcome = IF(id%2=1, IF(visitor_score>home_score, 1,0),IF(visitor_score<home_score,1,0) );
 
 
 
