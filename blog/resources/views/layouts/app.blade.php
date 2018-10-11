@@ -17,6 +17,8 @@
     {{--<link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet" type="text/css">--}}
 
     <!-- Styles -->
+    <link href="{{ asset('css/datepicker.min.css') }}" rel="stylesheet">
+
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
     <!-- bootstrap-css -->
@@ -28,7 +30,7 @@
     <!--// css -->
     <script src="js/jquery-1.11.1.min.js"></script>
     <script src="js/scripts.js?v=1.7"></script>
-    <script src="js/bootstrap.js"></script>
+    <script src="{{asset('js/bootstrap.js')}}"></script>
     <script type="text/javascript" src="js/move-top.js"></script>
     <script type="text/javascript" src="js/easing.js"></script>
     <script type="text/javascript">
@@ -39,6 +41,10 @@
             });
         });
     </script>
+
+    <script src="{{ asset('js/datepicker.min.js') }}"></script>
+    <script src="{{ asset('js/i18n/datepicker.en.js') }}"></script>
+
 </head>
 <body>
 <div class="main-content">

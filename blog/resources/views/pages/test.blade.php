@@ -1,6 +1,13 @@
 @extends('layouts.app')
 
 @section('content')
-    <h1>Welcome to This page</h1>
 
-    @endsection
+    <form action="" method="post">
+        <div class="main-content">
+        Choose Date:<br>
+        <input type='text' class='datepicker-here' data-language='en' />
+        </div>
+    </form>
+
+
+@endsection
