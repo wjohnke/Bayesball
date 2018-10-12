@@ -4,6 +4,9 @@
     form{
 
     }
+    img{
+
+    }
 </style>
 
     <div class="footer">
@@ -42,10 +45,19 @@
         @if(count($games)>0)
             @foreach($games as $game)
             <div class="well">
-                <h2>{{$game->game_date}}</h2>
-                <h4>
+
+                <h1 align="center">{{$game->game_date}}</h1>
+
+                <p  style="font-size:50px;" align="center"><img src="images/teamLogos/{{$game->visitor}}.png"  width="128"
+                        height="128" alt="" />
                     {{$game->visitor}} vs {{$game->home}}
-                </h4><h1></h1>
+                    <img src="images/teamLogos/{{$game->home}}.png" width="128"
+                         height="128"  alt="" />
+                </p>
+
+
+
+                <h1></h1>
 
                 <h4></h4>
             </div>
