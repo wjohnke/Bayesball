@@ -48,10 +48,10 @@
 
                 <h1 align="center">{{$game->game_date}}</h1>
 
-                <p  style="font-size:50px;" align="center"><img src="images/teamLogos/{{$game->visitor}}.png"  width="128"
+                <p  style="font-size:50px;" align="center"><img src="images/teamLogos/{{$game->visitor}}.png"  
                         height="128" alt="" />
                     {{$game->visitor}} vs {{$game->home}}
-                    <img src="images/teamLogos/{{$game->home}}.png" width="128"
+                    <img src="images/teamLogos/{{$game->home}}.png"
                          height="128"  alt="" />
                 </p>
 
