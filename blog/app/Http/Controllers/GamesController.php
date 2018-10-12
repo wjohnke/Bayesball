@@ -5,6 +5,7 @@ namespace BayesBall\Http\Controllers;
 use Illuminate\Http\Request;
 use BayesBall\Game;
 
+
 class GamesController extends Controller
 {
     /**
@@ -19,6 +20,7 @@ class GamesController extends Controller
         $games = Game::orderBy('game_date','asc')->paginate(10);
         return view('pages.games')->with('games',$games);
 
+
     }
 
     /**
@@ -29,6 +31,12 @@ class GamesController extends Controller
     public function create()
     {
         //
+    }
+
+    public function someAction(Request $request){
+
+       $date=$request->input('date');
+       echo 'Date: '.$date;
     }
 
     /**

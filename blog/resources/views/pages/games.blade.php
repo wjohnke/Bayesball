@@ -1,16 +1,24 @@
 @extends('layouts.app')
 @section('content')
+<style>
+    form{
+
+    }
+</style>
 
     <div class="footer">
         <!-- container-wrap -->
         <div class="container-wrap">
             <div class="footer-top">
 
-                    <div class="col-md-6 f-address f-contact">
+                    <div align="center" style="margin:0 auto" class="col-md-6 f-address f-contact">
+
                         <h5 >Choose a Date</h5>
-                        <form>
-                            <input type="text" class='datepicker-here' placeholder="00/00/00"  data-language='en' required="">
-                            <input type="submit" name="date" value="Submit">
+                        <form action="{{url('/games/date')}}" method="post" >
+                            <input type = "hidden" name = "_token" value = "<?php echo csrf_token() ?>">
+                            <input  type="text" name="date" placeholder="MM/DD/YYYY" class='datepicker-here'   data-language='en' required="">
+
+                            <input type="submit"  value="Submit">
                         </form>
                     </div>
                     <div class="clearfix"> </div>
@@ -42,7 +50,9 @@
                 <h4></h4>
             </div>
             @endforeach
-            {{$games->links()}}
+
+                {{$games->links()}}
+
             @else
         <p>nothing found</p>
 
