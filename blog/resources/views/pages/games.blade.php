@@ -46,11 +46,11 @@
 
 
 
-    <div class="about-grids about-top-grids">
+    <div id="game-info" class="about-grids about-top-grids">
         @if(count($games)>0)
             @foreach($games as $game)
 
-            <div class="well">
+            <div  class="well">
 
                 <h1 align="center"><a href="{{route('games.date',['date'=>$game->game_date])}}">{{$game->game_date}}</a></h1>
 
@@ -108,11 +108,18 @@
 
                $.get("{{route('games.goToDate')}}",function (data,status) {
                     //alert("mammama"+"  status:"+status);
+                    $.each(data,function (i,value) {
+                        if(date===value.game_date){
+                            $('#game-info').empty();
+                            return false;
+                        }
 
+                    })
 
                      $.each(data,function (i,value) {
                          if(date===value.game_date)
                          {
+
                              console.log(date +" equals "+ value.game_date);
                          }
                          else
