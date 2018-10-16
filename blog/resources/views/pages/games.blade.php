@@ -50,7 +50,6 @@
 
             <div class="well">
 
-
                 <h1 align="center"><a href="{{route('games.date',['date'=>$game->game_date])}}">{{$game->game_date}}</a></h1>
 
                 <p  style="font-size:50px;" align="center">
@@ -90,11 +89,25 @@
 
         <script type="text/javascript">
 
+            var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
+            {{--$.ajax({--}}
+                {{--url: "{{route('games.goToDate')}}",--}}
+                {{--type: 'GET',--}}
+                {{--data: {_token: CSRF_TOKEN},--}}
+                {{--dataType: 'JSON',--}}
+                {{--success: function (data) {--}}
+                    {{--console.log(data);--}}
+                {{--}--}}
+            {{--});--}}
             $('#read-data').on('click',function () {
-
-
-
-                })
+                $.get("{{route('games.goToDate')}}",function (data,status) {
+                    //alert("mammama"+"  status:"+status);
+                    if (data)
+                        console.log(data);
+                    else
+                        alert("nodata")
+                });
+                });
 
         </script>
         @endsection

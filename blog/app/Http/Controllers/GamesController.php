@@ -4,6 +4,7 @@ namespace BayesBall\Http\Controllers;
 
 use Illuminate\Http\Request;
 use BayesBall\Game;
+use Illuminate\Http\Response;
 
 
 class GamesController extends Controller
@@ -38,19 +39,28 @@ class GamesController extends Controller
 //       $date=$request->input('date');
 //       echo 'Date: '.$date;
 //
-         $dates= Game::where('game_date','=',$date)
-             ->get();
+//         $dates= Game::where('game_date','=','2017-04-03')
+        $dates= Game::where('game_date','=',$date)
+
+                          ->get();
 
         return $dates;
 
     }
-    public function goToDate($date){
+    public function goToDate(){
 
-        //$games= Game::where()
-//        $gamesTheDate= Game::where('game_date','=',$date)
-//                        ->get();
+        $games= Game::where('game_date','=','2017-04-02')
+                        ->get();
+
+        //$dates= Game::where('game_date','=',$date)
+               //         ->get();
 //
 //        return $gamesTheDate;
+
+//        return response()->json(['data'=>$dates]);
+
+        return response($games);
+
     }
 
     /**
