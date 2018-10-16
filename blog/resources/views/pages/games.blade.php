@@ -19,14 +19,16 @@
 
                         <h5 >Choose a Date</h5>
                         {{--<form action="{{url('/games/date')}}" method="post" >--}}
-                        <form>
-                            <input type = "hidden" name = "_token" value = "<?php echo csrf_token() ?>">
-                            <input  type="text" name="date" placeholder="MM/DD/YYYY" class='datepicker-here'   data-language='en' required="">
+                        <div>
 
-                            <input type="submit"  value="Submit">
-                        </form>
+
+
+                            <input  type="text" id="datePicker" name="date" placeholder="MM/DD/YYYY" class='datepicker-here'   data-language='en' required="">
+
+                            <input type="submit" id="read-data" value="Submit">
+                        </div>
                     </div>
-                <button id="read-data">load data</button>
+                <button >load data</button>
                     <div class="clearfix"> </div>
 
             </div>
@@ -89,6 +91,7 @@
 
         <script type="text/javascript">
 
+
             var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
             {{--$.ajax({--}}
                 {{--url: "{{route('games.goToDate')}}",--}}
@@ -100,13 +103,24 @@
                 {{--}--}}
             {{--});--}}
             $('#read-data').on('click',function () {
-                $.get("{{route('games.goToDate')}}",function (data,status) {
+                var date = document.getElementById('datePicker').value;
+                console.log("datePicker value: "+document.getElementById('datePicker').value);
+
+               $.get("{{route('games.goToDate')}}",function (data,status) {
                     //alert("mammama"+"  status:"+status);
-                    if (data)
-                        console.log(data);
-                    else
-                        alert("nodata")
-                });
+
+
+                     $.each(data,function (i,value) {
+                         if(date===value.game_date)
+                         {
+                             console.log(date +" equals "+ value.game_date);
+                         }
+                         else
+                            console.log("not equal");
+
+                    });
+
+                 });
                 });
 
         </script>

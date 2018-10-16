@@ -49,9 +49,7 @@ class GamesController extends Controller
     }
     public function goToDate(){
 
-        $games= Game::where('game_date','=','2017-04-02')
-                        ->get();
-
+        $games= Game::all();
         //$dates= Game::where('game_date','=',$date)
                //         ->get();
 //
