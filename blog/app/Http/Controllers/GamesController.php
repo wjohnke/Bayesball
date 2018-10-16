@@ -33,10 +33,24 @@ class GamesController extends Controller
         //
     }
 
-    public function someAction(Request $request){
+    public function someAction($date){
 
-       $date=$request->input('date');
-       echo 'Date: '.$date;
+//       $date=$request->input('date');
+//       echo 'Date: '.$date;
+//
+         $dates= Game::where('game_date','=',$date)
+             ->get();
+
+        return $dates;
+
+    }
+    public function goToDate($date){
+
+        //$games= Game::where()
+//        $gamesTheDate= Game::where('game_date','=',$date)
+//                        ->get();
+//
+//        return $gamesTheDate;
     }
 
     /**
@@ -59,6 +73,7 @@ class GamesController extends Controller
     public function show($id)
     {
         //
+            return Game::find($id);
     }
 
     /**
