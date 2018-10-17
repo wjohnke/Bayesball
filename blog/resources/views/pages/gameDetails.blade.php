@@ -6,6 +6,8 @@
 
         width :100%;
         text-align:center;
+        margin-bottom: 60px;
+
 
     }
     #left
@@ -13,6 +15,8 @@
         margin-left: 100px;
         width:100px;
         height: 128px;
+        margin-bottom: 20px;
+
 
 
     }
@@ -21,13 +25,20 @@
         margin:0 auto;
         width:400px;
         height: 128px;
+        margin-bottom: 20px;
+
     }
     #right{
         margin-right: 100px;
+        margin-bottom: 20px;
         float:right;
         width:100px;
         height: 128px;
 
+    }
+    #bottom{
+        margin-top: 2px;
+        margin-left: 20px;
     }
 
 
@@ -58,6 +69,7 @@
             </div>
 
 
+
         </div >
 
 
@@ -65,17 +77,7 @@
 
         </div>
 
-
-
-
-        <p style="font-size: 45px;" align="center">
-
-
-        </p>
-
-    </div>
-    <div class="well">
-        <div class="table">
+        <div  class="table">
             <table width="100%">
                 <tr>
                     <th>Team</th>
@@ -116,6 +118,20 @@
 
 
             </table>
+        </div>
+
+
+        <p style="font-size: 45px;" align="center">
+
+
+        </p>
+
+    </div>
+
+    <div  id="bottom" >
+        <div   class="-bottom-left-">
+            <h4 >Stadium: {{$games->park}}</h4>
+            <h4 >Duration: {{$games->game_minutes}} minutes</h4>
         </div>
     </div>
 @endif

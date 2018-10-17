@@ -23,7 +23,7 @@
 
                         {{--<div>--}}
 
-                            <input  type="text" id="datePicker" name="date" placeholder="MM/DD/YYYY" class='datepicker-here'   data-language='en' required="">
+                            <input  type="text" id="datePicker" name="date" placeholder="YYYY-MM-DD" class='datepicker-here'   data-language='en' required="">
 
                             <input type="submit" id="read-data" value="Submit">
                         {{--</div>--}}

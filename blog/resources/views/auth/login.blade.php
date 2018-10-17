@@ -58,8 +58,8 @@
                                     {{ __('Login') }}
                                 </button>
 
-                                {{--<a class="btn btn-link" href="{{ route('password.request') }}">--}}
-                                    <a class="btn btn-link" href="{{ url('passwordreset') }}">
+                                <a class="btn btn-link" href="{{ route('password.request') }}">
+                                    {{--<a class="btn btn-link" href="{{ url('passwordreset') }}">--}}
 
                                     {{ __('Forgot Your Password?') }}
                                 </a>
