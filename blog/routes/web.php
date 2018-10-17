@@ -26,7 +26,7 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::resource('games','GamesController');
-Route::get('/games/date/{date}','GamesController@someAction')->name('games.date');
-Route::get('/game/goToDate','GamesController@goToDate')->name('games.goToDate');
+Route::get('/games/goToDate/{date}','GamesController@someAction')->name('games.date');
+Route::get('/game/goToDate','GamesController@goToDate')->name('goToDate');
 
 //Route::any('/test',['uses'=>'AboutController@test']);

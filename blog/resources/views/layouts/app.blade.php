@@ -10,31 +10,37 @@
     <title>{{ config('app.name', 'BayesBall') }}</title>
 
     <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
+    <script src="{{ URL::asset('js/app.js') }}" defer></script>
 
     <!-- Fonts-->
     {{--<link rel="dns-prefetch" href="https://fonts.gstatic.com">--}}
     {{--<link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet" type="text/css">--}}
 
     <!-- Styles -->
-    <link href="{{ asset('css/datepicker.min.css') }}" rel="stylesheet">
+    <link href="{{ URL::asset('css/datepicker.min.css') }}" rel="stylesheet">
 
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{ URL::asset('css/app.css') }}" rel="stylesheet">
     <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
     <!-- bootstrap-css -->
-    <link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
+    <link href=    "{{URL::asset('css/bootstrap.css')}}"
+            rel="stylesheet" type="text/css" media="all" />
     <!--// bootstrap-css -->
     <!-- css -->
-    <link rel="stylesheet" href="css/style.css" type="text/css" media="all" />
-    <link href="css/styles.css?v=1.6" rel="stylesheet">
+    <link rel="stylesheet" href="    {{URL::asset("css/style.css")}}
+            " type="text/css" media="all" />
+    <link href="{{URL::asset('css/styles.css?v=1.6')}}" rel="stylesheet">
+
     <!--// css -->
-    <script src="js/jquery-1.11.1.min.js"></script>
-    <script src="js/scripts.js?v=1.7"></script>
+    <script src={{URL::asset("js/jquery-1.11.1.min.js")}}></script>
+    <script src={{URL::asset("js/scripts.js?v=1.7")}}
+    ></script>
     <script src="{{asset('js/bootstrap.js')}}"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
-    <script type="text/javascript" src="js/move-top.js"></script>
-    <script type="text/javascript" src="js/easing.js"></script>
+    <script type="text/javascript" src={{URL::asset("js/move-top.js")}}
+    ></script>
+    <script type="text/javascript" src={{URL::asset("js/easing.js")}}
+    ></script>
     <script type="text/javascript">
         jQuery(document).ready(function($) {
             $(".scroll").click(function(event){
@@ -69,7 +75,7 @@
                                     });
                                 });
                             </script>
-                            <li><a href="#news" class="scroll">News</a></li>
+                            <li><a href="{{url('/games')}}" >Games</a></li>
                             <li><a href="{{url('/contact')}}">Contact</a></li>
                         </ul>
                         <div class="clearfix"> </div>
@@ -84,7 +90,7 @@
         </div>
         <div class="top-nav">
             <div class="hero fa-navicon fa-2x nav_slide_button" id="hero">
-                <a href="#"><img src="images/menu.png" alt=""></a>
+                <a href="#"><img src={{URL::asset("images/menu.png")}} alt=""></a>
             </div>
         </div>
         <div class="header-right">

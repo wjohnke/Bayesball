@@ -18,7 +18,7 @@ class GamesController extends Controller
     {
         //
 
-        $games = Game::orderBy('game_date','asc')->paginate(10);
+        $games = Game::orderBy('game_date','asc')->paginate(15);
         return view('pages.games')->with('games',$games);
 
 
@@ -41,23 +41,31 @@ class GamesController extends Controller
 //
 //         $dates= Game::where('game_date','=','2017-04-03')
         $dates= Game::where('game_date','=',$date)
+                        ->paginate(15);
+//                          ->get();
 
-                          ->get();
+        //return $dates;
+        return view('pages.gameDate',['dates'=>$dates]);
 
-        return $dates;
 
     }
-    public function goToDate(){
+    public function goToDate(Request $request){
 
-        $games= Game::all();
-        //$dates= Game::where('game_date','=',$date)
-               //         ->get();
-//
-//        return $gamesTheDate;
+       // $games= Game::all();
 
-//        return response()->json(['data'=>$dates]);
+        if($request){
+        $date = $request->input('date');
+        $dates= Game::where('game_date','=',$date)
 
-        return response($games);
+                       ->get();
+
+
+
+        return view('pages.gameDate')->with('dates',$dates);
+
+        //return response($dates);
+        }
+
 
     }
 
@@ -81,7 +89,9 @@ class GamesController extends Controller
     public function show($id)
     {
         //
-            return Game::find($id);
+        $games= Game::find($id);
+
+            return view('pages.gameDetails')->with('games',$games);
     }
 
     /**

@@ -35,7 +35,7 @@
                     <ul>
                         <li><a href="{{url('/')}}" class="active">Home</a></li>
                         <li><a href="{{url('/about')}}">About</a></li>
-                        <li><a href="#news" class="scroll">News</a></li>
+                        <li><a href="{{url('/games')}}" >Games</a></li>
                         <li><a href="{{url('/contact')}}">Contact</a></li>
                     </ul>
                 </div>
