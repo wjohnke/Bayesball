@@ -15,6 +15,7 @@ final class BattingPos extends Enum
     const LeftFielder = 7;
     const CenterFielder = 8;
     const RightFielder = 9;
+    const DesignatedHitter =10;
 
     public static function getDescription( $value): string{
         switch ($value) {
@@ -44,6 +45,9 @@ final class BattingPos extends Enum
                 break;
             case self::RightFielder:
                 return 'Right Fielder';
+                break;
+            case self::DesignatedHitter:
+                return 'Designated Hitter';
                 break;
             default:
                 return self::getKey($value);
