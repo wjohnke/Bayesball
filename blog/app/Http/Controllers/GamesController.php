@@ -91,6 +91,7 @@ class GamesController extends Controller
         //
         $games= Game::find($id);
 
+
             return view('pages.gameDetails')->with('games',$games);
     }
 

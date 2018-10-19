@@ -8,6 +8,41 @@
     img{
 
     }
+    #container{
+
+
+        width :100%;
+        text-align:center;
+        margin-bottom: 60px;
+
+
+    }
+    #left
+    {   float:left;
+        margin-left: 100px;
+        width:50px;
+        height: 128px;
+        margin-bottom: 20px;
+
+
+
+    }
+    #center{
+        display: inline-block;
+        margin:0 auto;
+        width:600px;
+        height: 128px;
+        margin-bottom: 20px;
+
+    }
+    #right{
+        margin-right: 100px;
+        margin-bottom: 20px;
+        float:right;
+        width:50px;
+        height: 128px;
+
+    }
 </style>
 
     <div class="footer">
@@ -54,22 +89,42 @@
 
                 <h1 align="center"><a href="{{route('games.date',['date'=>$game->game_date])}}">{{$game->game_date}}</a></h1>
 
-                <p  style="font-size:50px;" align="center">
+                {{--<p  style="font-size:50px;" align="center">--}}
 
-                    <a href="{{route('games.show', ['id' => $game->id])}}"   >
-                    <img src="images/teamLogos/{{$game->visitor}}.png"
-                        height="128" alt="" />
-                    {{$game->visitor}} vs {{$game->home}}
-                    <img src="images/teamLogos/{{$game->home}}.png"
-                         height="128"  alt="" />
-                    </a>
-                </p>
+                    {{--<a href="{{route('games.show', ['id' => $game->id])}}"   >--}}
+                    {{--<img src="images/teamLogos/{{$game->visitor}}.png"--}}
+                        {{--height="128" alt="" />--}}
+                    {{--{{\BayesBall\Enums\TeamName::getDescription($game->visitor)}} vs {{\BayesBall\Enums\TeamName::getDescription($game->home)}}--}}
+                    {{--<img src="images/teamLogos/{{$game->home}}.png"--}}
+                         {{--height="128"  alt="" />--}}
+                    {{--</a>--}}
+                {{--</p>--}}
 
 
 
-                <h1></h1>
+                <div id="container">
+                    <div id="left">
+                        <img src="{{URL::asset("images/teamLogos/{$game->visitor}.png")}}" height="128" alt="" />
+                    </div>
+                    <div id="center">
+                        <p class="title" style="font-size:30px;" align="center">
+                            <a href="{{route('games.show', ['id' => $game->id])}}"   >
 
-                <h4></h4>
+
+
+                                {{\BayesBall\Enums\TeamName::getDescription($game->visitor)}} vs {{\BayesBall\Enums\TeamName::getDescription($game->home)}}
+                            </a>
+                        </p>
+                    </div>
+                    <div id="right">
+                        <img src="{{URL::asset("images/teamLogos/{$game->home}.png")}}" height="128"  alt="" />
+
+
+
+
+                    </div >
+
+                </div>
             </div>
             @endforeach
 
