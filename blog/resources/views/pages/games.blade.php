@@ -54,11 +54,17 @@
 
 
                         <h5 >Choose a Date</h5>
+                        @php
+                        $date= date('Y-m-d');
+                        //$date= '2017-04-02';
+                        //echo $date;
+
+                        @endphp
                         <form action=" {{route('goToDate')}}" method="get">
 
                         {{--<div>--}}
 
-                            <input  type="text" id="datePicker" name="date" placeholder="YYYY-MM-DD" class='datepicker-here'   data-language='en' required="">
+                            <input  type="text" id="datePicker" name="date" placeholder="{{$date}}" class='datepicker-here'   data-language='en' required="">
 
                             <input type="submit" id="read-data" value="Submit">
                         {{--</div>--}}
@@ -84,7 +90,11 @@
     <div id="game-info" class="about-grids about-top-grids">
         @if(count($games)>0)
             @foreach($games as $game)
-
+                @if($game->game_date===$date)
+                    <h3>sameDate</h3>
+                    @else
+                    <h3>not same</h3>
+                    @endif
             <div  class="well">
 
                 <h1 align="center"><a href="{{route('games.date',['date'=>$game->game_date])}}">{{$game->game_date}}</a></h1>
