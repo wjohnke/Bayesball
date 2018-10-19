@@ -7,3 +7,34 @@ resources---> view
 
 Date picker
 http://t1m0n.name/air-datepicker/docs/
+
+
+
+visitor_batter_1_id
+visitor_batter_1_name
+visitor_batter_1_pos
+visitor_batter_2_id
+visitor_batter_2_name
+visitor_batter_2_pos
+visitor_batter_3_id
+visitor_batter_3_name
+visitor_batter_3_pos
+visitor_batter_4_id
+visitor_batter_4_name
+visitor_batter_4_pos
+visitor_batter_5_id
+visitor_batter_5_name
+visitor_batter_5_pos
+visitor_batter_6_id
+visitor_batter_6_name
+visitor_batter_6_pos
+visitor_batter_7_id
+visitor_batter_7_name
+visitor_batter_7_pos
+visitor_batter_8_id
+visitor_batter_8_name
+visitor_batter_8_pos
+visitor_batter_9_id
+visitor_batter_9_name
+visitor_batter_9_pos
+

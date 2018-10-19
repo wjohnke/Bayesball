@@ -2,14 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="98214578-5862-4e42-a0a5-680cce7b3f14" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/blog/resources/views/pages/gameDate.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/blog/resources/views/pages/gameDetails.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog/app/Http/Controllers/GamesController.php" beforeDir="false" afterPath="$PROJECT_DIR$/blog/app/Http/Controllers/GamesController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog/resources/views/includes/footer.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/blog/resources/views/includes/footer.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog/config/mail.php" beforeDir="false" afterPath="$PROJECT_DIR$/blog/config/mail.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/blog/resources/views/layouts/app.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/blog/resources/views/layouts/app.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog/resources/views/pages/games.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/blog/resources/views/pages/games.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/blog/routes/web.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog/resources/views/pages/gameDetails.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/blog/resources/views/pages/gameDetails.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/laravelTutorial.md" beforeDir="false" afterPath="$PROJECT_DIR$/laravelTutorial.md" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -24,30 +21,38 @@
     <session id="1352810707">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="2" />
-          <entry key="project.open.time.1" value="1" />
+          <entry key="project.closed" value="3" />
+          <entry key="project.open.time.1" value="2" />
           <entry key="project.open.time.7" value="1" />
-          <entry key="project.opened" value="2" />
+          <entry key="project.opened" value="3" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="env" value="2" />
-          <entry key="php" value="18" />
+          <entry key="css" value="2" />
+          <entry key="env" value="3" />
+          <entry key="md" value="1" />
+          <entry key="php" value="23" />
+          <entry key="png" value="1" />
+          <entry key="py" value="1" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key=".env file" value="1" />
-          <entry key="Blade" value="8" />
-          <entry key="PHP" value="10" />
-          <entry key="PLAIN_TEXT" value="1" />
+          <entry key=".env file" value="2" />
+          <entry key="Blade" value="11" />
+          <entry key="CSS" value="2" />
+          <entry key="Image" value="1" />
+          <entry key="Markdown" value="1" />
+          <entry key="PHP" value="12" />
+          <entry key="PLAIN_TEXT" value="2" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="env" value="17" />
-          <entry key="php" value="1600" />
+          <entry key="md" value="6" />
+          <entry key="php" value="1698" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.php.composer.command.options" />
@@ -57,8 +62,9 @@
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key=".env file" value="17" />
-          <entry key="Blade" value="1053" />
-          <entry key="PHP" value="547" />
+          <entry key="Blade" value="1138" />
+          <entry key="Markdown" value="6" />
+          <entry key="PHP" value="560" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.php.rename.constructor" />
@@ -71,21 +77,82 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/blog/app/Http/Controllers/GamesController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="368">
-              <caret line="93" column="67" selection-start-line="93" selection-start-column="67" selection-end-line="93" selection-end-column="67" />
+            <state relative-caret-position="79">
+              <caret line="9" column="21" selection-start-line="9" selection-start-column="6" selection-end-line="9" selection-end-column="21" />
+              <folding>
+                <element signature="e#46#74#0#PHP" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/blog/resources/views/pages/gameDetails.blade.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="373">
+              <caret line="149" column="158" selection-start-line="149" selection-start-column="158" selection-end-line="149" selection-end-column="158" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/blog/resources/views/pages/gameDetails.blade.php">
+        <entry file="file://$PROJECT_DIR$/blog/resources/views/layouts/app.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="75">
-              <caret line="5" column="26" selection-start-line="5" selection-start-column="26" selection-end-line="5" selection-end-column="26" />
-              <folding>
-                <element signature="e#381#404#0#HTML" expanded="true" />
-                <element signature="e#564#588#0#HTML" expanded="true" />
-              </folding>
+            <state relative-caret-position="255">
+              <caret line="98" column="14" lean-forward="true" selection-start-line="94" selection-start-column="8" selection-end-line="98" selection-end-column="14" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/blog/public/css/styles.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="156">
+              <caret line="189" column="5" selection-start-line="189" selection-start-column="5" selection-end-line="189" selection-end-column="5" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/blog/public/css/style.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="165">
+              <caret line="1562" column="5" selection-start-line="1562" selection-start-column="5" selection-end-line="1562" selection-end-column="5" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/blog/resources/views/pages/games.blade.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="885">
+              <caret line="59" column="63" selection-start-line="59" selection-start-column="56" selection-end-line="59" selection-end-column="63" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/blog/config/mail.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="213">
+              <caret line="99" column="6" lean-forward="true" selection-start-line="99" selection-start-column="6" selection-end-line="99" selection-end-column="6" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/main.py">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/laravelTutorial.md">
+          <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+            <state split_layout="SPLIT">
+              <first_editor relative-caret-position="434">
+                <caret line="40" lean-forward="true" selection-start-line="40" selection-end-line="40" />
+              </first_editor>
+              <second_editor />
             </state>
           </provider>
         </entry>
@@ -94,19 +161,7 @@
         <entry file="file://$PROJECT_DIR$/blog/resources/views/pages/gameDate.blade.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="60">
-              <caret line="4" column="28" lean-forward="true" selection-start-line="4" selection-start-column="28" selection-end-line="4" selection-end-column="28" />
-              <folding>
-                <element signature="e#413#436#0#HTML" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/blog/resources/views/pages/index.blade.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2805">
-              <caret line="187" selection-start-line="187" selection-end-line="187" />
+              <caret line="4" column="28" selection-start-line="4" selection-start-column="28" selection-end-line="4" selection-end-column="28" />
             </state>
           </provider>
         </entry>
@@ -121,6 +176,10 @@
       <find>boots</find>
       <find>news</find>
       <find>links</find>
+      <find>date</find>
+      <find>250</find>
+      <find>nav</find>
+      <find>navicon</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -140,10 +199,12 @@
         <option value="$PROJECT_DIR$/blog/routes/web.php" />
         <option value="$PROJECT_DIR$/blog/resources/views/pages/gameDate.blade.php" />
         <option value="$PROJECT_DIR$/blog/resources/views/pages/games.blade.php" />
-        <option value="$PROJECT_DIR$/blog/resources/views/layouts/app.blade.php" />
         <option value="$PROJECT_DIR$/blog/resources/views/includes/footer.blade.php" />
         <option value="$PROJECT_DIR$/blog/app/Http/Controllers/GamesController.php" />
+        <option value="$PROJECT_DIR$/laravelTutorial.md" />
+        <option value="$PROJECT_DIR$/blog/config/mail.php" />
         <option value="$PROJECT_DIR$/blog/resources/views/pages/gameDetails.blade.php" />
+        <option value="$PROJECT_DIR$/blog/resources/views/layouts/app.blade.php" />
       </list>
     </option>
   </component>
@@ -153,8 +214,13 @@
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
   </component>
+  <component name="NodeModulesDirectoryManager">
+    <handled-path value="$PROJECT_DIR$/blog/node_modules" />
+  </component>
   <component name="NodePackageJsonFileManager">
     <packageJsonPaths>
+      <path value="$PROJECT_DIR$/JohnStuff/references/js/package.json" />
+      <path value="$PROJECT_DIR$/blog/node_modules/jquery/package.json" />
       <path value="$PROJECT_DIR$/blog/package.json" />
     </packageJsonPaths>
   </component>
@@ -249,7 +315,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -266,6 +331,25 @@
               <item name="BayesBall" type="b2602c69:ProjectViewProjectNode" />
               <item name="BayesBall" type="462c0819:PsiDirectoryNode" />
               <item name="blog" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="BayesBall" type="b2602c69:ProjectViewProjectNode" />
+              <item name="BayesBall" type="462c0819:PsiDirectoryNode" />
+              <item name="blog" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="Http" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="BayesBall" type="b2602c69:ProjectViewProjectNode" />
+              <item name="BayesBall" type="462c0819:PsiDirectoryNode" />
+              <item name="blog" type="462c0819:PsiDirectoryNode" />
+              <item name="config" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="BayesBall" type="b2602c69:ProjectViewProjectNode" />
+              <item name="BayesBall" type="462c0819:PsiDirectoryNode" />
+              <item name="blog" type="462c0819:PsiDirectoryNode" />
               <item name="public" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -273,7 +357,7 @@
               <item name="BayesBall" type="462c0819:PsiDirectoryNode" />
               <item name="blog" type="462c0819:PsiDirectoryNode" />
               <item name="public" type="462c0819:PsiDirectoryNode" />
-              <item name="images" type="462c0819:PsiDirectoryNode" />
+              <item name="css" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="BayesBall" type="b2602c69:ProjectViewProjectNode" />
@@ -313,6 +397,7 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -343,11 +428,12 @@
       <workItem from="1537417600304" duration="1119000" />
       <workItem from="1537419294954" duration="429000" />
       <workItem from="1537839418858" duration="2704000" />
+      <workItem from="1539900934809" duration="3979000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="18091000" />
+    <option name="totallyTimeSpent" value="22248000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -359,10 +445,10 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="140" y="42" width="1400" height="907" extended-state="0" />
+    <frame x="140" y="43" width="1400" height="907" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.3070692" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.3114875" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -375,7 +461,7 @@
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Database Changes" order="8" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="9" show_stripe_button="false" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="10" visible="true" weight="0.32883435" />
+      <window_info anchor="bottom" id="Terminal" order="10" visible="true" weight="0.32883435" />
       <window_info anchor="bottom" id="Event Log" order="11" side_tool="true" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -434,13 +520,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/blog/.env">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="287">
-          <caret line="27" column="13" selection-start-line="27" selection-start-column="13" selection-end-line="27" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/blog/config/database.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="705">
@@ -496,17 +575,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/blog/resources/views/pages/games.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1260">
-          <caret line="84" lean-forward="true" selection-start-line="84" selection-end-line="84" />
-          <folding>
-            <element signature="e#268#289#0#HTML" expanded="true" />
-            <element signature="e#1374#1397#0#HTML" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/blog/app/Http/Controllers/AboutController.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="240">
@@ -524,38 +592,95 @@
     <entry file="file://$PROJECT_DIR$/blog/resources/views/includes/header.blade.php">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/blog/resources/views/layouts/app.blade.php">
+    <entry file="file://$PROJECT_DIR$/blog/resources/views/pages/index.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="420">
-          <caret line="28" column="68" selection-start-line="28" selection-start-column="68" selection-end-line="28" selection-end-column="68" />
+        <state relative-caret-position="2805">
+          <caret line="187" selection-start-line="187" selection-end-line="187" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/laravelTutorial.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="434">
+            <caret line="40" lean-forward="true" selection-start-line="40" selection-end-line="40" />
+          </first_editor>
+          <second_editor />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/blog/resources/views/pages/gameDate.blade.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="60">
-          <caret line="4" column="28" lean-forward="true" selection-start-line="4" selection-start-column="28" selection-end-line="4" selection-end-column="28" />
-          <folding>
-            <element signature="e#413#436#0#HTML" expanded="true" />
-          </folding>
+          <caret line="4" column="28" selection-start-line="4" selection-start-column="28" selection-end-line="4" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/blog/config/queue.php">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/blog/config/mail.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="213">
+          <caret line="99" column="6" lean-forward="true" selection-start-line="99" selection-start-column="6" selection-end-line="99" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/blog/.env">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="287">
+          <caret line="27" column="13" lean-forward="true" selection-start-line="27" selection-start-column="13" selection-end-line="27" selection-end-column="13" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/blog/app/Http/Controllers/GamesController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="368">
-          <caret line="93" column="67" selection-start-line="93" selection-start-column="67" selection-end-line="93" selection-end-column="67" />
+        <state relative-caret-position="79">
+          <caret line="9" column="21" selection-start-line="9" selection-start-column="6" selection-end-line="9" selection-end-column="21" />
+          <folding>
+            <element signature="e#46#74#0#PHP" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/blog/public/images/teamLogos/ARI.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
     <entry file="file://$PROJECT_DIR$/blog/resources/views/pages/gameDetails.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="5" column="26" selection-start-line="5" selection-start-column="26" selection-end-line="5" selection-end-column="26" />
-          <folding>
-            <element signature="e#381#404#0#HTML" expanded="true" />
-            <element signature="e#564#588#0#HTML" expanded="true" />
-          </folding>
+        <state relative-caret-position="373">
+          <caret line="149" column="158" selection-start-line="149" selection-start-column="158" selection-end-line="149" selection-end-column="158" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/blog/resources/views/pages/games.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="885">
+          <caret line="59" column="63" selection-start-line="59" selection-start-column="56" selection-end-line="59" selection-end-column="63" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/blog/public/css/style.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="1562" column="5" selection-start-line="1562" selection-start-column="5" selection-end-line="1562" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/blog/public/css/styles.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="156">
+          <caret line="189" column="5" selection-start-line="189" selection-start-column="5" selection-end-line="189" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/blog/resources/views/layouts/app.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="98" column="14" lean-forward="true" selection-start-line="94" selection-start-column="8" selection-end-line="98" selection-end-column="14" />
         </state>
       </provider>
     </entry>
