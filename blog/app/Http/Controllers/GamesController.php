@@ -45,7 +45,7 @@ class GamesController extends Controller
 //                          ->get();
 
         //return $dates;
-        return view('pages.gameDate',['dates'=>$dates]);
+        return view('pages.gameDate',['dates'=>$dates],['specifiedDate'=>$date]);
 
 
     }
@@ -61,7 +61,7 @@ class GamesController extends Controller
 
 
 
-        return view('pages.gameDate')->with('dates',$dates);
+        return view('pages.gameDate')->with('dates',$dates)->with('specifiedDate',$date);
 
         //return response($dates);
         }

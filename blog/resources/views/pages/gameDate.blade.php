@@ -85,6 +85,9 @@
             @endforeach
 
             @else
+            <div class="well">
+                <h3 align="center">There is no game on {{$specifiedDate}}</h3>
+            </div>
 
         @endif
         {{--{{$dates->links()}}--}}
