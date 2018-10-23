@@ -38,6 +38,40 @@
         }
     </style>
 
+    <div class="footer">
+        <!-- container-wrap -->
+        <div class="container-wrap">
+            <div class="footer-top">
+
+                <div align="center" style="margin:0 auto" class="col-md-6 f-address f-contact">
+
+
+                    <h5 >Choose a Date</h5>
+                    @php
+                        $date= date('Y-m-d');
+                        $count=0;
+                        //$date= '2017-04-02';
+                        //echo $date;
+
+                    @endphp
+                    <form autocomplete="off" action=" {{route('goToDate')}}" method="get">
+
+                        {{--<div>--}}
+
+                        <input  type="text" id="datePicker" name="date" placeholder="YYYY-MM-DD" class='datepicker-here'   data-language='en' required="">
+
+                        <input type="submit" id="read-data" value="Submit">
+                        {{--</div>--}}
+                    </form>
+                </div>
+                <div class="clearfix"> </div>
+
+            </div>
+        </div>
+        <!-- //container-wrap -->
+    </div>
+    <!-- //footer -->
+
     <div  class="about-grids about-top-grids">
         @if(count($dates)>0)
             @foreach($dates as $date)

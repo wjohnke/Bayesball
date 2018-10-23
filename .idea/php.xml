@@ -74,6 +74,7 @@
       <path value="$PROJECT_DIR$/blog/vendor/symfony/finder" />
       <path value="$PROJECT_DIR$/blog/vendor/sebastian/version" />
       <path value="$PROJECT_DIR$/blog/vendor/symfony/routing" />
+      <path value="$PROJECT_DIR$/blog/vendor/bensampo/laravel-enum" />
     </include_path>
   </component>
   <component name="PhpProjectSharedConfiguration" php_language_level="7.1" />
