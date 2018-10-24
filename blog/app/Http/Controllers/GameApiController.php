@@ -16,7 +16,7 @@ class GameApiController extends Controller
     public function index()
     {
         //
-        return GameResource::collection(Game::orderBy('game_date','asc')->paginate(15));
+        return GameResource::collection(Game::orderBy('game_date','asc')->paginate(200));
     }
 
     /**
