@@ -5,6 +5,11 @@
       <sourceFolder url="file://$MODULE_DIR$/blog/app" isTestSource="false" packagePrefix="BayesBall\" />
       <sourceFolder url="file://$MODULE_DIR$/blog/tests" isTestSource="true" packagePrefix="Tests\" />
       <excludeFolder url="file://$MODULE_DIR$/blog/vendor/bensampo/laravel-enum" />
+      <excludeFolder url="file://$MODULE_DIR$/blog/vendor/lcobucci/jwt" />
+      <excludeFolder url="file://$MODULE_DIR$/blog/vendor/namshi/jose" />
+      <excludeFolder url="file://$MODULE_DIR$/blog/vendor/symfony/polyfill-php56" />
+      <excludeFolder url="file://$MODULE_DIR$/blog/vendor/symfony/polyfill-util" />
+      <excludeFolder url="file://$MODULE_DIR$/blog/vendor/tymon/jwt-auth" />
     </content>
     <orderEntry type="jdk" jdkName="Python 3.7.0 (/Library/Frameworks/Python.framework/Versions/3.7/bin/python3.7)" jdkType="Python SDK" />
     <orderEntry type="sourceFolder" forTests="false" />

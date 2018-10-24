@@ -16,3 +16,8 @@ use Illuminate\Http\Request;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+Route::post('register', 'AuthController@register');
+Route::post('login', 'AuthController@login');
+Route::apiResource('gamesApi','GameApiController');
+//Route::get('gamesApi/gameDetail/gameDate/{date}/visitor/{visitor}/home/{home}','GameApiController@gameDetail');
+Route::get('gamesApi/gameDetail/{date}/{visitor}/{home}','GameApiController@gameDetail');

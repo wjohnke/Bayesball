@@ -5,8 +5,10 @@ namespace BayesBall;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Tymon\JWTAuth\Contracts\JWTSubject;
 
-class User extends Authenticatable
+
+class User extends Authenticatable implements JWTSubject
 {
     use Notifiable;
 
@@ -27,4 +29,18 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+
+    //gets the identifier that will be stored in the subject claim of the JWT
+    public function getJWTIdentifier()
+    {
+        return $this->getKey();
+    }
+
+    //allow us to add any custom claims we want added to the JWT.
+    public function getJWTCustomClaims()
+    {
+        return [];
+    }
+
 }
