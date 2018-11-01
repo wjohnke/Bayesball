@@ -1,4 +1,18 @@
-Added to keep track of change in abbreviation if new seasons are imported
+/*Added to keep track of change in abbreviation if new seasons are imported*/
+
+UPDATE playerSTDBatting SET team="WAS" WHERE team="WSN";
+UPDATE playerSTDBatting SET team="NYN" WHERE team="NYM";
+UPDATE playerSTDBatting SET team="NYA" WHERE team="NYY";
+UPDATE playerSTDBatting SET team="ANA" WHERE team="LAA";
+UPDATE playerSTDBatting SET team="LAN" WHERE team="LAD";
+UPDATE playerSTDBatting SET team="TBA" WHERE team="TBR";
+UPDATE playerSTDBatting SET team="SDN" WHERE team="SDP";
+UPDATE playerSTDBatting SET team="SLN" WHERE team="STL";
+UPDATE playerSTDBatting SET team="CHN" WHERE team="CHC";
+UPDATE playerSTDBatting SET team="CHA" WHERE team="CHW";
+UPDATE playerSTDBatting SET team="KCA" WHERE team="KCR";
+UPDATE playerSTDBatting SET team="SFN" WHERE team="SFG";
+
 
 Washington - WSN -> WAS
 Mets - NYM -> NYN
