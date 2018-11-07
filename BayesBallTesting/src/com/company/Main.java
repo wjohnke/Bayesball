@@ -15,11 +15,13 @@ public class Main {
         System.out.println("hello");
         WebDriver driver= new ChromeDriver();
         String baseURL ="http://localhost/public/";
-        String loginURL = "http://localhost/public/login";
+        String loginURL = "http://ec2-52-6-86-207.compute-1.amazonaws.com/BayesBall/blog/public/login";
         driver.get(loginURL);
         driver.findElement(By.id("email")).sendKeys("harleysong@outlook.com");
         driver.findElement(By.id("password")).sendKeys("123456");
         driver.findElement(By.tagName("button")).click();
+
+        driver.findElement(By.id("hero")).click();
 
     }
 }

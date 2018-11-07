@@ -11,38 +11,38 @@
     #container{
 
 
-        width :100%;
-        text-align:center;
-        margin-bottom: 60px;
-
-
-    }
-    #left
-    {   float:left;
-        margin-left: 100px;
-        width:50px;
-        height: 128px;
-        margin-bottom: 20px;
+        display: flex;                  /* establish flex container */
+        /*flex-direction: row;            !* default value; can be omitted *!*/
+        flex-wrap: nowrap;              /* default value; can be omitted */
+        justify-content: space-between; /* switched from default (flex-start, see below) */
+        /*background-color: lightyellow;*/
 
 
 
     }
-    #center{
-        display: inline-block;
-        margin:0 auto;
-        width:600px;
-        height: 128px;
-        margin-bottom: 20px;
+    #container > div {
+        width: 100%;
+        height: 100%;
+        /*border: 2px dashed red;*/
+        margin-left: 1%;
+        margin-right: 1%;
 
     }
-    #right{
-        margin-right: 100px;
-        margin-bottom: 20px;
-        float:right;
-        width:50px;
-        height: 128px;
 
+    img {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        max-width: 100%;
+        max-height: 100%;
     }
+    .center {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        width: 50%;
+    }
+
 </style>
 
     <div class="footer">
@@ -112,14 +112,17 @@
                                         @endphp
                                     <div class="well">
 
-                                        <h1 align="center"><a href="{{route('games.date',['date'=>$todayGame->game_date])}}">{{$todayGame->game_date}}</a></h1>
+                                        <h1 style="font-size:1vw;"  align="center"><a href="{{route('games.date',['date'=>$todayGame->game_date])}}">{{$todayGame->game_date}}</a></h1>
 
                                         <div id="container">
-                                            <div id="left">
-                                                <img src="{{URL::asset("images/teamLogos/{$todayGame->visitor}.png")}}" height="128" alt="" />
+                                            <div  >
+
+                                                    <img src="{{URL::asset("images/teamLogos/{$todayGame->visitor}.png")}}" class="center" border="0" alt="" />
+
                                             </div>
-                                            <div id="center">
-                                                <p class="title" style="font-size:30px;" align="center">
+
+                                            <div >
+                                                <p style="font-size:2vw;" >
                                                     <a href="{{route('games.show', ['id' => $todayGame->id])}}"   >
 
 
@@ -128,10 +131,8 @@
                                                     </a>
                                                 </p>
                                             </div>
-                                            <div id="right">
-                                                <img src="{{URL::asset("images/teamLogos/{$todayGame->home}.png")}}" height="128"  alt="" />
-
-
+                                            <div >
+                                                    <img src="{{URL::asset("images/teamLogos/{$todayGame->home}.png")}}" class="center" border="0"  alt="" />
 
 
                                             </div >
@@ -147,7 +148,7 @@
 
                              @if($count==0)
                                     <div class="well">
-                                        <h3 align="center">There is no game today</h3>
+                                        <h3 style="font-size:3vw;" align="center">There is no game today</h3>
                                     </div>
                              @endif
 
@@ -176,11 +177,11 @@
 
 
                                 <div id="container">
-                                    <div id="left">
+                                    <div >
                                         <img src="{{URL::asset("images/teamLogos/{$game->visitor}.png")}}" height="128" alt="" />
                                     </div>
-                                    <div id="center">
-                                        <p class="title" style="font-size:30px;" align="center">
+                                    <div >
+                                        <p class="title" style="font-size:2vw;" align="center">
                                             <a href="{{route('games.show', ['id' => $game->id])}}"   >
 
 
@@ -189,7 +190,7 @@
                                             </a>
                                         </p>
                                     </div>
-                                    <div id="right">
+                                    <div >
                                         <img src="{{URL::asset("images/teamLogos/{$game->home}.png")}}" height="128"  alt="" />
 
 

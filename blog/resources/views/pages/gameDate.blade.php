@@ -4,37 +4,36 @@
         #container{
 
 
-            width :100%;
-            text-align:center;
-            margin-bottom: 60px;
-
-
-        }
-        #left
-        {   float:left;
-            margin-left: 100px;
-            width:80px;
-            height: 128px;
-            margin-bottom: 20px;
+            display: flex;                  /* establish flex container */
+            /*flex-direction: row;            !* default value; can be omitted *!*/
+            flex-wrap: nowrap;              /* default value; can be omitted */
+            justify-content: space-between; /* switched from default (flex-start, see below) */
+            /*background-color: lightyellow;*/
 
 
 
         }
-        #center{
-            display: inline-block;
-            margin:0 auto;
-            width:600px;
-            height: 128px;
-            margin-bottom: 20px;
+        #container > div {
+            width: 100%;
+            height: 100%;
+            /*border: 2px dashed red;*/
+            margin-left: 1%;
+            margin-right: 1%;
 
         }
-        #right{
-            margin-right: 100px;
-            margin-bottom: 20px;
-            float:right;
-            width:80px;
-            height: 128px;
 
+        img {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            max-width: 100%;
+            max-height: 100%;
+        }
+        .center {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            width: 50%;
         }
     </style>
 
@@ -97,7 +96,7 @@
                             <img src="{{URL::asset("images/teamLogos/{$date->visitor}.png")}}" height="128" alt="" />
                         </div>
                         <div id="center">
-                            <p class="title" style="font-size:30px;" align="center">
+                            <p class="title" style="font-size:2.5vw;" align="center">
                                 <a href="{{route('games.show', ['id' => $date->id])}}"   >
 
 
