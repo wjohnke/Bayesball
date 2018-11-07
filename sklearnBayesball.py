@@ -3,7 +3,6 @@ import mysql.connector
 from mysql.connector import errorcode
 import pandas as pd
 import numpy as np
-import matplotlib.pyplot as plt
 import time
 from sklearn.model_selection import train_test_split
 from sklearn.naive_bayes import GaussianNB
@@ -12,6 +11,7 @@ from sklearn.naive_bayes import GaussianNB
 from sklearn.linear_model import LinearRegression
 from sklearn.linear_model import LogisticRegression
 import random
+import sys
 
 def main():
     try:
@@ -28,15 +28,37 @@ def main():
             print(err)        
     m = cnx.cursor()
 
+    team1=""
+    team2=""
+    
+    if(len(sys.argv)==3):
+        team1=sys.argv[1]
+        team2=sys.argv[2]
+        predicted_home_game_dataset = "SELECT id, Rdiff, SRS, R_G, R, RBI, OBP, OPSP, RA, ERA, SV, HA, ER, ERAP, WHIP FROM yearBreakdown WHERE home_team='" + team1 +"' LIMIT 1;"
+        predicted_opponent_game_dataset = "SELECT id, Rdiff, SRS, R_G, R, RBI, OBP, OPSP, RA, ERA, SV, HA, ER, ERAP, WHIP FROM yearBreakdown WHERE home_team='"+ team2+"' LIMIT 1;"
+       
+        m.execute(predicted_home_game_dataset)
+        predicted_game_dataset = m.fetchall()
+        
+        m.execute(predicted_opponent_game_dataset)
+        predicted_game_dataset += m.fetchall()
+        
+        fpr = open("predictYearBreakdown.csv","w")
+        pFile = csv.writer(fpr, lineterminator='\n')
+        pFile.writerow(['id','Rdiff','SRS','R_G','R','RBI','OBP','OPSP','RA','ERA','SV','HA','ER','ERAP','WHIP'])
+        pFile.writerows(predicted_game_dataset)
+    
+        return 
+
     yearBreakdown_dataset = "SELECT id, Rdiff, SRS, R_G, R, RBI, OBP, OPSP, RA, ERA, SV, HA, ER, ERAP, WHIP, opponent_Rdiff, opponent_SRS ,opponent_R_G ,opponent_R ,opponent_RBI, opponent_OBP ,opponent_OPSP ,opponent_RA,opponent_ERA ,opponent_SV ,opponent_HA, opponent_ER, opponent_ERAP,opponent_WHIP, Outcome FROM yearBreakdown;"
     m.execute(yearBreakdown_dataset)
     result = m.fetchall()
     
-    fp = open("yearBreakdown.csv","w")
+    fp = open("yearBreakdown2.csv","w")
     myFile = csv.writer(fp, lineterminator='\n')
     myFile.writerow(['id','Rdiff','SRS','R_G','R','RBI','OBP','OPSP','RA','ERA','SV','HA','ER','ERAP','WHIP', 'opponent_Rdiff', 'opponent_SRS' ,'opponent_R_G' ,'opponent_R' ,'opponent_RBI', 'opponent_OBP' ,'opponent_OPSP' ,'opponent_RA','opponent_ERA' ,'opponent_SV' ,'opponent_HA', 'opponent_ER', 'opponent_ERAP','opponent_WHIP','Outcome'])
     myFile.writerows(result)
-    data = pd.read_csv("yearBreakdown.csv")
+    data = pd.read_csv("yearBreakdown2.csv")
     # Convert categorical variable to numeric
     #print(data.iloc[:,3])
     data=data[["Rdiff",
@@ -142,10 +164,10 @@ def RunLinearRegression(data):
     
     #plt.scatter(model.predict(F_train), model.predict(F_train) - C_train, c='red', s=30, alpha=0.5)
     #plt.scatter((model.predict(F_train)[:,0]), model.predict(F_test) - C_test, c='green')
-    plt.scatter(C_test, model.predict(F_test))
-    plt.hlines(y=0, xmin=0,xmax=5)
-    plt.title("Training = Blue, Test - Green")
-    plt.ylabel('Residuals')
+    #plt.scatter(C_test, model.predict(F_test))
+    #plt.hlines(y=0, xmin=0,xmax=5)
+    #plt.title("Training = Blue, Test - Green")
+    #plt.ylabel('Residuals')
     
     
     
