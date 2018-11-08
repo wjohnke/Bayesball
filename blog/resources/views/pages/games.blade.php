@@ -8,6 +8,11 @@
     img{
 
     }
+    #bottomright {
+        position: absolute;
+        bottom: 0px;
+        right: 0px;
+    }
     #container{
 
 
@@ -110,7 +115,7 @@
                                         @php
                                             $count++;
                                         @endphp
-                                    <div class="well">
+                                    <div class="well" style="position: relative;">
 
                                         <h1 style="font-size:1vw;"  align="center"><a href="{{route('games.date',['date'=>$todayGame->game_date])}}">{{$todayGame->game_date}}</a></h1>
 
@@ -136,6 +141,9 @@
 
 
                                             </div >
+                                            
+                                            <div class="heart" id="bottomright"></div>
+
 
                                         </div>
                                     </div>
@@ -159,7 +167,7 @@
 
                             @if(count($games)>0)
                                 @foreach($games as $game)
-                            <div  class="well">
+                            <div  class="well" style="position: relative">
 
                                 <h1 align="center"><a href="{{route('games.date',['date'=>$game->game_date])}}">{{$game->game_date}}</a></h1>
 
@@ -198,7 +206,10 @@
 
                                     </div >
 
+
+
                                 </div>
+                                <div class="heart" id="bottomright"></div>
 
                         </div>
                                 @endforeach

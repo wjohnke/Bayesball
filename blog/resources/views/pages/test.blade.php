@@ -3,6 +3,15 @@
 @section('content')
     <style>
 
+        #bottomright {
+            position: absolute;
+            bottom: 8px;
+            right: 16px;
+            font-size: 18px;
+        }
+        #container {
+            position: relative;
+        }
 
     </style>
 
@@ -14,9 +23,17 @@
         
     </form>
 
-    <div>
-        <input id="toggle-heart" type="checkbox" />
-        <label for="toggle-heart">❤</label>
-    </div>
+    {{--<div style="width: 500px; height: 500px; border: 1px solid red; position: relative">--}}
+        {{--<div style="position: absolute; right: 0; bottom: 0; width: 200px; height: 100px; border: 1px solid green;">--}}
+        {{--</div>--}}
+    {{--</div>--}}
 
+    <div class="well" id="container" >
+
+        <div class="heart" id="bottomright"></div>
+
+
+    </div>
+    <div class="stage">
+    </div>
 @endsection
