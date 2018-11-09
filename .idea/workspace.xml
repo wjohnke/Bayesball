@@ -2,15 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="98214578-5862-4e42-a0a5-680cce7b3f14" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/blog/public/css/heart.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/blog/public/js/heart.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/blog/resources/sass/_heart.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/BayesBall.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/BayesBall.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog/public/css/app.css" beforeDir="false" afterPath="$PROJECT_DIR$/blog/public/css/app.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog/public/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/blog/public/js/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog/public/js/scripts.js" beforeDir="false" afterPath="$PROJECT_DIR$/blog/public/js/scripts.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog/resources/sass/app.scss" beforeDir="false" afterPath="$PROJECT_DIR$/blog/resources/sass/app.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog/resources/views/layouts/app.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/blog/resources/views/layouts/app.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog/app/Http/Controllers/GamesController.php" beforeDir="false" afterPath="$PROJECT_DIR$/blog/app/Http/Controllers/GamesController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/blog/composer.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/blog/composer.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog/config/app.php" beforeDir="false" afterPath="$PROJECT_DIR$/blog/config/app.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/blog/resources/views/pages/games.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/blog/resources/views/pages/games.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/blog/resources/views/pages/test.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/blog/resources/views/pages/test.blade.php" afterDir="false" />
     </list>
@@ -42,7 +40,7 @@
           <entry key="js" value="7" />
           <entry key="json" value="2" />
           <entry key="md" value="2" />
-          <entry key="php" value="43" />
+          <entry key="php" value="49" />
           <entry key="png" value="1" />
           <entry key="py" value="1" />
           <entry key="sass" value="1" />
@@ -53,13 +51,13 @@
       <usages-collector id="statistics.file.types.open">
         <counts>
           <entry key=".env file" value="5" />
-          <entry key="Blade" value="15" />
+          <entry key="Blade" value="17" />
           <entry key="CSS" value="6" />
           <entry key="Image" value="1" />
           <entry key="JSON" value="2" />
           <entry key="JavaScript" value="7" />
           <entry key="Markdown" value="2" />
-          <entry key="PHP" value="28" />
+          <entry key="PHP" value="32" />
           <entry key="PLAIN_TEXT" value="4" />
           <entry key="SCSS" value="4" />
           <entry key="Sass" value="1" />
@@ -72,7 +70,7 @@
           <entry key="example" value="1" />
           <entry key="js" value="4" />
           <entry key="md" value="312" />
-          <entry key="php" value="2734" />
+          <entry key="php" value="3591" />
           <entry key="scss" value="32" />
         </counts>
       </usages-collector>
@@ -83,11 +81,11 @@
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key=".env file" value="18" />
-          <entry key="Blade" value="1371" />
+          <entry key="Blade" value="2092" />
           <entry key="CSS" value="29" />
           <entry key="JavaScript" value="4" />
           <entry key="Markdown" value="312" />
-          <entry key="PHP" value="1363" />
+          <entry key="PHP" value="1499" />
           <entry key="SCSS" value="32" />
         </counts>
       </usages-collector>
@@ -145,6 +143,27 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/blog/app/Http/Controllers/GamesController.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="450">
+              <caret line="34" lean-forward="true" selection-start-line="34" selection-end-line="34" />
+              <folding>
+                <element signature="e#46#74#0#PHP" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/blog/config/app.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-183">
+              <caret line="163" column="56" lean-forward="true" selection-start-line="163" selection-start-column="56" selection-end-line="163" selection-end-column="56" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/blog/app/Http/Controllers/PagesController.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="152">
@@ -153,70 +172,29 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/blog/resources/views/layouts/app.blade.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-264">
-              <caret line="27" column="37" selection-start-line="27" selection-start-column="37" selection-end-line="27" selection-end-column="37" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/blog/resources/views/pages/test.blade.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="437">
-              <caret line="32" column="11" selection-start-line="32" selection-end-line="33" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/blog/package.json">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="210">
-              <caret line="14" column="28" selection-start-line="14" selection-start-column="28" selection-end-line="14" selection-end-column="28" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/blog/public/css/app.css">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="136">
-              <caret line="10471" column="17" selection-start-line="10471" selection-start-column="14" selection-end-line="10471" selection-end-column="17" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/blog/resources/sass/_heart.scss">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="15">
-              <caret line="1" column="1" lean-forward="true" selection-start-line="1" selection-end-line="2" />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/blog/resources/views/pages/games.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="210">
-              <caret line="14" selection-start-line="14" selection-end-line="14" />
+            <state relative-caret-position="273">
+              <caret line="262" column="108" selection-start-line="262" selection-start-column="108" selection-end-line="262" selection-end-column="108" />
               <folding>
                 <element signature="e#3506#3533#0#HTML" expanded="true" />
                 <element signature="e#4002#4024#0#HTML" expanded="true" />
                 <element signature="e#5987#6013#0#HTML" expanded="true" />
+                <element signature="e#6967#6989#0#HTML" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/blog/webpack.mix.js">
+        <entry file="file://$PROJECT_DIR$/blog/app/User.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="225">
-              <caret line="15" selection-start-line="15" selection-end-line="15" />
+            <state relative-caret-position="315">
+              <caret line="21" column="13" selection-start-line="21" selection-start-column="9" selection-end-line="21" selection-end-column="13" />
+              <folding>
+                <element signature="e#29#69#0#PHP" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -248,8 +226,11 @@
       <find>there</find>
       <find>toggle</find>
       <find>heart</find>
+      <find>php</find>
+      <find>provider</find>
       <find>url</find>
       <find>app.css</find>
+      <find>include</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -263,11 +244,9 @@
         <option value="$PROJECT_DIR$/blog/config/database.php" />
         <option value="$PROJECT_DIR$/blog/resources/views/welcome.blade.php" />
         <option value="$PROJECT_DIR$/blog/app/Http/Controllers/AboutController.php" />
-        <option value="$PROJECT_DIR$/blog/config/app.php" />
         <option value="$PROJECT_DIR$/blog/resources/views/contact.blade.php" />
         <option value="$PROJECT_DIR$/blog/routes/web.php" />
         <option value="$PROJECT_DIR$/blog/resources/views/includes/footer.blade.php" />
-        <option value="$PROJECT_DIR$/blog/app/Http/Controllers/GamesController.php" />
         <option value="$PROJECT_DIR$/laravelTutorial.md" />
         <option value="$PROJECT_DIR$/blog/config/mail.php" />
         <option value="$PROJECT_DIR$/README.md" />
@@ -293,6 +272,9 @@
         <option value="$PROJECT_DIR$/blog/public/js/heart.js" />
         <option value="$PROJECT_DIR$/blog/resources/views/layouts/app.blade.php" />
         <option value="$PROJECT_DIR$/blog/resources/views/pages/test.blade.php" />
+        <option value="$PROJECT_DIR$/blog/config/app.php" />
+        <option value="$PROJECT_DIR$/blog/config/javascript.php" />
+        <option value="$PROJECT_DIR$/blog/app/Http/Controllers/GamesController.php" />
         <option value="$PROJECT_DIR$/blog/resources/views/pages/games.blade.php" />
       </list>
     </option>
@@ -399,6 +381,7 @@
       <path value="$PROJECT_DIR$/blog/vendor/swiftmailer/swiftmailer" />
       <path value="$PROJECT_DIR$/blog/vendor/nunomaduro/collision" />
       <path value="$PROJECT_DIR$/blog/vendor/opis/closure" />
+      <path value="$PROJECT_DIR$/blog/vendor/laracasts/utilities" />
     </include_path>
   </component>
   <component name="ProjectFrameBounds">
@@ -530,6 +513,14 @@
               <item name="blog" type="462c0819:PsiDirectoryNode" />
               <item name="resources" type="462c0819:PsiDirectoryNode" />
               <item name="views" type="462c0819:PsiDirectoryNode" />
+              <item name="includes" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="BayesBall" type="b2602c69:ProjectViewProjectNode" />
+              <item name="BayesBall" type="462c0819:PsiDirectoryNode" />
+              <item name="blog" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="views" type="462c0819:PsiDirectoryNode" />
               <item name="pages" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -558,7 +549,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="SearchEverywhereHistoryKey" value="package.j&#9;FILE&#9;file:///Users/thehanemperor/Documents/GitHub/BayesBall/blog/package.json&#10;mix.j&#9;FILE&#9;file:///Users/thehanemperor/Documents/GitHub/BayesBall/blog/webpack.mix.js" />
+    <property name="SearchEverywhereHistoryKey" value="javascript.php&#9;FILE&#9;file:///Users/thehanemperor/Documents/GitHub/BayesBall/blog/config/javascript.php&#10;app.&#9;FILE&#9;file:///Users/thehanemperor/Documents/GitHub/BayesBall/blog/config/app.php&#10;app.php&#9;FILE&#9;file:///Users/thehanemperor/Documents/GitHub/BayesBall/blog/config/app.php&#10;package.j&#9;FILE&#9;file:///Users/thehanemperor/Documents/GitHub/BayesBall/blog/package.json&#10;mix.j&#9;FILE&#9;file:///Users/thehanemperor/Documents/GitHub/BayesBall/blog/webpack.mix.js" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="settings.editor.selected.configurable" value="watcher.settings" />
@@ -604,7 +595,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="52532000" />
+    <option name="totallyTimeSpent" value="61955000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -619,7 +610,7 @@
     <frame x="217" y="23" width="1463" height="827" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.23997185" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.23997185" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -632,7 +623,7 @@
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Database Changes" order="8" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="9" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Terminal" order="10" visible="true" weight="0.26938775" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="10" visible="true" weight="0.26938775" />
       <window_info anchor="bottom" id="Event Log" order="11" side_tool="true" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -647,24 +638,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/blog/config/mail.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1485">
-          <caret line="99" column="6" selection-start-line="99" selection-start-column="6" selection-end-line="99" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/main.py" />
-    <entry file="file://$PROJECT_DIR$/laravelTutorial.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="SPLIT">
-          <first_editor relative-caret-position="600">
-            <caret line="40" selection-start-line="40" selection-end-line="40" />
-          </first_editor>
-          <second_editor />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/blog/resources/views/home.blade.php">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -741,13 +714,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/blog/app/User.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="15" column="7" selection-start-line="15" selection-start-column="7" selection-end-line="15" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/blog/config/auth.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="272">
@@ -796,16 +762,6 @@
     <entry file="file://$PROJECT_DIR$/blog/storage/logs/laravel.log" />
     <entry file="file://$PROJECT_DIR$/blog/app/Http/Controllers/Controller.php">
       <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/blog/app/Http/Controllers/GamesController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="177">
-          <caret line="46" column="23" selection-start-line="46" selection-start-column="20" selection-end-line="46" selection-end-column="23" />
-          <folding>
-            <element signature="e#46#74#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/blog/app/Http/Controllers/HomeController.php">
       <provider selected="true" editor-type-id="text-editor" />
@@ -897,13 +853,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/blog/app/Http/Controllers/PagesController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="152">
-          <caret line="16" column="30" selection-start-line="16" selection-start-column="30" selection-end-line="16" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/blog/public/js/heart.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="30">
@@ -918,10 +867,53 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/blog/resources/sass/_heart.scss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="7" column="25" selection-start-line="7" selection-start-column="25" selection-end-line="7" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/blog/app/User.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="315">
+          <caret line="21" column="13" selection-start-line="21" selection-start-column="9" selection-end-line="21" selection-end-column="13" />
+          <folding>
+            <element signature="e#29#69#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/blog/config/app.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-183">
+          <caret line="163" column="56" lean-forward="true" selection-start-line="163" selection-start-column="56" selection-end-line="163" selection-end-column="56" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/blog/resources/views/includes/footer.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-623" />
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/blog/public/css/app.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="136">
           <caret line="10471" column="17" selection-start-line="10471" selection-start-column="14" selection-end-line="10471" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/blog/resources/views/pages/test.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="247">
+          <caret line="42" column="35" lean-forward="true" selection-start-line="42" selection-start-column="35" selection-end-line="42" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/blog/config/javascript.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="172">
+          <caret line="15" column="45" selection-start-line="15" selection-start-column="45" selection-end-line="15" selection-end-column="45" />
         </state>
       </provider>
     </entry>
@@ -932,28 +924,32 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/blog/resources/sass/_heart.scss">
+    <entry file="file://$PROJECT_DIR$/blog/app/Http/Controllers/PagesController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="1" column="1" lean-forward="true" selection-start-line="1" selection-end-line="2" />
+        <state relative-caret-position="152">
+          <caret line="16" column="30" selection-start-line="16" selection-start-column="30" selection-end-line="16" selection-end-column="30" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/blog/resources/views/pages/test.blade.php">
+    <entry file="file://$PROJECT_DIR$/blog/app/Http/Controllers/GamesController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="437">
-          <caret line="32" column="11" selection-start-line="32" selection-end-line="33" />
+        <state relative-caret-position="450">
+          <caret line="34" lean-forward="true" selection-start-line="34" selection-end-line="34" />
+          <folding>
+            <element signature="e#46#74#0#PHP" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/blog/resources/views/pages/games.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="14" selection-start-line="14" selection-end-line="14" />
+        <state relative-caret-position="273">
+          <caret line="262" column="108" selection-start-line="262" selection-start-column="108" selection-end-line="262" selection-end-column="108" />
           <folding>
             <element signature="e#3506#3533#0#HTML" expanded="true" />
             <element signature="e#4002#4024#0#HTML" expanded="true" />
             <element signature="e#5987#6013#0#HTML" expanded="true" />
+            <element signature="e#6967#6989#0#HTML" expanded="true" />
           </folding>
         </state>
       </provider>

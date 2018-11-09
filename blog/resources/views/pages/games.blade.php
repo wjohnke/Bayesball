@@ -64,6 +64,11 @@
                         $count=0;
                         //$date= '2017-04-02';
                         //echo $date;
+                        if(Auth::check()){
+                            $userId = Auth::id();
+                            $userEmail= Auth::user()->email;
+
+                        }
 
                         @endphp
                         <form autocomplete="off" action=" {{route('goToDate')}}" method="get">
@@ -184,7 +189,7 @@
 
 
 
-                                <div id="container">
+                                <div  id="container">
                                     <div >
                                         <img src="{{URL::asset("images/teamLogos/{$game->visitor}.png")}}" height="128" alt="" />
                                     </div>
@@ -198,6 +203,7 @@
                                             </a>
                                         </p>
                                     </div>
+
                                     <div >
                                         <img src="{{URL::asset("images/teamLogos/{$game->home}.png")}}" height="128"  alt="" />
 
@@ -207,11 +213,16 @@
                                     </div >
 
 
-
                                 </div>
-                                <div class="heart" id="bottomright"></div>
+                                @if(Auth::check())
 
-                        </div>
+                                <div class="heart" id="bottomright" onclick="likeTheGame()"></div>
+
+                                    {{--<p>  {{$userId}} {{$userEmail}}</p>--}}
+                                    <input type="hidden"  id="gameId"value="{{$game->id}}"/>
+                                @endif
+
+                            </div>
                                 @endforeach
 
                                 {{$games->links()}}
@@ -235,21 +246,45 @@
     @section('script')
 
         <script type="text/javascript">
-
-            var date = document.getElementById('datePicker').value;
-            var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
-            $('#read-data').on('click',function () {
-                $.ajax({
-                    url: '{{route('goToDate')}}',
-                    type: 'GET',
-                    data: {_token: CSRF_TOKEN},
-                    dataType: 'JSON',
-                    success: function (data) {
-                        console.log(data);
-                    }
-                });
-
+            var data;
+            $(".heart").click(function() {
+                 data=$(this).nextAll("#gameId").val();
+                //console.log("game Id is " + data);
             });
+
+        function likeTheGame(){
+
+            // $('.heart').on('click',function () {
+           // var value = $(this).nextAll("input[type=text]").first().val();
+             var isbn = $('.gameId').val();
+            var value= $(this).find("input:text").val();
+
+            $(document).ready(function () {
+                console.log("heart is clicked \n" + "userId: " + userId + "\nUser Email: " + userEmail + "\nName: " + userName);
+
+                console.log("game Id is " + data);
+
+                var count = 0;
+
+                //});
+            });
+
+        }
+
+            {{--var date = document.getElementById('datePicker').value;--}}
+            {{--var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');--}}
+            {{--$('#read-data').on('click',function () {--}}
+                {{--$.ajax({--}}
+                    {{--url: '{{route('goToDate')}}',--}}
+                    {{--type: 'GET',--}}
+                    {{--data: {_token: CSRF_TOKEN},--}}
+                    {{--dataType: 'JSON',--}}
+                    {{--success: function (data) {--}}
+                        {{--console.log(data);--}}
+                    {{--}--}}
+                {{--});--}}
+
+            {{--});--}}
 
 
             {{--$('#read-data').on('click',function () {--}}

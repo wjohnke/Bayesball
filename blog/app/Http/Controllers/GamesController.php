@@ -5,6 +5,8 @@ namespace BayesBall\Http\Controllers;
 use Illuminate\Http\Request;
 use BayesBall\Game;
 use Illuminate\Http\Response;
+use Illuminate\Support\Facades\Auth;
+use JavaScript;
 
 
 class GamesController extends Controller
@@ -18,7 +20,16 @@ class GamesController extends Controller
     {
         //
 
+        if(Auth::check()){
+            JavaScript::put([
+                'userId' => Auth::id(),
+                'userEmail'=> Auth::user()->email,
+                'userName' => Auth::user()->name
+            ]);
+        }
+
         $games = Game::orderBy('game_date','asc')->paginate(15);
+
         return view('pages.games')->with('games',$games);
 
 

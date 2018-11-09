@@ -19,6 +19,7 @@
       <excludeFolder url="file://$MODULE_DIR$/blog/vendor/hamcrest/hamcrest-php" />
       <excludeFolder url="file://$MODULE_DIR$/blog/vendor/jakub-onderka/php-console-color" />
       <excludeFolder url="file://$MODULE_DIR$/blog/vendor/jakub-onderka/php-console-highlighter" />
+      <excludeFolder url="file://$MODULE_DIR$/blog/vendor/laracasts/utilities" />
       <excludeFolder url="file://$MODULE_DIR$/blog/vendor/laravel/framework" />
       <excludeFolder url="file://$MODULE_DIR$/blog/vendor/laravel/tinker" />
       <excludeFolder url="file://$MODULE_DIR$/blog/vendor/lcobucci/jwt" />

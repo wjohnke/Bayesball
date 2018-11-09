@@ -29,6 +29,7 @@
     {{--</div>--}}
 
     <div class="well" id="container" >
+        {{csrf_field()}}
 
         <div class="heart" id="bottomright"></div>
 
@@ -37,3 +38,16 @@
     <div class="stage">
     </div>
 @endsection
+
+@section('script')
+    <script type="text/javascript">
+
+
+        $('#bottomright').on('click',function () {
+
+    console.log("heart is clicked ");
+    var count=0;
+
+    });
+        </script>
+    @endsection

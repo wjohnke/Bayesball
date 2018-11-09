@@ -84,6 +84,7 @@
       <path value="$PROJECT_DIR$/blog/vendor/swiftmailer/swiftmailer" />
       <path value="$PROJECT_DIR$/blog/vendor/nunomaduro/collision" />
       <path value="$PROJECT_DIR$/blog/vendor/opis/closure" />
+      <path value="$PROJECT_DIR$/blog/vendor/laracasts/utilities" />
     </include_path>
   </component>
   <component name="PhpProjectSharedConfiguration" php_language_level="7.1" />
