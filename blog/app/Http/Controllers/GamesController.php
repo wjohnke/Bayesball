@@ -47,6 +47,13 @@ class GamesController extends Controller
 
     public function someAction($date){
 
+        if(Auth::check()){
+            JavaScript::put([
+                'userId' => Auth::id(),
+                'userEmail'=> Auth::user()->email,
+                'userName' => Auth::user()->name
+            ]);
+        }
 //       $date=$request->input('date');
 //       echo 'Date: '.$date;
 //
@@ -63,6 +70,14 @@ class GamesController extends Controller
     public function goToDate(Request $request){
 
        // $games= Game::all();
+        if(Auth::check()){
+            JavaScript::put([
+                'userId' => Auth::id(),
+                'userEmail'=> Auth::user()->email,
+                'userName' => Auth::user()->name
+            ]);
+        }
+
 
         if($request){
         $date = $request->input('date');

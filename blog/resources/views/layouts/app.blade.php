@@ -37,16 +37,23 @@
     <link href="{{URL::asset('css/styles.css?v=1.6')}}" rel="stylesheet">
 
     <!--// css -->
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    {{--<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>--}}
+    {{--<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>--}}
+
     <script src={{URL::asset("js/jquery-1.11.1.min.js")}}></script>
     <script src={{URL::asset("js/scripts.js?v=1.7")}}
     ></script>
     <script src="{{asset('../resources/js/bootstrap.js')}}"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    {{--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>--}}
+
+
+    {{--<link rel="stylesheet" href="{{asset('dist/bundled.css')}}">--}}
+    {{--<script src="{{asset('dist/bundled.js')}}"></script>--}}
+
 
     <script type="text/javascript" src={{URL::asset("js/move-top.js")}}
     ></script>
+
     <script type="text/javascript" src={{URL::asset("js/easing.js")}}
     ></script>
     <script type="text/javascript">
@@ -59,9 +66,33 @@
     </script>
 
     <script src="{{ asset('js/heart.js') }}"></script>
-
     <script src="{{ asset('js/datepicker.min.js') }}"></script>
     <script src="{{ asset('js/i18n/datepicker.en.js') }}"></script>
+
+
+    <script
+            src="http://code.jquery.com/jquery-3.3.1.js"
+            integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+            crossorigin="anonymous"></script>
+    <script
+            src="http://code.jquery.com/ui/1.11.4/jquery-ui.js"
+            integrity="sha256-DI6NdAhhFRnO2k51mumYeDShet3I8AKCQf/tf7ARNhI="
+            crossorigin="anonymous"></script>
+
+
+    <link rel="stylesheet"
+          type="text/css"
+          href="{{asset('css/jquery-confirm.css')}}"/>
+
+    <script type="text/javascript"
+            src="{{asset('js/jquery-confirm.js')}}"></script>
+    <script>
+        $( "li a.menu1" ).click(function() {
+            $( "ul.nav-sub" ).slideToggle( 300, function() {
+                // Animation complete.
+            });
+        });
+    </script>
 
 </head>
 <body>
@@ -78,13 +109,7 @@
 
 
                             <!-- script-for-menu -->
-                            <script>
-                                $( "li a.menu1" ).click(function() {
-                                    $( "ul.nav-sub" ).slideToggle( 300, function() {
-                                        // Animation complete.
-                                    });
-                                });
-                            </script>
+
                             <li><a href="{{url('/games')}}" >Games</a></li>
                             <li><a href="{{url('/contact')}}">Contact</a></li>
                         </ul>

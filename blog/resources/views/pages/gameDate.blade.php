@@ -29,6 +29,11 @@
             max-width: 100%;
             max-height: 100%;
         }
+        #bottomright {
+            position: absolute;
+            bottom: 0px;
+            right: 0px;
+        }
         .center {
             display: block;
             margin-left: auto;
@@ -74,7 +79,7 @@
     <div  class="about-grids about-top-grids">
         @if(count($dates)>0)
             @foreach($dates as $date)
-                <div  class="well">
+                <div  class="well" style="position: relative;">
 
 
                     <h1 align="center">{{$date->game_date}}</h1>
@@ -107,13 +112,17 @@
                         </div>
                         <div id="right">
                             <img src="{{URL::asset("images/teamLogos/{$date->home}.png")}}" height="128"  alt="" />
-
-
-
-
                         </div >
 
                     </div>
+                    @if(Auth::check())
+
+                        <div class="heart" id="bottomright" onclick="likeTheGame()"></div>
+
+                        {{--<p>  {{$userId}} {{$userEmail}}</p>--}}
+                        <input type="hidden"  id="gameId"value="{{$date->id}}"/>
+                    @endif
+
                 </div>
             @endforeach
 
@@ -128,3 +137,34 @@
     @include('includes.footer')
 
 @endsection
+
+@section('script')
+
+    <script type="text/javascript">
+        var data;
+        $(".heart").click(function() {
+            data=$(this).nextAll("#gameId").val();
+            //console.log("game Id is " + data);
+        });
+
+        function likeTheGame(){
+
+            // $('.heart').on('click',function () {
+            // var value = $(this).nextAll("input[type=text]").first().val();
+            var isbn = $('.gameId').val();
+            var value= $(this).find("input:text").val();
+
+            $(document).ready(function () {
+                console.log("heart is clicked \n" + "userId: " + userId + "\nUser Email: " + userEmail + "\nName: " + userName);
+
+                console.log("game Id is " + data);
+
+                var count = 0;
+
+                //});
+            });
+
+        }
+
+        </script>
+    @endsection

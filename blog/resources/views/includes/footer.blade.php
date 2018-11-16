@@ -51,19 +51,19 @@
 <!-- //footer -->
 </div>
 <script type="text/javascript">
-    $(document).ready(function() {
-        /*
-        var defaults = {
-              container-wrapID: 'toTop', // fading element id
-            container-wrapHoverID: 'toTopHover', // fading element hover id
-            scrollSpeed: 1200,
-            easingType: 'linear'
-         };
-        */
-
-        $().UItoTop({ easingType: 'easeOutQuart' });
-
-    });
+    // $(document).ready(function() {
+    //
+    //     var defaults = {
+    //           container-wrapID: 'toTop', // fading element id
+    //         container-wrapHoverID: 'toTopHover', // fading element hover id
+    //         scrollSpeed: 1200,
+    //         easingType: 'linear'
+    //      };
+    //
+    //
+    //     $().UItoTop({ easingType: 'easeOutQuart' });
+    //
+    // });
 </script>
 <a href="#" id="toTop" style="display: block;"> <span id="toTopHover" style="opacity: 1;"> </span></a>
 <!-- content-Get-in-touch -->

@@ -244,13 +244,40 @@
     @endsection
 
     @section('script')
+        {{--<script type="text/javascript">--}}
+            {{--$('.heart').on('click', function () {--}}
+                {{--$.confirm({--}}
+                    {{--icon: 'fa fa-smile-o',--}}
+                    {{--theme: 'modern',--}}
+                    {{--closeIcon: true,--}}
+                    {{--animation: 'scale',--}}
+                    {{--type: 'blue',--}}
+                {{--});--}}
+            {{--});--}}
+
+        {{--</script>--}}
 
         <script type="text/javascript">
+
+
+
             var data;
             $(".heart").click(function() {
+                console.log("click");
                  data=$(this).nextAll("#gameId").val();
-                //console.log("game Id is " + data);
+
+                console.log("game Id is " + data);
+
             });
+
+           // $('.heart').on('click', function () {
+           //     console.log("before");
+           //
+           // });
+
+
+
+
 
         function likeTheGame(){
 
@@ -262,7 +289,8 @@
             $(document).ready(function () {
                 console.log("heart is clicked \n" + "userId: " + userId + "\nUser Email: " + userEmail + "\nName: " + userName);
 
-                console.log("game Id is " + data);
+                //console.log("game Id is " + data);
+                // confirm();
 
                 var count = 0;
 
