@@ -20,7 +20,7 @@
             type: 'GET',
             url: 'predict.php',
             data: {'home_team':team1,'away_team':team2},
-            success: function (data) {
+            success: function (data){	
 	      $('#output').html(data);
             },
 	    error: function(){
