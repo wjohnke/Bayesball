@@ -186,7 +186,7 @@ class GamesController extends Controller
 
         $command = escapeshellcmd("python $path $team1 $team2");
         $output = shell_exec($command);
-
+        echo 'py path is'.$path;
         echo $output;
 
 //        $shit = "123";
