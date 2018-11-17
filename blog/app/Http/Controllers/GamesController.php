@@ -169,24 +169,29 @@ class GamesController extends Controller
 
         $path= public_path().'/python/sklearnBayesball.py';
         //echo "Path is $path \n";
-        if(!File::exists($path)) {
-            // path does not exist
-            echo "py not exist";
-        }
-        else{
-            echo "$path \n";
-        }
+//        if(!File::exists($path)) {
+//            // path does not exist
+//            echo "py not exist";
+//        }
+//        else{
+//            echo "$path \n";
+//        }
 
-        $process = new Process("python $path \"{$team1}\" \"{$team2}\" ");
-        $process->run();
-        if (!$process->isSuccessful()) {
-            throw new ProcessFailedException($process);
-        }
-        echo $process->getOutput();
+//        $process = new Process("python $path \"{$team1}\" \"{$team2}\" ");
+//        $process->run();
+//        if (!$process->isSuccessful()) {
+//            throw new ProcessFailedException($process);
+//        }
+//        echo $process->getOutput();
+
+        $command = escapeshellcmd("python $path $team1 $team2");
+        $output = shell_exec($command);
+
+        echo $output;
 
 //        $shit = "123";
 //        echo $shit;
-        return $team2;
+        return $output;
         //return $process->getOutput();
     }
 }
