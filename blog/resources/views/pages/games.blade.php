@@ -62,6 +62,7 @@
                         @php
                         $date= date('Y-m-d');
                         $count=0;
+                        $i=1;
                         //$date= '2017-04-02';
                         //echo $date;
                         if(Auth::check()){
@@ -190,7 +191,7 @@
 
 
                                 <div  id="container">
-                                    <div >
+                                    <div id="visitor-{{$game->id}}">
                                         <img src="{{URL::asset("images/teamLogos/{$game->visitor}.png")}}" height="128" alt="" />
                                     </div>
                                     <div >
@@ -204,7 +205,7 @@
                                         </p>
                                     </div>
 
-                                    <div >
+                                    <div id="home-{{$game->id}}">
                                         <img src="{{URL::asset("images/teamLogos/{$game->home}.png")}}" height="128"  alt="" />
 
 
@@ -221,13 +222,16 @@
                                     <button > predict</button>
                                 </div>
                                     {{--<p>  {{$userId}} {{$userEmail}}</p>--}}
-                                    <input type="hidden"  id="gameId"value="{{$game->id}}"/>
-                                    <input type="hidden" id="visitor" value="{{$game->visitor}}">
-                                    <input type="hidden" id="home" value="{{$game->home}}">
-                                <div class="output"> </div>
+                                    <input type="hidden" class="gameId"  id="gameId-{{$game->id}}"value="{{$game->id}}"/>
+                                    <input type="hidden" class="visitor" id="visitor-{{$game->id}}" value="{{$game->visitor}}">
+                                    <input type="hidden" class="home" id="home-{{$game->id}}" value="{{$game->home}}">
+                                <div id="output-{{$game->id}}"> </div>
                                 @endif
 
                             </div>
+                                    @php
+                                    $i++;
+                                    @endphp
                                 @endforeach
 
                                 {{$games->links()}}
@@ -272,32 +276,45 @@
             var gameVisitor;
             $(".heart").click(function() {
                 console.log("click");
-                gameIdData=$(this).nextAll("#gameId").val();
-                gameHome=$(this).nextAll("#visitor").val();
-                gameVisitor=$(this).nextAll("#home").val();
+                gameIdData=$(this).nextAll(".gameId").val();
+                gameHome=$(this).nextAll(".visitor").val();
+                gameVisitor=$(this).nextAll(".home").val();
                 console.log("game Id is " + gameIdData +"game home is " + gameHome+" gameVisitor is " + gameVisitor);
 
             });
 
+            if(!$.active){
             $(".predict").click(function() {
                 console.log("predict click");
-                gameIdData=$(this).nextAll("#gameId").val();
-                gameHome=$(this).nextAll("#visitor").val();
-                gameVisitor=$(this).nextAll("#home").val();
+                gameIdData=$(this).nextAll(".gameId").val();
+                gameHome=$(this).nextAll(".visitor").val();
+                gameVisitor=$(this).nextAll(".home").val();
                 console.log("game Id is " + gameIdData +"game home is " + gameHome+" gameVisitor is " + gameVisitor);
                 $.ajax({
                     type: 'GET',
                     url: '{{route('predict')}}',
                     data: {'home_team':gameHome,'away_team':gameVisitor,_token: CSRF_TOKEN},
                     success: function (data) {
-                        console.log(data)
-                        $('.output').html(data);
+                        console.log(data);
+                        var predictionData = jQuery.parseJSON(data);
+                        if(predictionData.Prediction==1){
+                            $("#visitor-"+gameIdData).css("background-color","#ddffb6");
+                            $("#home-"+gameIdData).css("background-color","#fa9a8b");
+
+                        }
+                        else {
+                            $("#home-"+gameIdData).css("background-color","#ddffb6");
+
+                        }
+                        $("#output-"+gameIdData).html(data);
+
                     },
                     error: function(){
                         alert("Nope");
                     }
                 });
             });
+            }
 
             {{--success: function (data) {--}}
             {{--console.log(data);--}}
