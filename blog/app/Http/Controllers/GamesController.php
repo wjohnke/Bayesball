@@ -169,7 +169,7 @@ class GamesController extends Controller
 
         $path= public_path().'/python/sklearnBayesball.py';
         $testpath= public_path().'/python/test.py';
-        echo "Path is $testpath \n";
+        //echo "Path is $testpath \n";
 
 //        if(!File::exists($path)) {
 //            // path does not exist
@@ -179,12 +179,14 @@ class GamesController extends Controller
 //            echo "$path \n";
 //        }
 
-        $process = new Process("python $testpath ");
+        $process = new Process("python $path $team1 $team2 ");
         $process->run();
         if (!$process->isSuccessful()) {
             throw new ProcessFailedException($process);
         }
         //echo $process->getOutput();
+
+
 
 //        $command = escapeshellcmd("python $path $team1 $team2");
 //        $output = shell_exec($command);
@@ -194,6 +196,5 @@ class GamesController extends Controller
 //        $shit = "123";
 //        echo $shit;
         return $process->getOutput();
-        //return $process->getOutput();
     }
 }
