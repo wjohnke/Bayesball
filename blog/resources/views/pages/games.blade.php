@@ -304,6 +304,8 @@
                         }
                         else {
                             $("#home-"+gameIdData).css("background-color","#ddffb6");
+                            $("#visitor-"+gameIdData).css("background-color","#fa9a8b");
+
 
                         }
                         $("#output-"+gameIdData).html(data);
