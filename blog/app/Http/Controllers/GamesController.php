@@ -160,8 +160,8 @@ class GamesController extends Controller
         //
     }
     public function predict(){
-        $team1 = empty($_GET['home_team']) ? "" : $_GET['home_team'];
-        $team2 = empty($_GET['away_team']) ? "" : $_GET['away_team'];
+        $team2 = empty($_GET['home_team']) ? "" : $_GET['home_team'];
+        $team1 = empty($_GET['away_team']) ? "" : $_GET['away_team'];
 
 
 //        $command = escapeshellcmd("python /../../../python/sklearnBayesball.py $team1 $team2");
@@ -180,6 +180,8 @@ class GamesController extends Controller
 //        }
 
         $process = new Process("python $path $team1 $team2 ");
+        //$process = new Process("python $testpath ");
+
         $process->run();
         if (!$process->isSuccessful()) {
             throw new ProcessFailedException($process);

@@ -1,6 +1,10 @@
 
 
 import json
-jsonData = '{"name": "Frank", "age": 39}'
-jsonToPython = json.loads(jsonData)
-print jsonToPython
+import random
+
+per =random.uniform(57.000000, 61.0000)
+pre=random.randint(0,1)
+
+jsonVal = {'Prediction':pre, 'Percentage': per}
+print(json.dumps(jsonVal))
