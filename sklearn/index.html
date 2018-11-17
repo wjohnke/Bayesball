@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+</head>
+
+<script>
+      $(function () {
+        $('form').bind('submit', function (event) {
+
+	event.preventDefault();// using this page stop being refreshing 
+        var team1 = $('#home_team').val();
+        var team2 = $('#away_team').val();
+
+          $.ajax({
+            type: 'GET',
+            url: 'predict.php',
+            data: {'home_team':team1,'away_team':team2},
+            success: function (data){	
+	      $('#output').html(data);
+            },
+	    error: function(){
+		alert("Nope");
+	    }
+          });
+
+        });
+      });
+</script>
+
+</head>
+<body>
+	<form id="teamForm">
+		<input type="text" id="home_team" name="home_team">
+		<input type="text" id= "away_team" name="away_team">
+
+		<button type="submit" name="submit" id="submit">Submit</button>
+
+	</form>
+	<div id="output"></div>
+
+</body>
+
+</html>
