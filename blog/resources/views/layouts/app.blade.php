@@ -86,6 +86,15 @@
 
     <script type="text/javascript"
             src="{{asset('js/jquery-confirm.js')}}"></script>
+
+
+
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.bundle.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.bundle.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.min.js"></script>
+
+
     <script>
         $( "li a.menu1" ).click(function() {
             $( "ul.nav-sub" ).slideToggle( 300, function() {
@@ -95,6 +104,55 @@
     </script>
 
 </head>
+
+<style>
+
+    .chart-container {
+        /*border: 1px dotted red;*/
+        position: relative;
+        margin: auto;
+        height: 40vh;
+        width: 40vw;
+    }
+
+    button{
+        background:#10AAF7;
+        color:#fff;
+        border:none;
+        position:relative;
+        height:60px;
+        font-size:1.6em;
+        padding:0 2em;
+        cursor:pointer;
+        transition:800ms ease all;
+        outline:none;
+    }
+    button:hover{
+        background:#fff;
+        color:#10AAF7;
+    }
+    button:before,button:after{
+        content:'';
+        position:absolute;
+        top:0;
+        right:0;
+        height:2px;
+        width:0;
+        background: #10AAF7;
+        transition:400ms ease all;
+    }
+    button:after{
+        right:inherit;
+        top:inherit;
+        left:0;
+        bottom:0;
+    }
+    button:hover:before,button:hover:after{
+        width:100%;
+        transition:800ms ease all;
+    }
+
+</style>
 <body>
 <div class="main-content">
     <div id="app">

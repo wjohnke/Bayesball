@@ -48,6 +48,10 @@
         width: 50%;
     }
 
+
+
+
+
 </style>
 
     <div class="footer">
@@ -215,17 +219,23 @@
 
 
                                 </div>
+
+
                                 @if(Auth::check())
 
                                 <div class="heart" id="bottomright" onclick="likeTheGame()"></div>
-                                <div class="predict">
-                                    <button > predict</button>
+                                <div class="predict" align="center">
+                                    <button id="predictButtonid-{{$game->id}}"> predict</button>
                                 </div>
                                     {{--<p>  {{$userId}} {{$userEmail}}</p>--}}
                                     <input type="hidden" class="gameId"  id="gameId-{{$game->id}}"value="{{$game->id}}"/>
                                     <input type="hidden" class="visitor" id="visitor-{{$game->id}}" value="{{$game->visitor}}">
                                     <input type="hidden" class="home" id="home-{{$game->id}}" value="{{$game->home}}">
                                 <div id="output-{{$game->id}}"> </div>
+
+                                    <div class="chart-container" id="chart-containerId-{{$game->id}}" style="display:none">
+                                        <canvas id="myChart-{{$game->id}}"></canvas>
+                                    </div>
                                 @endif
 
                             </div>
@@ -253,18 +263,37 @@
     @endsection
 
     @section('script')
-        {{--<script type="text/javascript">--}}
-            {{--$('.heart').on('click', function () {--}}
-                {{--$.confirm({--}}
-                    {{--icon: 'fa fa-smile-o',--}}
-                    {{--theme: 'modern',--}}
-                    {{--closeIcon: true,--}}
-                    {{--animation: 'scale',--}}
-                    {{--type: 'blue',--}}
-                {{--});--}}
-            {{--});--}}
+        <script>
+            // pie chart
+            // var ctx = document.getElementById("myChart");
+            //
+            //
+            // data = {
+            //     datasets: [{
+            //         data: [59, 100-59],
+            //         backgroundColor: [
+            //             'rgba(255, 99, 132, 0.2)',
+            //             'rgba(255, 206, 86, 0.2)'
+            //
+            //         ]
+            //     }],
+            //
+            //     // These labels appear in the legend and in the tooltips when hovering different arcs
+            //     labels: [
+            //         'Win',
+            //         'Lose'
+            //
+            //     ]
+            // };
+            //
+            // var myPieChart = new Chart(ctx,{
+            //     type: 'doughnut',
+            //     data: data
+            //
+            // });
+            </script>
 
-        {{--</script>--}}
+
 
         <script type="text/javascript">
 
@@ -283,40 +312,95 @@
 
             });
 
-            if(!$.active){
+
             $(".predict").click(function() {
                 console.log("predict click");
                 gameIdData=$(this).nextAll(".gameId").val();
                 gameHome=$(this).nextAll(".visitor").val();
                 gameVisitor=$(this).nextAll(".home").val();
                 console.log("game Id is " + gameIdData +"game home is " + gameHome+" gameVisitor is " + gameVisitor);
-                $.ajax({
-                    type: 'GET',
-                    url: '{{route('predict')}}',
-                    data: {'home_team':gameHome,'away_team':gameVisitor,_token: CSRF_TOKEN},
-                    success: function (data) {
-                        console.log(data);
-                        var predictionData = jQuery.parseJSON(data);
-                        if(predictionData.Prediction==1){
-                            $("#visitor-"+gameIdData).css("background-color","#ddffb6");
-                            $("#home-"+gameIdData).css("background-color","#fa9a8b");
 
+                if(!$.active){
+                    //By making sure $.active is zero
+                    $.ajax({
+                        type: 'GET',
+                        url: '{{route('predict')}}',
+                        data: {'home_team':gameHome,'away_team':gameVisitor,_token: CSRF_TOKEN},
+                        success: function (data) {
+
+                            //do when ajax success
+                            console.log(data);
+                            var predictionData = jQuery.parseJSON(data);
+                            if(predictionData.Prediction==1){
+                                $("#visitor-"+gameIdData).css("background-color","#ddffb6");
+                                $("#home-"+gameIdData).css("background-color","#fa9a8b");
+
+                            }
+                            else {
+                                $("#home-"+gameIdData).css("background-color","#ddffb6");
+                                $("#visitor-"+gameIdData).css("background-color","#fa9a8b");
+
+
+                            }
+                            //$("#output-"+gameIdData).html(data);
+
+                            $("#chart-containerId-"+gameIdData).show();
+                            var ctx = document.getElementById("myChart-"+gameIdData);
+
+
+                            lineChartData = {
+                                datasets: [{
+                                    label:"Prediction Curve",
+                                    data: [0,50,predictionData.Percentage,50,0],
+                                    fill: false,
+                                    borderColor: [
+                                        '#10F7E6'
+
+
+                                    ]
+                                }],
+
+                                // These labels appear in the legend and in the tooltips when hovering different arcs
+                                labels: [
+                                    "","half","Our Confidence","half",""
+                                ]
+                            };
+                            // new Chart(document.getElementById("chartjs-0"),
+                            //     {"type":"line",
+                            //         "data":{"labels":["January","February","March","April","May","June","July"],
+                            //             "datasets":[{"label":"My First Dataset","data":[65,59,80,81,56,55,40],"fill":false,"borderColor":"rgb(75, 192, 192)","lineTension":0.1}]},"options":{}});
+                            //
+                            var myPieChart = new Chart(ctx,{
+                                type: 'line',
+                                data: lineChartData,
+
+                                options: {
+                                    scales: {
+                                        yAxes: [{
+                                            stacked: true
+                                        }]
+                                    }
+                                }
+
+                            });
+
+                            //$("#predictButtonid-"+gameIdData).hide();
+
+
+
+                        },
+                        error: function(){
+                            alert("Nope");
                         }
-                        else {
-                            $("#home-"+gameIdData).css("background-color","#ddffb6");
-                            $("#visitor-"+gameIdData).css("background-color","#fa9a8b");
+                    });
+
+                }
 
 
-                        }
-                        $("#output-"+gameIdData).html(data);
 
-                    },
-                    error: function(){
-                        alert("Nope");
-                    }
-                });
+
             });
-            }
+
 
             {{--success: function (data) {--}}
             {{--console.log(data);--}}

@@ -97,11 +97,11 @@
                     {{--</p>--}}
 
                     <div id="container">
-                        <div id="left">
+                        <div id="visitor-{{$date->id}}">
                             <img src="{{URL::asset("images/teamLogos/{$date->visitor}.png")}}" height="128" alt="" />
                         </div>
                         <div id="center">
-                            <p class="title" style="font-size:2.5vw;" align="center">
+                            <p class="title" style="font-size:2vw;" align="center">
                                 <a href="{{route('games.show', ['id' => $date->id])}}"   >
 
 
@@ -110,7 +110,7 @@
                                 </a>
                             </p>
                         </div>
-                        <div id="right">
+                        <div id="home-{{$date->id}}">
                             <img src="{{URL::asset("images/teamLogos/{$date->home}.png")}}" height="128"  alt="" />
                         </div >
 
@@ -119,8 +119,18 @@
 
                         <div class="heart" id="bottomright" onclick="likeTheGame()"></div>
 
+                        <div class="predict" align="center">
+                            <button id="predictButtonid-{{$date->id}}"> predict</button>
+                        </div>
                         {{--<p>  {{$userId}} {{$userEmail}}</p>--}}
-                        <input type="hidden"  id="gameId"value="{{$date->id}}"/>
+                        <input type="hidden" class="gameId"  id="gameId-{{$date->id}}"value="{{$date->id}}"/>
+                        <input type="hidden" class="visitor" id="visitor-{{$date->id}}" value="{{$date->visitor}}">
+                        <input type="hidden" class="home" id="home-{{$date->id}}" value="{{$date->home}}">
+                        <div id="output-{{$date->id}}"> </div>
+
+                        <div class="chart-container" id="chart-containerId-{{$date->id}}" style="display:none">
+                            <canvas id="myChart-{{$date->id}}"></canvas>
+                        </div>
                     @endif
 
                 </div>
@@ -165,6 +175,111 @@
             });
 
         }
+
+
+        var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
+
+
+        var gameIdData;
+        var gameHome;
+        var gameVisitor;
+        $(".heart").click(function() {
+            console.log("click");
+            gameIdData=$(this).nextAll(".gameId").val();
+            gameHome=$(this).nextAll(".visitor").val();
+            gameVisitor=$(this).nextAll(".home").val();
+            console.log("game Id is " + gameIdData +"game home is " + gameHome+" gameVisitor is " + gameVisitor);
+
+        });
+
+
+        $(".predict").click(function() {
+            console.log("predict click");
+            gameIdData=$(this).nextAll(".gameId").val();
+            gameHome=$(this).nextAll(".visitor").val();
+            gameVisitor=$(this).nextAll(".home").val();
+            console.log("game Id is " + gameIdData +"game home is " + gameHome+" gameVisitor is " + gameVisitor);
+
+            if(!$.active){
+                //By making sure $.active is zero
+                $.ajax({
+                    type: 'GET',
+                    url: '{{route('predict')}}',
+                    data: {'home_team':gameHome,'away_team':gameVisitor,_token: CSRF_TOKEN},
+                    success: function (data) {
+
+                        //do when ajax success
+                        console.log(data);
+                        var predictionData = jQuery.parseJSON(data);
+                        if(predictionData.Prediction==1){
+                            $("#visitor-"+gameIdData).css("background-color","#ddffb6");
+                            $("#home-"+gameIdData).css("background-color","#fa9a8b");
+
+                        }
+                        else {
+                            $("#home-"+gameIdData).css("background-color","#ddffb6");
+                            $("#visitor-"+gameIdData).css("background-color","#fa9a8b");
+
+
+                        }
+                        //$("#output-"+gameIdData).html(data);
+
+                        $("#chart-containerId-"+gameIdData).show();
+                        var ctx = document.getElementById("myChart-"+gameIdData);
+
+
+                        lineChartData = {
+                            datasets: [{
+                                label:"Prediction Curve",
+                                data: [0,50,predictionData.Percentage,50,0],
+                                fill: false,
+                                borderColor: [
+                                    '#10F7E6'
+
+
+                                ]
+                            }],
+
+                            // These labels appear in the legend and in the tooltips when hovering different arcs
+                            labels: [
+                                "","half","Our Confidence","half",""
+                            ]
+                        };
+                        // new Chart(document.getElementById("chartjs-0"),
+                        //     {"type":"line",
+                        //         "data":{"labels":["January","February","March","April","May","June","July"],
+                        //             "datasets":[{"label":"My First Dataset","data":[65,59,80,81,56,55,40],"fill":false,"borderColor":"rgb(75, 192, 192)","lineTension":0.1}]},"options":{}});
+                        //
+                        var myPieChart = new Chart(ctx,{
+                            type: 'line',
+                            data: lineChartData,
+
+                            options: {
+                                scales: {
+                                    yAxes: [{
+                                        stacked: true
+                                    }]
+                                }
+                            }
+
+                        });
+
+                        //$("#predictButtonid-"+gameIdData).hide();
+
+
+
+                    },
+                    error: function(){
+                        alert("Nope");
+                    }
+                });
+
+            }
+
+
+
+
+        });
 
         </script>
     @endsection
