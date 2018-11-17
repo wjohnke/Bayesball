@@ -217,9 +217,14 @@
                                 @if(Auth::check())
 
                                 <div class="heart" id="bottomright" onclick="likeTheGame()"></div>
-
+                                <div class="predict">
+                                    <button > predict</button>
+                                </div>
                                     {{--<p>  {{$userId}} {{$userEmail}}</p>--}}
                                     <input type="hidden"  id="gameId"value="{{$game->id}}"/>
+                                    <input type="hidden" id="visitor" value="{{$game->visitor}}">
+                                    <input type="hidden" id="home" value="{{$game->home}}">
+                                <div class="output"> </div>
                                 @endif
 
                             </div>
@@ -259,16 +264,43 @@
 
         <script type="text/javascript">
 
+            var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
 
 
-            var data;
+            var gameIdData;
+            var gameHome;
+            var gameVisitor;
             $(".heart").click(function() {
                 console.log("click");
-                 data=$(this).nextAll("#gameId").val();
-
-                console.log("game Id is " + data);
+                gameIdData=$(this).nextAll("#gameId").val();
+                gameHome=$(this).nextAll("#visitor").val();
+                gameVisitor=$(this).nextAll("#home").val();
+                console.log("game Id is " + gameIdData +"game home is " + gameHome+" gameVisitor is " + gameVisitor);
 
             });
+
+            $(".predict").click(function() {
+                console.log("predict click");
+                gameIdData=$(this).nextAll("#gameId").val();
+                gameHome=$(this).nextAll("#visitor").val();
+                gameVisitor=$(this).nextAll("#home").val();
+                console.log("game Id is " + gameIdData +"game home is " + gameHome+" gameVisitor is " + gameVisitor);
+                $.ajax({
+                    type: 'GET',
+                    url: '{{route('predict')}}',
+                    data: {'home_team':gameHome,'away_team':gameVisitor,_token: CSRF_TOKEN},
+                    success: function (data) {
+                        console.log(data)
+                        $('.output').html(data);
+                    },
+                    error: function(){
+                        alert("Nope");
+                    }
+                });
+            });
+
+            {{--success: function (data) {--}}
+            {{--console.log(data);--}}
 
            // $('.heart').on('click', function () {
            //     console.log("before");
@@ -283,8 +315,6 @@
 
             // $('.heart').on('click',function () {
            // var value = $(this).nextAll("input[type=text]").first().val();
-             var isbn = $('.gameId').val();
-            var value= $(this).find("input:text").val();
 
             $(document).ready(function () {
                 console.log("heart is clicked \n" + "userId: " + userId + "\nUser Email: " + userEmail + "\nName: " + userName);
@@ -298,6 +328,8 @@
             });
 
         }
+
+
 
             {{--var date = document.getElementById('datePicker').value;--}}
             {{--var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');--}}

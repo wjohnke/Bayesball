@@ -11,6 +11,7 @@
         "laracasts/utilities": "^3.0",
         "laravel/framework": "5.7.*",
         "laravel/tinker": "^1.0",
+        "symfony/process": "^4.1",
         "tymon/jwt-auth": "1.0.*"
     },
     "require-dev": {

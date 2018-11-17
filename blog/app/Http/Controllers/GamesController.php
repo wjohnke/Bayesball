@@ -7,6 +7,10 @@ use BayesBall\Game;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
 use JavaScript;
+use Symfony\Component\Process\Process;
+use Symfony\Component\Process\Exception\ProcessFailedException;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\File;
 
 
 class GamesController extends Controller
@@ -24,7 +28,8 @@ class GamesController extends Controller
             JavaScript::put([
                 'userId' => Auth::id(),
                 'userEmail'=> Auth::user()->email,
-                'userName' => Auth::user()->name
+                'userName' => Auth::user()->name,
+
             ]);
         }
 
@@ -153,5 +158,35 @@ class GamesController extends Controller
     public function destroy($id)
     {
         //
+    }
+    public function predict(){
+        $team1 = empty($_GET['home_team']) ? "" : $_GET['home_team'];
+        $team2 = empty($_GET['away_team']) ? "" : $_GET['away_team'];
+
+
+//        $command = escapeshellcmd("python /../../../python/sklearnBayesball.py $team1 $team2");
+//        $output = shell_exec($command);
+
+        $path= public_path().'/python/sklearnBayesball.py';
+        //echo "Path is $path \n";
+        if(!File::exists($path)) {
+            // path does not exist
+            echo "py not exist";
+        }
+        else{
+            echo "$path \n";
+        }
+
+        $process = new Process("python $path \"{$team1}\" \"{$team2}\" ");
+        $process->run();
+        if (!$process->isSuccessful()) {
+            throw new ProcessFailedException($process);
+        }
+        echo $process->getOutput();
+
+//        $shit = "123";
+//        echo $shit;
+        return $team2;
+        //return $process->getOutput();
     }
 }
