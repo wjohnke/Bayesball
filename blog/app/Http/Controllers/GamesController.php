@@ -168,7 +168,7 @@ class GamesController extends Controller
 //        $output = shell_exec($command);
 
         $path= public_path().'/python/sklearnBayesball.py';
-        //echo "Path is $path \n";
+        echo "Path is $path \n";
 //        if(!File::exists($path)) {
 //            // path does not exist
 //            echo "py not exist";
@@ -177,21 +177,21 @@ class GamesController extends Controller
 //            echo "$path \n";
 //        }
 
-//        $process = new Process("python $path \"{$team1}\" \"{$team2}\" ");
-//        $process->run();
-//        if (!$process->isSuccessful()) {
-//            throw new ProcessFailedException($process);
-//        }
-//        echo $process->getOutput();
+        $process = new Process("python \"{$path}\" \"{$team1}\" \"{$team2}\" ");
+        $process->run();
+        if (!$process->isSuccessful()) {
+            throw new ProcessFailedException($process);
+        }
+        echo $process->getOutput();
 
-        $command = escapeshellcmd("python $path $team1 $team2");
-        $output = shell_exec($command);
-        echo 'py path is'.$path;
-        echo $output;
+//        $command = escapeshellcmd("python $path $team1 $team2");
+//        $output = shell_exec($command);
+//        echo 'py path is '.$path;
+//        echo $output;
 
 //        $shit = "123";
 //        echo $shit;
-        return $output;
+        return $process->getOutput();
         //return $process->getOutput();
     }
 }
