@@ -2,11 +2,13 @@
 
 namespace BayesBall\Http\Controllers;
 
+use BayesBall\FavoriteGame;
 use Illuminate\Http\Request;
 use BayesBall\Game;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
 use JavaScript;
+use Illuminate\Database\Eloquent\Model;
 use Symfony\Component\Process\Process;
 use Symfony\Component\Process\Exception\ProcessFailedException;
 use Illuminate\Support\Facades\Storage;
@@ -109,6 +111,37 @@ class GamesController extends Controller
     public function store(Request $request)
     {
         //
+
+        $request->validate([
+            'userId' => 'required',
+            'gameId' => 'required',
+        ]);
+
+
+        if($request->ajax()){
+            echo "its ajax \n";
+//            $favGame = new FavoriteGame();
+//            $favGame->userId = $request->userId;
+//            $favGame->gameId= $request->gameId;
+//            $favGame->userName= $request->userName;
+
+            $favGame= FavoriteGame::firstOrCreate([
+                'userId'=>$request->userId,
+                'gameId'=>$request->gameId
+
+            ],[
+                'userName'=>$request->userName
+
+            ]);
+
+            // Retrieve flight by name, or create it if it doesn't exist...
+        echo "user id is ".$request->userId;
+        echo "game Id is ".$request->gameId." user Name is ".$request->userName;
+
+
+        }
+
+
     }
 
     /**
@@ -179,8 +212,8 @@ class GamesController extends Controller
 //            echo "$path \n";
 //        }
 
-        $process = new Process("python $path $team1 $team2 ");
-        //$process = new Process("python $testpath ");
+        //$process = new Process("python $path $team1 $team2 ");
+        $process = new Process("python $testpath ");
 
         $process->run();
         if (!$process->isSuccessful()) {

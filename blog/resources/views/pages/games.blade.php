@@ -264,6 +264,8 @@
 
     @section('script')
         <script>
+            $.ajaxSetup({ headers: { 'csrftoken' : '{{ csrf_token() }}' } });
+
             // pie chart
             // var ctx = document.getElementById("myChart");
             //
@@ -297,7 +299,7 @@
 
         <script type="text/javascript">
 
-            var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
+            //var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
 
 
             var gameIdData;
@@ -308,7 +310,22 @@
                 gameIdData=$(this).nextAll(".gameId").val();
                 gameHome=$(this).nextAll(".visitor").val();
                 gameVisitor=$(this).nextAll(".home").val();
-                console.log("game Id is " + gameIdData +"game home is " + gameHome+" gameVisitor is " + gameVisitor);
+                console.log("userId is "+userId+" game Id is " + gameIdData +"game home is " + gameHome+" gameVisitor is " + gameVisitor);
+
+
+                if(!$.active){
+                    $.ajax({
+                        type:'POST',
+                        url:'{{route('games.store')}}',
+                        data:{'userId':userId,'gameId':gameIdData,'userName':userName ,_token: '{{csrf_token()}}'},
+                        success:function(data){
+                            console.log(data);
+                        },
+                        error: function(){
+                            alert("Nope");
+                        }
+                    });
+                }
 
             });
 
@@ -325,7 +342,7 @@
                     $.ajax({
                         type: 'GET',
                         url: '{{route('predict')}}',
-                        data: {'home_team':gameHome,'away_team':gameVisitor,_token: CSRF_TOKEN},
+                        data: {'home_team':gameHome,'away_team':gameVisitor},
                         success: function (data) {
 
                             //do when ajax success
