@@ -18,6 +18,12 @@
             crossorigin="anonymous"></script>
 
 
+    <link rel="stylesheet" type="text/css" href="{{asset('css/normalize.css')}}" />
+    <link rel="stylesheet" type="text/css" href="{{asset('css/demo.css')}}" />
+    <link rel="stylesheet" type="text/css" href="{{asset('css/tabs.css')}}" />
+    <link rel="stylesheet" type="text/css" href="{{asset('css/tabstyles.css')}}" />
+    <script src="{{asset('js/modernizr.custom.js')}}"></script>
+
     <link rel="stylesheet"
     type="text/css"
     href="{{asset('css/jquery-confirm.css')}}"/>

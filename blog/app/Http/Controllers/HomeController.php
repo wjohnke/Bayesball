@@ -38,6 +38,7 @@ class HomeController extends Controller
                         ->join('users','favGames.userId','=','users.id')
                         ->select('favGames.*','users.name','games.game_date','games.visitor','games.home')
                         ->where('favGames.userId','=',$userId)
+                        ->orderBy('created_at','desc')
                         ->get();
         //$favGames= FavoriteGame::where()
 

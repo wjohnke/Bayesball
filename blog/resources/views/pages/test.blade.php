@@ -53,6 +53,36 @@
             <button class="btn btn-info btn-block example-the-2">Supervan</button>
         </div>
     </div>
+
+<div class="container">
+
+    <section>
+        <div class="tabs tabs-style-iconfall">
+            <nav>
+                <ul>
+                    <li><a href="#section-iconfall-1" class="icon icon-home"><span>Home</span></a></li>
+                    <li><a href="#section-iconfall-2" class="icon icon-gift"><span>Deals</span></a></li>
+                    <li><a href="#section-iconfall-3" class="icon icon-upload"><span>Upload</span></a></li>
+                    <li><a href="#section-iconfall-4" class="icon icon-coffee"><span>Work</span></a></li>
+                    <li><a href="#section-iconfall-5" class="icon icon-config"><span>Settings</span></a></li>
+                </ul>
+            </nav>
+            <div class="content-wrap">
+                <section id="section-iconfall-1">
+                    <div class="well">
+                        <h1>hhhh</h1>
+                    </div>
+                    <p>111</p></section>
+                <section id="section-iconfall-2"><p>2</p></section>
+                <section id="section-iconfall-3"><p>3</p></section>
+                <section id="section-iconfall-4"><p>4</p></section>
+                <section id="section-iconfall-5"><p>5</p></section>
+            </div><!-- /content -->
+        </div><!-- /tabs -->
+        <p>Re-created from <a href="http://vintageproductions.eu/grid/interactivity/">Vintage Productions</a></p>
+    </section>
+
+</div>
 @endsection
 
 @section('script')
@@ -126,5 +156,16 @@
             });
         });
 
+    </script>
+
+    <script src="{{asset('js/cbpFWTabs.js')}}"></script>
+    <script>
+        (function() {
+
+            [].slice.call( document.querySelectorAll( '.tabs' ) ).forEach( function( el ) {
+                new CBPFWTabs( el );
+            });
+
+        })();
     </script>
     @endsection

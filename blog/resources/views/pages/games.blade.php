@@ -105,26 +105,102 @@
 
     <div id="game-info" class="about-grids about-top-grids">
 
+        <section>
+            <div class="tabs tabs-style-iconfall">
+                <nav>
+                    <ul>
+                        <li><a href="#section-iconfall-1" class="icon icon-display"><span>All Games</span></a></li>
+                        <li><a href="#section-iconfall-2" class="icon icon-coffee"><span>Today's Game</span></a></li>
+
+                    </ul>
+                </nav>
+                <div class="content-wrap">
+                    <section id="section-iconfall-1">
+                        @if(count($games)>0)
+                            @foreach($games as $game)
+                                <div  class="well" style="position: relative">
+
+                                    <h1 align="center"><a href="{{route('games.date',['date'=>$game->game_date])}}">{{$game->game_date}}</a></h1>
+
+                                    {{--<p  style="font-size:50px;" align="center">--}}
+
+                                    {{--<a href="{{route('games.show', ['id' => $game->id])}}"   >--}}
+                                    {{--<img src="images/teamLogos/{{$game->visitor}}.png"--}}
+                                    {{--height="128" alt="" />--}}
+                                    {{--{{\BayesBall\Enums\TeamName::getDescription($game->visitor)}} vs {{\BayesBall\Enums\TeamName::getDescription($game->home)}}--}}
+                                    {{--<img src="images/teamLogos/{{$game->home}}.png"--}}
+                                    {{--height="128"  alt="" />--}}
+                                    {{--</a>--}}
+                                    {{--</p>--}}
 
 
-                    <nav>
-                        <div class="nav nav-tabs" id="nav-tab" role="tablist">
-                            <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">All Games</a>
-                            <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">Today's Game</a>
-                        </div>
-                    </nav>
-                    <div class="tab-content" id="nav-tabContent">
-                        {{--<div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">--}}
-                        <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+
+                                    <div  id="container">
+                                        <div id="visitor-{{$game->id}}">
+                                            <img src="{{URL::asset("images/teamLogos/{$game->visitor}.png")}}" height="128" alt="" />
+                                        </div>
+                                        <div >
+                                            <p class="title" style="font-size:2vw;" align="center">
+                                                <a href="{{route('games.show', ['id' => $game->id])}}"   >
 
 
-                            @if(count($games)>0)
 
-                                @foreach($games as $todayGame)
-                                    @if($todayGame->game_date===$date)
-                                        @php
-                                            $count++;
-                                        @endphp
+                                                    {{\BayesBall\Enums\TeamName::getDescription($game->visitor)}} vs {{\BayesBall\Enums\TeamName::getDescription($game->home)}}
+                                                </a>
+                                            </p>
+                                        </div>
+
+                                        <div id="home-{{$game->id}}">
+                                            <img src="{{URL::asset("images/teamLogos/{$game->home}.png")}}" height="128"  alt="" />
+
+
+
+
+                                        </div >
+
+
+                                    </div>
+
+
+                                    @if(Auth::check())
+
+                                        <div class="heart" id="bottomright" onclick="likeTheGame()"></div>
+                                        <div class="predict" align="center">
+                                            <button id="predictButtonid-{{$game->id}}"> predict</button>
+                                        </div>
+                                        {{--<p>  {{$userId}} {{$userEmail}}</p>--}}
+                                        <input type="hidden" class="gameId"  id="gameId-{{$game->id}}"value="{{$game->id}}"/>
+                                        <input type="hidden" class="visitor" id="visitor-{{$game->id}}" value="{{$game->visitor}}">
+                                        <input type="hidden" class="home" id="home-{{$game->id}}" value="{{$game->home}}">
+                                        <div id="output-{{$game->id}}"> </div>
+
+                                        <div class="chart-container" id="chart-containerId-{{$game->id}}" style="display:none">
+                                            <canvas id="myChart-{{$game->id}}"></canvas>
+                                        </div>
+                                    @endif
+
+                                </div>
+                                @php
+                                    $i++;
+                                @endphp
+                            @endforeach
+
+                            {{$games->links()}}
+
+                        @else
+                            <p>nothing found</p>
+
+                        @endif
+
+                    </section>
+                    <section id="section-iconfall-2">
+                        @if(count($games)>0)
+
+                            @foreach($games as $todayGame)
+                                @if($todayGame->game_date===$date)
+                                    @php
+                                        $count++;
+                                    @endphp
                                     <div class="well" style="position: relative;">
 
                                         <h1 style="font-size:1vw;"  align="center"><a href="{{route('games.date',['date'=>$todayGame->game_date])}}">{{$todayGame->game_date}}</a></h1>
@@ -132,7 +208,7 @@
                                         <div id="container">
                                             <div  >
 
-                                                    <img src="{{URL::asset("images/teamLogos/{$todayGame->visitor}.png")}}" class="center" border="0" alt="" />
+                                                <img src="{{URL::asset("images/teamLogos/{$todayGame->visitor}.png")}}" class="center" border="0" alt="" />
 
                                             </div>
 
@@ -147,112 +223,40 @@
                                                 </p>
                                             </div>
                                             <div >
-                                                    <img src="{{URL::asset("images/teamLogos/{$todayGame->home}.png")}}" class="center" border="0"  alt="" />
+                                                <img src="{{URL::asset("images/teamLogos/{$todayGame->home}.png")}}" class="center" border="0"  alt="" />
 
 
                                             </div >
-                                            
+
                                             <div class="heart" id="bottomright"></div>
 
 
                                         </div>
                                     </div>
-                                     @endif
-                                @endforeach
-
-
-
-                            @endif
-
-                             @if($count==0)
-                                    <div class="well">
-                                        <h3 style="font-size:3vw;" align="center">There is no game today</h3>
-                                    </div>
-                             @endif
-
-
-                        </div>
-                        {{--<div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">--}}
-                        <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
-
-                            @if(count($games)>0)
-                                @foreach($games as $game)
-                            <div  class="well" style="position: relative">
-
-                                <h1 align="center"><a href="{{route('games.date',['date'=>$game->game_date])}}">{{$game->game_date}}</a></h1>
-
-                                {{--<p  style="font-size:50px;" align="center">--}}
-
-                                {{--<a href="{{route('games.show', ['id' => $game->id])}}"   >--}}
-                                {{--<img src="images/teamLogos/{{$game->visitor}}.png"--}}
-                                {{--height="128" alt="" />--}}
-                                {{--{{\BayesBall\Enums\TeamName::getDescription($game->visitor)}} vs {{\BayesBall\Enums\TeamName::getDescription($game->home)}}--}}
-                                {{--<img src="images/teamLogos/{{$game->home}}.png"--}}
-                                {{--height="128"  alt="" />--}}
-                                {{--</a>--}}
-                                {{--</p>--}}
-
-
-
-                                <div  id="container">
-                                    <div id="visitor-{{$game->id}}">
-                                        <img src="{{URL::asset("images/teamLogos/{$game->visitor}.png")}}" height="128" alt="" />
-                                    </div>
-                                    <div >
-                                        <p class="title" style="font-size:2vw;" align="center">
-                                            <a href="{{route('games.show', ['id' => $game->id])}}"   >
-
-
-
-                                                {{\BayesBall\Enums\TeamName::getDescription($game->visitor)}} vs {{\BayesBall\Enums\TeamName::getDescription($game->home)}}
-                                            </a>
-                                        </p>
-                                    </div>
-
-                                    <div id="home-{{$game->id}}">
-                                        <img src="{{URL::asset("images/teamLogos/{$game->home}.png")}}" height="128"  alt="" />
-
-
-
-
-                                    </div >
-
-
-                                </div>
-
-
-                                @if(Auth::check())
-
-                                <div class="heart" id="bottomright" onclick="likeTheGame()"></div>
-                                <div class="predict" align="center">
-                                    <button id="predictButtonid-{{$game->id}}"> predict</button>
-                                </div>
-                                    {{--<p>  {{$userId}} {{$userEmail}}</p>--}}
-                                    <input type="hidden" class="gameId"  id="gameId-{{$game->id}}"value="{{$game->id}}"/>
-                                    <input type="hidden" class="visitor" id="visitor-{{$game->id}}" value="{{$game->visitor}}">
-                                    <input type="hidden" class="home" id="home-{{$game->id}}" value="{{$game->home}}">
-                                <div id="output-{{$game->id}}"> </div>
-
-                                    <div class="chart-container" id="chart-containerId-{{$game->id}}" style="display:none">
-                                        <canvas id="myChart-{{$game->id}}"></canvas>
-                                    </div>
                                 @endif
+                            @endforeach
 
+
+
+                        @endif
+
+                        @if($count==0)
+                            <div class="well">
+                                <h3 style="font-size:3vw;" align="center">There is no game today</h3>
                             </div>
-                                    @php
-                                    $i++;
-                                    @endphp
-                                @endforeach
+                        @endif
 
-                                {{$games->links()}}
 
-                            @else
-                                <p>nothing found</p>
+                    </section>
 
-                            @endif
-                    </div>
+                </div><!-- /content -->
+            </div><!-- /tabs -->
+        </section>
 
-            </div>
+
+
+
+
 
 
 
@@ -263,6 +267,16 @@
     @endsection
 
     @section('script')
+        <script src="{{asset('js/cbpFWTabs.js')}}"></script>
+        <script>
+            (function() {
+
+                [].slice.call( document.querySelectorAll( '.tabs' ) ).forEach( function( el ) {
+                    new CBPFWTabs( el );
+                });
+
+            })();
+        </script>
         <script>
             $.ajaxSetup({ headers: { 'csrftoken' : '{{ csrf_token() }}' } });
 

@@ -95,6 +95,13 @@
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.min.js"></script>
 
 
+    <link rel="stylesheet" type="text/css" href="{{asset('css/normalize.css')}}" />
+    <link rel="stylesheet" type="text/css" href="{{asset('css/demo.css')}}" />
+    <link rel="stylesheet" type="text/css" href="{{asset('css/tabs.css')}}" />
+    <link rel="stylesheet" type="text/css" href="{{asset('css/tabstyles.css')}}" />
+    <script src="{{asset('js/modernizr.custom.js')}}"></script>
+
+
     <script>
         $( "li a.menu1" ).click(function() {
             $( "ul.nav-sub" ).slideToggle( 300, function() {
@@ -116,20 +123,23 @@
     }
 
     button{
-        background:#10AAF7;
+        margin-top: 10px;
+        margin-bottom: 10px;
+        background:#71DC98;
         color:#fff;
         border:none;
         position:relative;
-        height:60px;
+        height:50px;
+
         font-size:1.6em;
-        padding:0 2em;
+        padding:0 1em;
         cursor:pointer;
         transition:800ms ease all;
         outline:none;
     }
     button:hover{
         background:#fff;
-        color:#10AAF7;
+        color:#71DC98;
     }
     button:before,button:after{
         content:'';
@@ -138,7 +148,7 @@
         right:0;
         height:2px;
         width:0;
-        background: #10AAF7;
+        background: #71DC98;
         transition:400ms ease all;
     }
     button:after{

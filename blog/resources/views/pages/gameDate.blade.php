@@ -117,7 +117,7 @@
                     </div>
                     @if(Auth::check())
 
-                        <div class="heart" id="bottomright" onclick="likeTheGame()"></div>
+                        <div class="heart" id="bottomright" onclick=""></div>
 
                         <div class="predict" align="center">
                             <button id="predictButtonid-{{$date->id}}"> predict</button>
@@ -151,30 +151,7 @@
 @section('script')
 
     <script type="text/javascript">
-        var data;
-        $(".heart").click(function() {
-            data=$(this).nextAll("#gameId").val();
-            //console.log("game Id is " + data);
-        });
 
-        function likeTheGame(){
-
-            // $('.heart').on('click',function () {
-            // var value = $(this).nextAll("input[type=text]").first().val();
-            var isbn = $('.gameId').val();
-            var value= $(this).find("input:text").val();
-
-            $(document).ready(function () {
-                console.log("heart is clicked \n" + "userId: " + userId + "\nUser Email: " + userEmail + "\nName: " + userName);
-
-                console.log("game Id is " + data);
-
-                var count = 0;
-
-                //});
-            });
-
-        }
 
 
         var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
@@ -188,10 +165,24 @@
             gameIdData=$(this).nextAll(".gameId").val();
             gameHome=$(this).nextAll(".visitor").val();
             gameVisitor=$(this).nextAll(".home").val();
-            console.log("game Id is " + gameIdData +"game home is " + gameHome+" gameVisitor is " + gameVisitor);
+            console.log("userId is "+userId+" game Id is " + gameIdData +"game home is " + gameHome+" gameVisitor is " + gameVisitor);
+
+
+            if(!$.active){
+                $.ajax({
+                    type:'POST',
+                    url:'{{route('games.store')}}',
+                    data:{'userId':userId,'gameId':gameIdData,'userName':userName ,_token: '{{csrf_token()}}'},
+                    success:function(data){
+                        console.log(data);
+                    },
+                    error: function(){
+                        alert("Nope");
+                    }
+                });
+            }
 
         });
-
 
         $(".predict").click(function() {
             console.log("predict click");

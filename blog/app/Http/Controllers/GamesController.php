@@ -212,8 +212,8 @@ class GamesController extends Controller
 //            echo "$path \n";
 //        }
 
-        //$process = new Process("python $path $team1 $team2 ");
-        $process = new Process("python $testpath ");
+        $process = new Process("python $path $team1 $team2 ");
+        //$process = new Process("python $testpath ");
 
         $process->run();
         if (!$process->isSuccessful()) {
