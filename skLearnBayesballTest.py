@@ -130,6 +130,20 @@ class KnownValues(unittest.TestCase):
 		result = sklearnBayesball.runNaiveBayes(None, None, None)
 		expected = 0
 		self.assertEqual(expected, result)
+        
+	def test_runLogisticRegression_data_None(self):
+		#Capture the results of the function
+		#Check for expected Output
+		result = sklearnBayesball.runLogisticRegression(None, None, None)
+		expected = 0
+		self.assertEqual(expected, result)
+        
+	def test_runLogisticRegression_features_None(self):
+		#Capture the results of the function
+		#Check for expected Output
+		result = sklearnBayesball.runLogisticRegression(None, None, None)
+		expected = 0
+		self.assertEqual(expected, result)        
 '''		
 	def test_randomPredictor_error(self):
 		result = sklearnBayesball.randomPredictor()
