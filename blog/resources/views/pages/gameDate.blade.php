@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('content')
     <style>
-        #container{
+        .discontainer{
 
 
             display: flex;                  /* establish flex container */
@@ -13,7 +13,7 @@
 
 
         }
-        #container > div {
+        .discontainer > div {
             width: 100%;
             height: 100%;
             /*border: 2px dashed red;*/
@@ -29,17 +29,19 @@
             max-width: 100%;
             max-height: 100%;
         }
-        #bottomright {
-            position: absolute;
-            bottom: 0px;
-            right: 0px;
-        }
         .center {
             display: block;
             margin-left: auto;
             margin-right: auto;
             width: 50%;
         }
+
+        #bottomright {
+            position: absolute;
+            bottom: 0px;
+            right: 0px;
+        }
+
     </style>
 
     <div class="footer">
@@ -77,71 +79,154 @@
     <!-- //footer -->
 
     <div  class="about-grids about-top-grids">
-        @if(count($dates)>0)
-            @foreach($dates as $date)
-                <div  class="well" style="position: relative;">
+        <section>
+            <div class="tabs tabs-style-iconfall">
+                <nav>
+                    <ul>
+                        <li><a href="#section-iconfall-1" class="icon icon-home"><span>{{$dates[0]->game_date}}</span></a></li>
+                        <li><a href="#section-iconfall-2" class="icon icon-coffee"><span>Today's Game</span></a></li>
+
+                    </ul>
+                </nav>
+                <div class="content-wrap">
+                    <section id="section-iconfall-1">
+                        @if(count($dates)>0)
+                            @foreach($dates as $date)
+                                <div  class="well" style="position: relative;">
 
 
-                    <h1 align="center">{{$date->game_date}}</h1>
-
-                    {{--<p  style="font-size:50px;" align="center">--}}
-
-                        {{--<a href="{{route('games.show', ['id' => $date->id])}}"   >--}}
-                            {{--<img src={{URL::asset("images/teamLogos/{$date->visitor}.png")}}--}}
-                                 {{--height="128" alt="" />--}}
-                            {{--{{$date->visitor}} vs {{$date->home}}--}}
-                            {{--<img src={{URL::asset("images/teamLogos/{$date->home}.png")}}--}}
-
-                                 {{--height="128"  alt="" />--}}
-                        {{--</a>--}}
-                    {{--</p>--}}
-
-                    <div id="container">
-                        <div id="visitor-{{$date->id}}">
-                            <img src="{{URL::asset("images/teamLogos/{$date->visitor}.png")}}" height="128" alt="" />
-                        </div>
-                        <div id="center">
-                            <p class="title" style="font-size:2vw;" align="center">
-                                <a href="{{route('games.show', ['id' => $date->id])}}"   >
+                                    <h1 align="center">{{$date->game_date}}</h1>
 
 
 
-                                    {{\BayesBall\Enums\TeamName::getDescription($date->visitor)}} vs {{\BayesBall\Enums\TeamName::getDescription($date->home)}}
-                                </a>
-                            </p>
-                        </div>
-                        <div id="home-{{$date->id}}">
-                            <img src="{{URL::asset("images/teamLogos/{$date->home}.png")}}" height="128"  alt="" />
-                        </div >
+                                    <div class="discontainer">
+                                        <div id="visitor-{{$date->id}}">
+                                            <img src="{{URL::asset("images/teamLogos/{$date->visitor}.png")}}" height="128" alt="" />
+                                            <div > <h2 style="text-align: center ;font-size:2vw;">{{\BayesBall\Enums\TeamName::getDescription($date->visitor)}}</h2></div>
 
-                    </div>
-                    @if(Auth::check())
+                                        </div>
+                                        <div >
+                                            <p class="title" style="font-size: 5vw;" align="center">
+                                                <a href="{{route('games.show', ['id' => $date->id])}}">vs
+                                                </a>
+                                            </p>
+                                        </div>
+                                        <div id="home-{{$date->id}}">
+                                            <img src="{{URL::asset("images/teamLogos/{$date->home}.png")}}" height="128"  alt="" />
+                                            <div > <h2 style="text-align: center ;font-size:2vw;">{{\BayesBall\Enums\TeamName::getDescription($date->home)}}</h2></div>
 
-                        <div class="heart" id="bottomright" onclick=""></div>
+                                        </div >
 
-                        <div class="predict" align="center">
-                            <button id="predictButtonid-{{$date->id}}"> predict</button>
-                        </div>
-                        {{--<p>  {{$userId}} {{$userEmail}}</p>--}}
-                        <input type="hidden" class="gameId"  id="gameId-{{$date->id}}"value="{{$date->id}}"/>
-                        <input type="hidden" class="visitor" id="visitor-{{$date->id}}" value="{{$date->visitor}}">
-                        <input type="hidden" class="home" id="home-{{$date->id}}" value="{{$date->home}}">
-                        <div id="output-{{$date->id}}"> </div>
+                                    </div>
+                                    @if(Auth::check())
 
-                        <div class="chart-container" id="chart-containerId-{{$date->id}}" style="display:none">
-                            <canvas id="myChart-{{$date->id}}"></canvas>
-                        </div>
-                    @endif
+                                        <div class="heart" id="bottomright" onclick=""></div>
 
-                </div>
-            @endforeach
+                                        <div class="predict" align="center">
+                                            <button class="grebutton" id="predictButtonid-{{$date->id}}"> predict</button>
+                                        </div>
+                                        {{--<p>  {{$userId}} {{$userEmail}}</p>--}}
+                                        <input type="hidden" class="gameId"  id="gameId-{{$date->id}}"value="{{$date->id}}"/>
+                                        <input type="hidden" class="visitor" id="visitor-{{$date->id}}" value="{{$date->visitor}}">
+                                        <input type="hidden" class="home" id="home-{{$date->id}}" value="{{$date->home}}">
+                                        <div id="output-{{$date->id}}"> </div>
 
-            @else
-            <div class="well">
-                <h3 align="center">There is no game on {{$specifiedDate}}</h3>
-            </div>
+                                        <div class="chart-container" id="chart-containerId-{{$date->id}}" style="display:none">
+                                            <canvas id="myChart-{{$date->id}}"></canvas>
+                                        </div>
+                                    @endif
 
-        @endif
+                                </div>
+                            @endforeach
+
+                        @else
+                            <div class="well">
+                                <h3 align="center">There is no game on {{$specifiedDate}}</h3>
+                            </div>
+
+                        @endif
+
+                    </section>
+                    <section id="section-iconfall-2">
+
+                        @if(count($dates)>0)
+                            @foreach($dates as $todayGame)
+                                @if($todayGame->game_date===$date)
+                                    @php
+                                        $count++;
+                                    @endphp
+                                    <div class="well" style="position: relative;">
+
+                                        <h1 style="font-size:1vw;"  align="center"><a href="{{route('games.date',['date'=>$todayGame->game_date])}}">{{$todayGame->game_date}}</a></h1>
+
+                                        <div class="discontainer">
+                                            <div  >
+
+                                                <img src="{{URL::asset("images/teamLogos/{$todayGame->visitor}.png")}}" class="center" border="0" alt="" />
+
+                                            </div>
+
+                                            <div >
+                                                <p style="font-size:2vw;" >
+                                                    <a href="{{route('games.show', ['id' => $todayGame->id])}}"   >
+
+
+
+                                                        {{\BayesBall\Enums\TeamName::getDescription($todayGame->visitor)}} vs {{\BayesBall\Enums\TeamName::getDescription($todayGame->home)}}
+                                                    </a>
+                                                </p>
+                                            </div>
+                                            <div >
+                                                <img src="{{URL::asset("images/teamLogos/{$todayGame->home}.png")}}" class="center" border="0"  alt="" />
+
+
+                                            </div >
+
+                                            <div class="heart" id="bottomright"></div>
+
+
+                                        </div>
+                                    </div>
+
+                                            @if(Auth::check())
+
+                                                <div class="heart" id="bottomright" onclick=""></div>
+
+                                                <div class="predict" align="center">
+                                                    <button class="grebutton" id="predictButtonid-{{$date->id}}"> predict</button>
+                                                </div>
+                                                {{--<p>  {{$userId}} {{$userEmail}}</p>--}}
+                                                <input type="hidden" class="gameId"  id="gameId-{{$date->id}}"value="{{$date->id}}"/>
+                                                <input type="hidden" class="visitor" id="visitor-{{$date->id}}" value="{{$date->visitor}}">
+                                                <input type="hidden" class="home" id="home-{{$date->id}}" value="{{$date->home}}">
+                                                <div id="output-{{$date->id}}"> </div>
+
+                                                <div class="chart-container" id="chart-containerId-{{$date->id}}" style="display:none">
+                                                    <canvas id="myChart-{{$date->id}}"></canvas>
+                                                </div>
+                                            @endif
+
+                                @endif
+                            @endforeach
+
+
+                                @if($count==0)
+                                    <div class="well">
+                                        <h3 style="font-size:3vw;" align="center">There is no game today</h3>
+                                    </div>
+                                @endif
+
+                        @endif
+
+                    </section>
+
+                </div><!-- /content -->
+            </div><!-- /tabs -->
+
+        </section>
+
+
+
         {{--{{$dates->links()}}--}}
     </div>
     @include('includes.footer')
@@ -149,6 +234,16 @@
 @endsection
 
 @section('script')
+    <script src="{{asset('js/cbpFWTabs.js')}}"></script>
+    <script>
+        (function() {
+
+            [].slice.call( document.querySelectorAll( '.tabs' ) ).forEach( function( el ) {
+                new CBPFWTabs( el );
+            });
+
+        })();
+    </script>
 
     <script type="text/javascript">
 

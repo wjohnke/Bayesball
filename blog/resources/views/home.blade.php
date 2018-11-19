@@ -23,7 +23,7 @@
             flex-wrap: nowrap;              /* default value; can be omitted */
             justify-content: space-between; /* switched from default (flex-start, see below) */
             /*background-color: lightyellow;*/
-            margin-bottom: 10%;
+            margin-bottom: 0%;
 
 
         }
@@ -109,21 +109,22 @@
 
                                 <div id="visitor-{{$game->id}}">
                                     <img src="{{URL::asset("images/teamLogos/{$game->visitor}.png")}}" height="128" alt="" />
+                                    <div > <h2 style="text-align: center ;font-size:2vw;">{{\BayesBall\Enums\TeamName::getDescription($game->visitor)}}</h2></div>
                                 </div>
                                 <div >
-                                    <p class="title" style="font-size:2vw;" align="center">
+                                    <p class="title" style="font-size:calc(10px+ 0.5vw);" align="center">
                                         <a href="{{route('games.show', ['id' => $game->gameId])}}"   >
 
 
 
-                                            {{\BayesBall\Enums\TeamName::getDescription($game->visitor)}} vs {{\BayesBall\Enums\TeamName::getDescription($game->home)}}
+                                             vs
                                         </a>
                                     </p>
                                 </div>
 
                                 <div id="home-{{$game->id}}">
                                     <img src="{{URL::asset("images/teamLogos/{$game->home}.png")}}" height="128"  alt="" />
-
+                                    <div > <h2 style="text-align: center ;font-size:2vw;">{{\BayesBall\Enums\TeamName::getDescription($game->home)}}</h2></div>
                                 </div >
 
                                 </div>
@@ -210,7 +211,7 @@
         $.ajaxSetup({ headers: { 'csrftoken' : '{{ csrf_token() }}' } });
 
         var primaryId;
-        
+
         $(".rmbutton").click(function() {
 
             primaryId =$(this).nextAll(".priId").val();

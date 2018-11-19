@@ -21,7 +21,7 @@
 
 .tabs-style-bar nav ul li a:hover,
 .tabs-style-bar nav ul li a:focus {
-	color: #2CC185;
+	color: #092B8F;
 }
 
 .tabs-style-bar nav ul li a span {
@@ -32,7 +32,7 @@
 }
 
 .tabs-style-bar nav ul li.tab-current a {
-	background: #2CC185;
+	background: #092B8F;
 	color: #fff;
 }
 
@@ -127,7 +127,7 @@
 	left: 0;
 	width: 100%;
 	height: 6px;
-	background: #2CC185;
+	background: #092B8F;
 	content: '';
 	-webkit-transition: -webkit-transform 0.3s;
 	transition: transform 0.3s;
@@ -210,7 +210,7 @@
 }
 
 .tabs-style-topline nav li.tab-current {
-	border-top-color: #2CC185;
+	border-top-color: #092B8F;
 	border-bottom: none;
 }
 
@@ -225,13 +225,13 @@
 
 .tabs-style-topline nav a:hover,
 .tabs-style-topline nav a:focus {
-	color: #2CC185;
+	color: #092B8F;
 }
 
 .tabs-style-topline nav li.tab-current a {
 	background: none;
-	box-shadow: inset 0 3px 0 #2CC185;
-	color: #2CC185;
+	box-shadow: inset 0 3px 0 #092B8F;
+	color: #092B8F;
 }
 
 .tabs-style-topline .icon::before {
@@ -267,7 +267,7 @@
 .tabs-style-iconfall nav a:hover,
 .tabs-style-iconfall nav a:focus,
 .tabs-style-iconfall nav li.tab-current a {
-	color: #2CC185;
+	color: #092B8F;
 }
 
 .tabs-style-iconfall nav a span {
@@ -281,7 +281,7 @@
 	margin-left: -20px;
 	width: 40px;
 	height: 4px;
-	background: #2CC185;
+	background: #092B8F;
 	content: '';
 	opacity: 0;
 	-webkit-transition: -webkit-transform 0.2s ease-in;
@@ -335,7 +335,7 @@
 	left: 0;
 	width: 100%;
 	height: 4px;
-	background: #2CC185;
+	background: #092B8F;
 	content: '';
 	-webkit-transition: -webkit-transform 0.3s;
 	transition: transform 0.3s;
@@ -371,7 +371,7 @@
 }
 
 .tabs-style-linemove nav li.tab-current a {
-	color: #2CC185;
+	color: #092B8F;
 	-webkit-transform: translate3d(0,8px,0);
 	transform: translate3d(0,8px,0);
 }
@@ -660,7 +660,7 @@
 
 .tabs-style-linebox nav a:hover,
 .tabs-style-linebox nav a:focus {
-	color: #2CC185;
+	color: #092B8F;
 }
 
 .tabs-style-linebox nav li.tab-current a {
@@ -692,7 +692,7 @@
 .tabs-style-linebox nav a:hover::after,
 .tabs-style-linebox nav a:focus::after,
 .tabs-style-linebox nav li.tab-current a::after {
-	background: #2CC185;
+	background: #092B8F;
 }
 
 @media screen and (max-width: 58em) {

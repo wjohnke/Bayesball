@@ -122,37 +122,28 @@
 
                                     <h1 align="center"><a href="{{route('games.date',['date'=>$game->game_date])}}">{{$game->game_date}}</a></h1>
 
-                                    {{--<p  style="font-size:50px;" align="center">--}}
-
-                                    {{--<a href="{{route('games.show', ['id' => $game->id])}}"   >--}}
-                                    {{--<img src="images/teamLogos/{{$game->visitor}}.png"--}}
-                                    {{--height="128" alt="" />--}}
-                                    {{--{{\BayesBall\Enums\TeamName::getDescription($game->visitor)}} vs {{\BayesBall\Enums\TeamName::getDescription($game->home)}}--}}
-                                    {{--<img src="images/teamLogos/{{$game->home}}.png"--}}
-                                    {{--height="128"  alt="" />--}}
-                                    {{--</a>--}}
-                                    {{--</p>--}}
 
 
 
                                     <div  class="discontainer">
                                         <div id="visitor-{{$game->id}}">
                                             <img src="{{URL::asset("images/teamLogos/{$game->visitor}.png")}}" height="128" alt="" />
+                                            <div > <h2 style="text-align: center ;font-size:2vw;">{{\BayesBall\Enums\TeamName::getDescription($game->visitor)}}</h2></div>
                                         </div>
                                         <div >
-                                            <p class="title" style="font-size:2vw;" align="center">
+                                            <p class="title" style="font-size:calc(10px+ 5vw);" align="center">
                                                 <a href="{{route('games.show', ['id' => $game->id])}}"   >
 
 
 
-                                                    {{\BayesBall\Enums\TeamName::getDescription($game->visitor)}} vs {{\BayesBall\Enums\TeamName::getDescription($game->home)}}
+                                                     vs
                                                 </a>
                                             </p>
                                         </div>
 
                                         <div id="home-{{$game->id}}">
                                             <img src="{{URL::asset("images/teamLogos/{$game->home}.png")}}" height="128"  alt="" />
-
+                                            <div > <h2 style="text-align: center;font-size:2vw;">{{\BayesBall\Enums\TeamName::getDescription($game->home)}}</h2></div>
 
 
 

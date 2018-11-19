@@ -75,7 +75,7 @@
 #shape {
     stroke-width: 6px;
     fill: transparent;
-    stroke: #06D6A0;
+    stroke: #092B8F;
     stroke-dasharray: 85 400;
     stroke-dashoffset: -220;
     transition: 1s all ease;
@@ -88,13 +88,13 @@
 #text {
     /*background-color: #1e1a3e;*/
     margin-top: -38px;
-    color:  #06D6A0;
+    color:  #092B8F;
 
     text-align: center;
 }
 
 #text a {
-    color:  #06D6A0;
+    color:  #092B8F;
     text-decoration: none;
     font-weight: 100;
     font-size: 0.9em;
@@ -108,5 +108,5 @@ make it thinner, then set it to again wrap around the entire parent element.
     stroke-dasharray: 50 0;
     stroke-width: 3px;
     stroke-dashoffset: 0;
-    stroke: #06D6A0;
+    stroke: #092B8F;
 }
