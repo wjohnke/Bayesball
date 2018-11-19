@@ -13,7 +13,7 @@
         bottom: 0px;
         right: 0px;
     }
-    #container{
+    .discontainer{
 
 
         display: flex;                  /* establish flex container */
@@ -25,7 +25,7 @@
 
 
     }
-    #container > div {
+    .discontainer > div {
         width: 100%;
         height: 100%;
         /*border: 2px dashed red;*/
@@ -135,7 +135,7 @@
 
 
 
-                                    <div  id="container">
+                                    <div  class="discontainer">
                                         <div id="visitor-{{$game->id}}">
                                             <img src="{{URL::asset("images/teamLogos/{$game->visitor}.png")}}" height="128" alt="" />
                                         </div>
@@ -166,7 +166,7 @@
 
                                         <div class="heart" id="bottomright" onclick="likeTheGame()"></div>
                                         <div class="predict" align="center">
-                                            <button id="predictButtonid-{{$game->id}}"> predict</button>
+                                            <button class="grebutton" id="predictButtonid-{{$game->id}}"> predict</button>
                                         </div>
                                         {{--<p>  {{$userId}} {{$userEmail}}</p>--}}
                                         <input type="hidden" class="gameId"  id="gameId-{{$game->id}}"value="{{$game->id}}"/>
@@ -205,7 +205,7 @@
 
                                         <h1 style="font-size:1vw;"  align="center"><a href="{{route('games.date',['date'=>$todayGame->game_date])}}">{{$todayGame->game_date}}</a></h1>
 
-                                        <div id="container">
+                                        <div class="discontainer">
                                             <div  >
 
                                                 <img src="{{URL::asset("images/teamLogos/{$todayGame->visitor}.png")}}" class="center" border="0" alt="" />

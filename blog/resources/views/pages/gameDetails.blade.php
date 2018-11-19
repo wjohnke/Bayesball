@@ -47,6 +47,14 @@
     p.title{
         color:black;
     }
+    .table{
+        align-content: center;
+        font-size: calc(8px + 1vw);
+    }
+    td{
+        align: right;
+        text-align: left;
+    }
 </style>
 @if($games)
     <div class="well" >
@@ -141,17 +149,19 @@
                 </nav>
                 <div class="content-wrap">
                     <section id="section-iconfall-1">
+
                         <div class="table">
-                            <table >
+                            <table  align="center">
                                 <h2 align="center">Lineup</h2>
 
                                 <tr>
-                                    <th><h3>Player</h3></th>
+                                    <th width="600vw"><h3>Player</h3></th>
+                                    <td width="23%"><h3>Position</h3></td>
                                 </tr>
                                 <tr>
 
-                                    <th width="">{{$games->visitor_batter_1_name}}</th>
-                                    <td width=""> • {{\BayesBall\Enums\BattingPos::getDescription($games->visitor_batter_1_pos)}}</td>
+                                    <th width="600vw">{{$games->visitor_batter_1_name}}</th>
+                                    <td width="600vw" > • {{\BayesBall\Enums\BattingPos::getDescription($games->visitor_batter_1_pos)}}</td>
                                     {{--@if($games->visitor_batter_1_pos===\BayesBall\Enums\BattingPos::LeftFielder)--}}
                                     {{--<p> find one</p>--}}
                                     {{--@else--}}
@@ -160,7 +170,8 @@
 
                                 </tr>
                                 <tr>
-                                    <th width="">{{$games->visitor_batter_2_name}}</th>
+                                    <th width="" >{{$games->visitor_batter_2_name}}</th>
+
                                     <td width="">         •   {{\BayesBall\Enums\BattingPos::getDescription($games->visitor_batter_2_pos)}}</td>
                                 </tr>
                                 <tr>
@@ -200,7 +211,8 @@
                             <table >
                                 <h2 align="center">Lineup</h2>
                                 <tr>
-                                    <th><h3>Player</h3></th>
+                                    <th width="600vw"><h3>Player</h3></th>
+                                    <td width="23%"><h3>Position</h3></td>
                                 </tr>
                                 <tr>
 

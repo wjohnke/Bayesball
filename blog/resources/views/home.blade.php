@@ -8,12 +8,14 @@
         img{
 
         }
-        #bottomright {
+        .bottomright {
+            /*border: 2px dashed red;*/
+            /*margin-top: 20px;*/
             position: absolute;
-            bottom: 0px;
-            right: 0px;
+            bottom: 10px;
+            right: 10px;
         }
-        #container{
+        .discontainer{
 
 
             display: flex;                  /* establish flex container */
@@ -21,11 +23,11 @@
             flex-wrap: nowrap;              /* default value; can be omitted */
             justify-content: space-between; /* switched from default (flex-start, see below) */
             /*background-color: lightyellow;*/
-
+            margin-bottom: 10%;
 
 
         }
-        #container > div {
+        .discontainer > div {
             width: 100%;
             height: 100%;
             /*border: 2px dashed red;*/
@@ -39,7 +41,7 @@
             margin-left: auto;
             margin-right: auto;
             max-width: 100%;
-            max-height: 100%;
+            max-height: 20%;
         }
         .center {
             display: block;
@@ -48,6 +50,10 @@
             width: 50%;
         }
 
+        button{
+            border:none;
+            background-color: transparent;
+        }
 
         #bodymovin{
             width:640px;
@@ -99,14 +105,14 @@
 
                                     <h1 align="center"><a href="{{route('games.date',['date'=>$game->game_date])}}">{{$game->game_date}}</a></h1>
 
-                                    <div  id="container">
+                                    <div  class="discontainer" >
 
                                 <div id="visitor-{{$game->id}}">
                                     <img src="{{URL::asset("images/teamLogos/{$game->visitor}.png")}}" height="128" alt="" />
                                 </div>
                                 <div >
                                     <p class="title" style="font-size:2vw;" align="center">
-                                        <a href="{{route('games.show', ['id' => $game->id])}}"   >
+                                        <a href="{{route('games.show', ['id' => $game->gameId])}}"   >
 
 
 
@@ -121,6 +127,30 @@
                                 </div >
 
                                 </div>
+
+
+
+                                    <div class="bottomright">
+                                        {{--<div class="position">--}}
+
+                                        <!--start button, nothing above this is necessary -->
+                                        <div class="svg-wrapper">
+                                            <svg height="40" width="150" xmlns="http://www.w3.org/2000/svg">
+                                                <rect id="shape" height="40" width="150" />
+                                                <div id="text">
+                                                    {{--<a href="#"><span class="spot"></span>Button 1</a>--}}
+                                                    {{--<input type="button" value="SEND">--}}
+                                                    <button class="rmbutton" id="favGame-{{$game->id}}">Remove</button>
+                                                    {{--<div class="heart" id="bottomright"></div>--}}
+
+                                                    <input type="hidden" class="priId" id="priId-{{$game->id}}" value="{{$game->id}}"></input>
+                                                </div>
+                                            </svg>
+                                        </div>
+
+                                    {{--</div>--}}
+                                    </div>
+
                                 </div>
 
                             @endforeach
@@ -157,7 +187,7 @@
                                     <input type="text" placeholder="Email" required="">
                                     <input type="text" placeholder="Subject" required="">
                                     <textarea placeholder="Message" required=""></textarea>
-                                    <button type="submit" value="SEND">Get In Touch </button>
+                                    <button class="grebutton" type="submit" value="SEND">Get In Touch </button>
                                 </form>
                             </div>
                             <div class="clearfix"> </div>
@@ -170,11 +200,39 @@
             </div><!-- /tabs -->
         </section>
     </div>
+
     @include('includes.footer')
 
 @endsection
 
 @section('script')
+    <script>
+        $.ajaxSetup({ headers: { 'csrftoken' : '{{ csrf_token() }}' } });
+
+        var primaryId;
+        
+        $(".rmbutton").click(function() {
+
+            primaryId =$(this).nextAll(".priId").val();
+            console.log("remove is clicked, id is "+primaryId);
+
+            if(!$.active){
+                $.ajax({
+                    type:'POST',
+                    url:'{{route('favGames.destroy')}}',
+                    data:{'primaryId':primaryId,_token: '{{csrf_token()}}'},
+                    success:function(data){
+                        console.log(data);
+                        location.reload();
+                    },
+                    error: function(){
+                        alert("Nope");
+                    }
+                });
+            }
+        });
+
+    </script>
     <script src="{{asset('js/cbpFWTabs.js')}}"></script>
     <script>
         (function() {

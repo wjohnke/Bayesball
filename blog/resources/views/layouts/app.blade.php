@@ -22,7 +22,9 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
     <!-- Styles -->
     <link href="{{ URL::asset('css/datepicker.min.css') }}" rel="stylesheet">
-    {{--<link href="{{ URL::asset('css/heart.css') }}" rel="stylesheet">--}}
+    <link href="{{ URL::asset('css/heart.css') }}" rel="stylesheet">
+    <link href="{{ URL::asset('css/button.css') }}" rel="stylesheet">
+
     {{--<link rel="stylesheet" href="{{mix('css/app.css')}}">--}}
 
     <link href="{{ URL::asset('css/app.css') }}" rel="stylesheet">
@@ -120,46 +122,6 @@
         margin: auto;
         height: 40vh;
         width: 40vw;
-    }
-
-    button{
-        margin-top: 10px;
-        margin-bottom: 10px;
-        background:#71DC98;
-        color:#fff;
-        border:none;
-        position:relative;
-        height:50px;
-
-        font-size:1.6em;
-        padding:0 1em;
-        cursor:pointer;
-        transition:800ms ease all;
-        outline:none;
-    }
-    button:hover{
-        background:#fff;
-        color:#71DC98;
-    }
-    button:before,button:after{
-        content:'';
-        position:absolute;
-        top:0;
-        right:0;
-        height:2px;
-        width:0;
-        background: #71DC98;
-        transition:400ms ease all;
-    }
-    button:after{
-        right:inherit;
-        top:inherit;
-        left:0;
-        bottom:0;
-    }
-    button:hover:before,button:hover:after{
-        width:100%;
-        transition:800ms ease all;
     }
 
 </style>
