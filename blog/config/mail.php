@@ -86,7 +86,7 @@ return [
 
     'username' => env('RandallCapstone@gmail.com'),
 
-    'password' => env('mtaehgkfwbrmvhxc'),
+    'password' => env('WhereAreYouRandall5?'),
 
     /*
     |--------------------------------------------------------------------------
