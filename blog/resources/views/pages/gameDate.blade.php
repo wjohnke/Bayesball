@@ -258,8 +258,8 @@
         $(".heart").click(function() {
             console.log("click");
             gameIdData=$(this).nextAll(".gameId").val();
-            gameHome=$(this).nextAll(".visitor").val();
-            gameVisitor=$(this).nextAll(".home").val();
+            gameHome=$(this).nextAll(".home").val();
+            gameVisitor=$(this).nextAll(".visitor").val();
             console.log("userId is "+userId+" game Id is " + gameIdData +"game home is " + gameHome+" gameVisitor is " + gameVisitor);
 
 
@@ -282,8 +282,8 @@
         $(".predict").click(function() {
             console.log("predict click");
             gameIdData=$(this).nextAll(".gameId").val();
-            gameHome=$(this).nextAll(".visitor").val();
-            gameVisitor=$(this).nextAll(".home").val();
+            gameHome=$(this).nextAll(".home").val();
+            gameVisitor=$(this).nextAll(".visitor").val();
             console.log("game Id is " + gameIdData +"game home is " + gameHome+" gameVisitor is " + gameVisitor);
 
             if(!$.active){
@@ -298,11 +298,13 @@
                         console.log(data);
                         var predictionData = jQuery.parseJSON(data);
                         if(predictionData.Prediction==1){
+                            console.log(predictionData.Prediction+'means team1 '+gameVisitor+' win');
                             $("#visitor-"+gameIdData).css("background-color","#ddffb6");
                             $("#home-"+gameIdData).css("background-color","#fa9a8b");
 
                         }
                         else {
+                            console.log(predictionData.Prediction+'means team1 '+gameVisitor+' lose');
                             $("#home-"+gameIdData).css("background-color","#ddffb6");
                             $("#visitor-"+gameIdData).css("background-color","#fa9a8b");
 
