@@ -34,8 +34,7 @@
             rel="stylesheet" type="text/css" media="all" />
     <!--// bootstrap-css -->
     <!-- css -->
-    <link rel="stylesheet" href="    {{URL::asset("css/style.css")}}
-            " type="text/css" media="all" />
+    <link rel="stylesheet" href="{{URL::asset("css/style.css")}}" type="text/css" media="all" />
     <link href="{{URL::asset('css/styles.css?v=1.6')}}" rel="stylesheet">
 
     <!--// css -->

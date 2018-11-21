@@ -155,53 +155,88 @@
                                 <h2 align="center">Lineup</h2>
 
                                 <tr>
-                                    <th width="600vw"><h3>Player</h3></th>
-                                    <td width="23%"><h3>Position</h3></td>
-                                </tr>
-                                <tr>
+                                    <th width=""><h3>Player</h3></th>
+                                    <th width=""><h3>Position</h3></th>
+                                    <td width=""><h3>R</h3></td>
+                                    <td width=""><h3>H</h3></td>
+                                    <td width=""><h3>RBI</h3></td>
+                                    <td width=""><h3>BA</h3></td>
 
-                                    <th width="600vw">{{$games->visitor_batter_1_name}}</th>
-                                    <td width="600vw" > • {{\BayesBall\Enums\BattingPos::getDescription($games->visitor_batter_1_pos)}}</td>
-                                    {{--@if($games->visitor_batter_1_pos===\BayesBall\Enums\BattingPos::LeftFielder)--}}
-                                    {{--<p> find one</p>--}}
-                                    {{--@else--}}
-                                    {{--<p>nothing same</p>--}}
-                                    {{--@endif--}}
+
 
                                 </tr>
-                                <tr>
-                                    <th width="" >{{$games->visitor_batter_2_name}}</th>
 
-                                    <td width="">         •   {{\BayesBall\Enums\BattingPos::getDescription($games->visitor_batter_2_pos)}}</td>
-                                </tr>
-                                <tr>
-                                    <th width="">{{$games->visitor_batter_3_name}}</th>
-                                    <td width="">         •   {{\BayesBall\Enums\BattingPos::getDescription($games->visitor_batter_3_pos)}}</td>
-                                </tr>
-                                <tr>
-                                    <th width="">{{$games->visitor_batter_4_name}}</th>
-                                    <td width="">         •   {{\BayesBall\Enums\BattingPos::getDescription($games->visitor_batter_4_pos)}}</td>
-                                </tr>
-                                <tr>
-                                    <th width="">{{$games->visitor_batter_5_name}}</th>
-                                    <td width="">         •   {{\BayesBall\Enums\BattingPos::getDescription($games->visitor_batter_5_pos)}}</td>
-                                </tr>
-                                <tr>
-                                    <th width="">{{$games->visitor_batter_6_name}}</th>
-                                    <td width="">         •   {{\BayesBall\Enums\BattingPos::getDescription($games->visitor_batter_6_pos)}}</td>
-                                </tr>
-                                <tr>
-                                    <th width="">{{$games->visitor_batter_7_name}}</th>
-                                    <td width="">         •   {{\BayesBall\Enums\BattingPos::getDescription($games->visitor_batter_7_pos)}}</td>
-                                </tr>
-                                <tr>
-                                    <th width="">{{$games->visitor_batter_8_name}}</th>
-                                    <td width="">         •   {{\BayesBall\Enums\BattingPos::getDescription($games->visitor_batter_8_pos)}}</td>
-                                </tr>
-                                <tr>
-                                    <th width="">{{$games->visitor_batter_9_name}}</th>
-                                    <td width="">         •   {{\BayesBall\Enums\BattingPos::getDescription($games->visitor_batter_9_pos)}}</td>
-                                </tr>
+                                @for($vcount=1;$vcount<10;$vcount++)
+
+                                    @php
+                                        $vfullName ='full_name_'.$vcount;
+                                        $vpos='homeBattingPos_'.$vcount;
+                                        $vR='R_'.$vcount;
+                                         $vH='H_'.$vcount;
+                                         $vRBI='RBI_'.$vcount;
+                                         $vBA='BA_'.$vcount;
+
+
+
+
+                                    @endphp
+                                        @if(!$visitBatStats==null)
+                                    <tr>
+                                        <th width="">{{$visitBatStats->$vfullName}}</th>
+
+                                        <th width="50%"> • {{\BayesBall\Enums\BattingPos::getDescription($visitBatStats->$vpos)}}</th>
+                                        <td width="">  {{$visitBatStats->$vR}}</td>
+                                        <td width="">  {{$visitBatStats->$vH}}</td>
+                                        <td width="">  {{$visitBatStats->$vRBI}}</td>
+                                        <td width="">  {{$visitBatStats->$vBA}}</td>
+
+                                    </tr>
+                                    @endif
+                                @endfor
+                                {{--<tr>--}}
+                                    {{--<th width="600vw"><h3>Player</h3></th>--}}
+                                    {{--<td width="23%"><h3>Position</h3></td>--}}
+                                {{--</tr>--}}
+                                {{--<tr>--}}
+
+                                    {{--<th width="600vw">{{$games->visitor_batter_1_name}}</th>--}}
+                                    {{--<td width="600vw" > • {{\BayesBall\Enums\BattingPos::getDescription($games->visitor_batter_1_pos)}}</td>--}}
+
+
+                                {{--</tr>--}}
+                                {{--<tr>--}}
+                                    {{--<th width="" >{{$games->visitor_batter_2_name}}</th>--}}
+
+                                    {{--<td width="">         •   {{\BayesBall\Enums\BattingPos::getDescription($games->visitor_batter_2_pos)}}</td>--}}
+                                {{--</tr>--}}
+                                {{--<tr>--}}
+                                    {{--<th width="">{{$games->visitor_batter_3_name}}</th>--}}
+                                    {{--<td width="">         •   {{\BayesBall\Enums\BattingPos::getDescription($games->visitor_batter_3_pos)}}</td>--}}
+                                {{--</tr>--}}
+                                {{--<tr>--}}
+                                    {{--<th width="">{{$games->visitor_batter_4_name}}</th>--}}
+                                    {{--<td width="">         •   {{\BayesBall\Enums\BattingPos::getDescription($games->visitor_batter_4_pos)}}</td>--}}
+                                {{--</tr>--}}
+                                {{--<tr>--}}
+                                    {{--<th width="">{{$games->visitor_batter_5_name}}</th>--}}
+                                    {{--<td width="">         •   {{\BayesBall\Enums\BattingPos::getDescription($games->visitor_batter_5_pos)}}</td>--}}
+                                {{--</tr>--}}
+                                {{--<tr>--}}
+                                    {{--<th width="">{{$games->visitor_batter_6_name}}</th>--}}
+                                    {{--<td width="">         •   {{\BayesBall\Enums\BattingPos::getDescription($games->visitor_batter_6_pos)}}</td>--}}
+                                {{--</tr>--}}
+                                {{--<tr>--}}
+                                    {{--<th width="">{{$games->visitor_batter_7_name}}</th>--}}
+                                    {{--<td width="">         •   {{\BayesBall\Enums\BattingPos::getDescription($games->visitor_batter_7_pos)}}</td>--}}
+                                {{--</tr>--}}
+                                {{--<tr>--}}
+                                    {{--<th width="">{{$games->visitor_batter_8_name}}</th>--}}
+                                    {{--<td width="">         •   {{\BayesBall\Enums\BattingPos::getDescription($games->visitor_batter_8_pos)}}</td>--}}
+                                {{--</tr>--}}
+                                {{--<tr>--}}
+                                    {{--<th width="">{{$games->visitor_batter_9_name}}</th>--}}
+                                    {{--<td width="">         •   {{\BayesBall\Enums\BattingPos::getDescription($games->visitor_batter_9_pos)}}</td>--}}
+                                {{--</tr>--}}
 
                             </table>
                         </div>
@@ -210,49 +245,151 @@
                         <div class="table">
                             <table >
                                 <h2 align="center">Lineup</h2>
-                                <tr>
-                                    <th width="600vw"><h3>Player</h3></th>
-                                    <td width="23%"><h3>Position</h3></td>
-                                </tr>
-                                <tr>
+                                {{--<tr>--}}
+                                    {{--<th>--}}
+                                        {{--Player--}}
+                                    {{--</th>--}}
+                                    {{--<td>--}}
+                                        {{--R</td>--}}
+                                    {{--<td>--}}
+                                        {{--H </td>--}}
+                                    {{--<td>--}}
+                                        {{--2B </td>--}}
+                                    {{--<td> RBI</td>--}}
+                                {{--</tr>--}}
 
-                                    <th width="">{{$games->home_batter_1_name}}</th>
-                                    <td width=""> • {{\BayesBall\Enums\BattingPos::getDescription($games->home_batter_1_pos)}}</td>
+                                <tr>
+                                    <th width=""><h3>Player</h3></th>
+                                    <th width=""><h3>Position</h3></th>
+                                    <td width=""><h3>R</h3></td>
+                                    <td width=""><h3>H</h3></td>
+                                    <td width=""><h3>RBI</h3></td>
+                                    <td width=""><h3>BA</h3></td>
 
 
+
                                 </tr>
-                                <tr>
-                                    <th width="">{{$games->home_batter_2_name}}</th>
-                                    <td width=""> • {{\BayesBall\Enums\BattingPos::getDescription($games->home_batter_2_pos)}}</td>
-                                </tr>
-                                <tr>
-                                    <th width="">{{$games->home_batter_3_name}}</th>
-                                    <td width="">• {{\BayesBall\Enums\BattingPos::getDescription($games->home_batter_3_pos)}}</td>
-                                </tr>
-                                <tr>
-                                    <th width="">{{$games->home_batter_4_name}}</th>
-                                    <td width=""> • {{\BayesBall\Enums\BattingPos::getDescription($games->home_batter_4_pos)}}</td>
-                                </tr>
-                                <tr>
-                                    <th width="">{{$games->home_batter_5_name}}</th>
-                                    <td width=""> • {{\BayesBall\Enums\BattingPos::getDescription($games->home_batter_5_pos)}}</td>
-                                </tr>
-                                <tr>
-                                    <th width="">{{$games->home_batter_6_name}}</th>
-                                    <td width=""> • {{\BayesBall\Enums\BattingPos::getDescription($games->home_batter_6_pos)}}</td>
-                                </tr>
-                                <tr>
-                                    <th width="">{{$games->home_batter_7_name}}</th>
-                                    <td width=""> • {{\BayesBall\Enums\BattingPos::getDescription($games->home_batter_7_pos)}}</td>
-                                </tr>
-                                <tr>
-                                    <th width="">{{$games->home_batter_8_name}}</th>
-                                    <td width=""> • {{\BayesBall\Enums\BattingPos::getDescription($games->home_batter_8_pos)}}</td>
-                                </tr>
-                                <tr>
-                                    <th width="">{{$games->home_batter_9_name}}</th>
-                                    <td width=""> • {{\BayesBall\Enums\BattingPos::getDescription($games->home_batter_9_pos)}}</td>
-                                </tr>
+
+
+
+                                @for($count=1;$count<10;$count++)
+
+                                    @php
+                                       $fullName ='full_name_'.$count;
+                                       $pos='homeBattingPos_'.$count;
+                                       $R='R_'.$count;
+                                        $H='H_'.$count;
+                                        $RBI='RBI_'.$count;
+                                        $BA='BA_'.$count;
+
+
+
+
+                                    @endphp
+                                    <tr>
+                                        <th width="">{{$homeBatStats->$fullName}}</th>
+
+                                        {{--<td width=""> • {{\BayesBall\Enums\BattingPos::getDescription($games->home_batter_1_pos)}}</td>--}}
+                                        <th width="50%"> • {{\BayesBall\Enums\BattingPos::getDescription($homeBatStats->$pos)}}</th>
+                                            <td width="">  {{$homeBatStats->$R}}</td>
+                                            <td width="">  {{$homeBatStats->$H}}</td>
+                                            <td width="">  {{$homeBatStats->$RBI}}</td>
+                                            <td width="">  {{$homeBatStats->$BA}}</td>
+
+                                    </tr>
+                                @endfor
+
+                                {{--<tr>--}}
+
+                                    {{--<th width="">{{$games->home_batter_1_name}}</th>--}}
+                                    {{--<th width="">{{$homeBatStats->full_name_1}}</th>--}}
+
+                                    {{--<td width=""> • {{\BayesBall\Enums\BattingPos::getDescription($games->home_batter_1_pos)}}</td>--}}
+                                    {{--<th width=""> • {{\BayesBall\Enums\BattingPos::getDescription($homeBatStats->homeBattingPos_1)}}</th>--}}
+                                    {{--<td width=""> • {{$homeBatStats->R_1}}</td>--}}
+
+
+                                {{--</tr>--}}
+                                {{--<tr>--}}
+                                    {{--<th width="">{{$games->home_batter_2_name}}</th>--}}
+                                    {{--<th width="">{{$homeBatStats->full_name_2}}</th>--}}
+
+                                    {{--<td width=""> • {{\BayesBall\Enums\BattingPos::getDescription($games->home_batter_2_pos)}}</td>--}}
+                                    {{--<th width=""> • {{\BayesBall\Enums\BattingPos::getDescription($homeBatStats->homeBattingPos_2)}}</th>--}}
+                                    {{--<td width=""> • {{$homeBatStats->R_2}}</td>--}}
+
+
+                                {{--</tr>--}}
+                                {{--<tr>--}}
+                                    {{--<th width="">{{$games->home_batter_3_name}}</th>--}}
+                                    {{--<th width="">{{$homeBatStats->full_name_3}}</th>--}}
+
+                                    {{--<td width="">• {{\BayesBall\Enums\BattingPos::getDescription($games->home_batter_3_pos)}}</td>--}}
+                                    {{--<th width=""> • {{\BayesBall\Enums\BattingPos::getDescription($homeBatStats->homeBattingPos_3)}}</th>--}}
+                                    {{--<td width=""> • {{$homeBatStats->R_3}}</td>--}}
+
+
+                                {{--</tr>--}}
+                                {{--<tr>--}}
+                                    {{--<th width="">{{$games->home_batter_4_name}}</th>--}}
+                                    {{--<th width="">{{$homeBatStats->full_name_4}}</th>--}}
+
+                                    {{--<td width=""> • {{\BayesBall\Enums\BattingPos::getDescription($games->home_batter_4_pos)}}</td>--}}
+                                    {{--<th width=""> • {{\BayesBall\Enums\BattingPos::getDescription($homeBatStats->homeBattingPos_4)}}</th>--}}
+                                    {{--<td width=""> • {{$homeBatStats->R_4}}</td>--}}
+
+
+                                {{--</tr>--}}
+                                {{--<tr>--}}
+                                    {{--<th width="">{{$games->home_batter_5_name}}</th>--}}
+                                    {{--<th width="">{{$homeBatStats->full_name_5}}</th>--}}
+
+                                    {{--<td width=""> • {{\BayesBall\Enums\BattingPos::getDescription($games->home_batter_5_pos)}}</td>--}}
+                                    {{--<th width=""> • {{\BayesBall\Enums\BattingPos::getDescription($homeBatStats->homeBattingPos_5)}}</th>--}}
+                                    {{--<td width=""> • {{$homeBatStats->R_5}}</td>--}}
+
+
+                                {{--</tr>--}}
+                                {{--<tr>--}}
+                                    {{--<th width="">{{$games->home_batter_6_name}}</th>--}}
+                                    {{--<th width="">{{$homeBatStats->full_name_6}}</th>--}}
+
+                                    {{--<td width=""> • {{\BayesBall\Enums\BattingPos::getDescription($games->home_batter_6_pos)}}</td>--}}
+                                    {{--<th width=""> • {{\BayesBall\Enums\BattingPos::getDescription($homeBatStats->homeBattingPos_6)}}</th>--}}
+                                    {{--<td width=""> • {{$homeBatStats->R_6}}</td>--}}
+
+
+                                {{--</tr>--}}
+                                {{--<tr>--}}
+                                    {{--<th width="">{{$games->home_batter_7_name}}</th>--}}
+                                    {{--<th width="">{{$homeBatStats->full_name_7}}</th>--}}
+
+                                    {{--<td width=""> • {{\BayesBall\Enums\BattingPos::getDescription($games->home_batter_7_pos)}}</td>--}}
+                                    {{--<th width=""> • {{\BayesBall\Enums\BattingPos::getDescription($homeBatStats->homeBattingPos_7)}}</th>--}}
+                                    {{--<td width=""> • {{$homeBatStats->R_7}}</td>--}}
+
+
+                                {{--</tr>--}}
+                                {{--<tr>--}}
+                                    {{--<th width="">{{$games->home_batter_8_name}}</th>--}}
+                                    {{--<th width="">{{$homeBatStats->full_name_8}}</th>--}}
+
+                                    {{--<td width=""> • {{\BayesBall\Enums\BattingPos::getDescription($games->home_batter_8_pos)}}</td>--}}
+                                    {{--<th width=""> • {{\BayesBall\Enums\BattingPos::getDescription($homeBatStats->homeBattingPos_8)}}</th>--}}
+                                    {{--<td width=""> • {{$homeBatStats->R_8}}</td>--}}
+
+
+                                {{--</tr>--}}
+                                {{--<tr>--}}
+                                    {{--<th width="">{{$games->home_batter_9_name}}</th>--}}
+                                    {{--<th width="">{{$homeBatStats->full_name_9}}</th>--}}
+
+                                    {{--<td width=""> • {{\BayesBall\Enums\BattingPos::getDescription($games->home_batter_9_pos)}}</td>--}}
+                                    {{--<th width=""> • {{\BayesBall\Enums\BattingPos::getDescription($homeBatStats->homeBattingPos_9)}}</th>--}}
+                                    {{--<td width=""> • {{$homeBatStats->R_9}}</td>--}}
+
+
+                                {{--</tr>--}}
 
                             </table>
                         </div>
@@ -269,6 +406,28 @@
             <h4 >Stadium: {{$games->park}}</h4>
             <h4 >Duration: {{$games->game_minutes}} minutes</h4>
         </div>
+@php
+//dd($homeBatStats)
+@endphp
+    </div>
+
+    <div>
+
+
+        @php
+            //$array = json_decode( $homeBatStats, true );
+            //foreach ($homeBatStats as $item){
+                 //echo $item;
+            //}
+
+                //dd($visitBatStats);
+                //dd($homeBatStats);
+
+                //$key = array_search($home->full_name, $json);
+                //echo $key;
+        @endphp
+
+
     </div>
 @endif
 

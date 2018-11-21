@@ -5,6 +5,8 @@ namespace BayesBall\Http\Controllers;
 use BayesBall\FavoriteGame;
 use Illuminate\Http\Request;
 use BayesBall\Game;
+use Illuminate\Support\Facades\DB;
+
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
 use JavaScript;
@@ -155,8 +157,43 @@ class GamesController extends Controller
         //
         $games= Game::find($id);
 
+//        if(count($games>0)) {
+//            for ($games as $game)
+//        }
 
-            return view('pages.gameDetails')->with('games',$games);
+        $homeBatStats = DB::table('BattingPos')
+            ->select('*')
+            ->where([
+                ['team', '=', $games->home],
+                ['game_date_9', '=', $games->game_date],
+            ])
+            ->first();
+
+        $visitBatStats= DB::table('BattingPos')
+            ->select('*')
+            ->where([
+                ['team', '=', $games->visitor],
+                ['game_date_9', '=', $games->game_date],
+            ])
+            ->first();
+
+
+//        $homeBatStats =DB::table('playerSTDBatting')
+//            ->select('full_name','R','H','2B','RBI')
+//            ->where('playerSTDBatting.full_name','=',$games->home_batter_1_name,'AND','playerSTDBatting.team','=',$games->home)
+//            ->orWhere('playerSTDBatting.full_name','=',$games->home_batter_2_name,'AND','playerSTDBatting.team','=',$games->home)
+//            ->orWhere('playerSTDBatting.full_name','=',$games->home_batter_3_name,'AND','playerSTDBatting.team','=',$games->home)
+//            ->orWhere('playerSTDBatting.full_name','=',$games->home_batter_4_name,'AND','playerSTDBatting.team','=',$games->home)
+//            ->orWhere('playerSTDBatting.full_name','=',$games->home_batter_5_name,'AND','playerSTDBatting.team','=',$games->home)
+//            ->orWhere('playerSTDBatting.full_name','=',$games->home_batter_6_name,'AND','playerSTDBatting.team','=',$games->home)
+//            ->orWhere('playerSTDBatting.full_name','=',$games->home_batter_7_name,'AND','playerSTDBatting.team','=',$games->home)
+//            ->orWhere('playerSTDBatting.full_name','=',$games->home_batter_8_name,'AND','playerSTDBatting.team','=',$games->home)
+//            ->orWhere('playerSTDBatting.full_name','=',$games->home_batter_9_name,'AND','playerSTDBatting.team','=',$games->home)
+//
+//            ->get();
+
+
+            return view('pages.gameDetails')->with('games',$games)->with('homeBatStats',$homeBatStats)->with('visitBatStats',$visitBatStats);
     }
 
     /**
