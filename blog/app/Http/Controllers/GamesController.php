@@ -259,7 +259,7 @@ class GamesController extends Controller
         //echo $process->getOutput();
 
 
-        echo "away team 1 is ".$team1." home team2 is $team2";
+       // echo "away team 1 is ".$team1." home team2 is $team2";
 //        $command = escapeshellcmd("python $path $team1 $team2");
 //        $output = shell_exec($command);
 //        echo 'py path is '.$path;
