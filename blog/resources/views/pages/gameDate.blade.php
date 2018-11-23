@@ -83,7 +83,9 @@
             <div class="tabs tabs-style-iconfall">
                 <nav>
                     <ul>
-                        <li><a href="#section-iconfall-1" class="icon icon-home"><span>{{$dates[0]->game_date}}</span></a></li>
+                        <li><a href="#section-iconfall-1" class="icon icon-home"><span>
+                                    {{$specifiedDate}}
+                                </span></a></li>
                         <li><a href="#section-iconfall-2" class="icon icon-coffee"><span>Today's Game</span></a></li>
 
                     </ul>
