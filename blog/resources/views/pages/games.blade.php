@@ -160,6 +160,7 @@
                                             <button class="grebutton" id="predictButtonid-{{$game->id}}"> predict</button>
                                         </div>
                                         {{--<p>  {{$userId}} {{$userEmail}}</p>--}}
+                                        <input type="hidden" class="gameDate" id="gameDate-{{$game->game_date}}" value="{{$game->game_date}}"/>
                                         <input type="hidden" class="gameId"  id="gameId-{{$game->id}}"value="{{$game->id}}"/>
                                         <input type="hidden" class="visitor" id="visitor-{{$game->id}}" value="{{$game->visitor}}">
                                         <input type="hidden" class="home" id="home-{{$game->id}}" value="{{$game->home}}">
@@ -335,12 +336,14 @@
             });
 
 
+
             $(".predict").click(function() {
                 console.log("predict click");
+                gameDate=$(this).nextAll(".gameDate").val();
                 gameIdData=$(this).nextAll(".gameId").val();
                 gameHome=$(this).nextAll(".home").val();
                 gameVisitor=$(this).nextAll(".visitor").val();
-                console.log("game Id is " + gameIdData +"game home is " + gameHome+" gameVisitor is " + gameVisitor);
+                console.log("game Id is " + gameIdData +"game home is " + gameHome+" gameVisitor is " + gameVisitor+" gameDate is "+gameDate);
 
                 if(!$.active){
                     //By making sure $.active is zero

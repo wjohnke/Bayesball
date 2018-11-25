@@ -232,7 +232,7 @@ class GamesController extends Controller
     public function predict(){
         $team2 = empty($_GET['home_team']) ? "" : $_GET['home_team'];
         $team1 = empty($_GET['away_team']) ? "" : $_GET['away_team'];
-
+        //$date
 
 //        $command = escapeshellcmd("python /../../../python/sklearnBayesball.py $team1 $team2");
 //        $output = shell_exec($command);
@@ -249,7 +249,9 @@ class GamesController extends Controller
 //            echo "$path \n";
 //        }
 
-        $process = new Process("python $path $team1 $team2 ");
+        $process = new Process("python $path $team1 $team2" );
+
+        //$process = new Process("python $path $team1 $team2 '1' $date" );
         //$process = new Process("python $testpath ");
 
         $process->run();
