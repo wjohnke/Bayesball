@@ -350,7 +350,7 @@
                     $.ajax({
                         type: 'GET',
                         url: '{{route('predict')}}',
-                        data: {'home_team':gameHome,'away_team':gameVisitor},
+                        data: {'home_team':gameHome,'away_team':gameVisitor,'game_date':gameDate},
                         success: function (data) {
 
                             //do when ajax success
