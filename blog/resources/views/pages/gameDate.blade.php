@@ -399,6 +399,8 @@
                     },
                     error: function(){
                         alert("Nope");
+                        $(".spinner").hide();
+
                     }
                 });
 
