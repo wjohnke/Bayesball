@@ -122,7 +122,7 @@
         left: 50%;
         position: fixed;
         text-align: center;
-
+        z-index: 1000;
         -webkit-animation: sk-rotate 2.0s infinite linear;
         animation: sk-rotate 2.0s infinite linear;
     }
@@ -133,7 +133,7 @@
         display: inline-block;
         position: absolute;
         top: 0;
-        background-color: #333;
+        background-color: #33FFE0;
         border-radius: 100%;
 
         -webkit-animation: sk-bounce 2.0s infinite ease-in-out;
