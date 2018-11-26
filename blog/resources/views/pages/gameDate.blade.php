@@ -22,13 +22,7 @@
 
         }
 
-        img {
-            display: block;
-            margin-left: auto;
-            margin-right: auto;
-            max-width: 100%;
-            max-height: 100%;
-        }
+
         .center {
             display: block;
             margin-left: auto;
@@ -103,7 +97,13 @@
 
                                     <div class="discontainer">
                                         <div id="visitor-{{$date->id}}">
-                                            <img src="{{URL::asset("images/teamLogos/{$date->visitor}.png")}}" height="128" alt="" />
+                                            <div style="display:none" class="gameContent" id="visitorContent-{{$date->id}}">
+                                                <img id="bg-text" class="teamImg" src="{{URL::asset("images/win.png")}}">
+
+                                                {{--<p id="bg-text"> WIN &#9989</p>--}}
+
+                                            </div>
+                                            <img src="{{URL::asset("images/teamLogos/{$date->visitor}.png")}}" class="teamImg" height="128" alt="" />
                                             <div > <h2 style="text-align: center ;font-size:2vw;">{{\BayesBall\Enums\TeamName::getDescription($date->visitor)}}</h2></div>
 
                                         </div>
@@ -114,7 +114,13 @@
                                             </p>
                                         </div>
                                         <div id="home-{{$date->id}}">
-                                            <img src="{{URL::asset("images/teamLogos/{$date->home}.png")}}" height="128"  alt="" />
+                                            <div style="display:none" class="gameContent" id="homeContent-{{$date->id}}">
+                                                <img id="bg-text" class="teamImg" src="{{URL::asset("images/win.png")}}">
+
+                                                {{--<p id="bg-text"> WIN &#9989</p>--}}
+
+                                            </div>
+                                            <img src="{{URL::asset("images/teamLogos/{$date->home}.png")}}" class="teamImg" height="128"  alt="" />
                                             <div > <h2 style="text-align: center ;font-size:2vw;">{{\BayesBall\Enums\TeamName::getDescription($date->home)}}</h2></div>
 
                                         </div >
@@ -125,16 +131,20 @@
                                         <div class="heart" id="bottomright" onclick=""></div>
 
                                         <div class="predict" align="center">
-                                            <button class="grebutton" id="predictButtonid-{{$date->id}}"> predict</button>
+                                            <button class="grebutton" id="predictButtonid-{{$date->id}}"> PREDICT</button>
                                         </div>
                                         {{--<p>  {{$userId}} {{$userEmail}}</p>--}}
                                         <input type="hidden" class="gameId"  id="gameId-{{$date->id}}"value="{{$date->id}}"/>
                                         <input type="hidden" class="visitor" id="visitor-{{$date->id}}" value="{{$date->visitor}}">
                                         <input type="hidden" class="home" id="home-{{$date->id}}" value="{{$date->home}}">
-                                        <div id="output-{{$date->id}}"> </div>
+
 
                                         <div class="chart-container" id="chart-containerId-{{$date->id}}" style="display:none">
                                             <canvas id="myChart-{{$date->id}}"></canvas>
+                                        </div>
+                                        <div style="display:none" id="output-{{$date->id}}">
+                                            <h3 id="outputP-{{$date->id}}">lala</h3>
+
                                         </div>
                                     @endif
 
@@ -201,12 +211,13 @@
                                                 <input type="hidden" class="gameId"  id="gameId-{{$date->id}}"value="{{$date->id}}"/>
                                                 <input type="hidden" class="visitor" id="visitor-{{$date->id}}" value="{{$date->visitor}}">
                                                 <input type="hidden" class="home" id="home-{{$date->id}}" value="{{$date->home}}">
-                                                <div id="output-{{$date->id}}"> </div>
 
                                                 <div class="chart-container" id="chart-containerId-{{$date->id}}" style="display:none">
                                                     <canvas id="myChart-{{$date->id}}"></canvas>
                                                 </div>
-                                            @endif
+
+
+                                    @endif
 
                                 @endif
                             @endforeach
@@ -287,6 +298,7 @@
             gameHome=$(this).nextAll(".home").val();
             gameVisitor=$(this).nextAll(".visitor").val();
             console.log("game Id is " + gameIdData +"game home is " + gameHome+" gameVisitor is " + gameVisitor);
+            $(".spinner").show();
 
             if(!$.active){
                 //By making sure $.active is zero
@@ -297,65 +309,91 @@
                     success: function (data) {
 
                         //do when ajax success
+                        $("#predictButtonid-"+gameIdData).hide();
+
                         console.log(data);
                         var predictionData = jQuery.parseJSON(data);
+                        barChartData = {
+
+                            labels:["accuracy"],
+                            datasets: [{
+                                label:["Winning Percentage"],
+                                data: [predictionData.Percentage],
+                                fill: false,
+                                backgroundColor:[
+                                    '#4cbb17',
+                                    // '#9966FF'
+
+                                ],
+                                borderColor: [
+                                    '#4cbb17',
+                                    // '#9966FF',
+
+
+
+                                ]
+                                ,
+                                borderWidth: 1
+                            }],
+
+                            // These labels appear in the legend and in the tooltips when hovering different arcs
+
+                        };
                         if(predictionData.Prediction==1){
                             console.log(predictionData.Prediction+'means team1 '+gameVisitor+' win');
-                            $("#visitor-"+gameIdData).css("background-color","#ddffb6");
-                            $("#home-"+gameIdData).css("background-color","#fa9a8b");
+                            $("#visitorContent-"+gameIdData).show();
+                            $("#homeContent-"+gameIdData).hide();
+                            $("#visitor-"+gameIdData).addClass('borderClass');
+                            $("#home-"+gameIdData).removeClass('borderClass');
+                            //barChartData.labels=[gameVisitor,gameHome];
 
                         }
                         else {
                             console.log(predictionData.Prediction+'means team1 '+gameVisitor+' lose');
-                            $("#home-"+gameIdData).css("background-color","#ddffb6");
-                            $("#visitor-"+gameIdData).css("background-color","#fa9a8b");
+                            $("#visitorContent-"+gameIdData).hide();
+                            $("#homeContent-"+gameIdData).show();
+                            $("#home-"+gameIdData).addClass('borderClass');
+                            $("#visitor-"+gameIdData).removeClass('borderClass');
+                            //barChartData.labels=[gameHome,gameVisitor];
+
 
 
                         }
                         //$("#output-"+gameIdData).html(data);
 
                         $("#chart-containerId-"+gameIdData).show();
+
+
                         var ctx = document.getElementById("myChart-"+gameIdData);
 
+                        $(".spinner").hide();
 
-                        lineChartData = {
-                            datasets: [{
-                                label:"Prediction Curve",
-                                data: [0,50,predictionData.Percentage,50,0],
-                                fill: false,
-                                borderColor: [
-                                    '#10F7E6'
-
-
-                                ]
-                            }],
-
-                            // These labels appear in the legend and in the tooltips when hovering different arcs
-                            labels: [
-                                "","half","Our Confidence","half",""
-                            ]
-                        };
-                        // new Chart(document.getElementById("chartjs-0"),
-                        //     {"type":"line",
-                        //         "data":{"labels":["January","February","March","April","May","June","July"],
-                        //             "datasets":[{"label":"My First Dataset","data":[65,59,80,81,56,55,40],"fill":false,"borderColor":"rgb(75, 192, 192)","lineTension":0.1}]},"options":{}});
-                        //
-                        var myPieChart = new Chart(ctx,{
-                            type: 'line',
-                            data: lineChartData,
+                        var myBarChart = new Chart(ctx,{
+                            type: 'horizontalBar',
+                            data:
+                            barChartData,
 
                             options: {
                                 scales: {
                                     yAxes: [{
-                                        stacked: true
+                                        barPercentage:0.4,
+                                        stacked: true,
+                                        ticks:{
+                                            beginAtZero:true
+                                        }
+                                    }],
+                                    xAxes: [{
+                                        stacked: true,
+                                        ticks:{
+                                            beginAtZero:true
+                                        }
                                     }]
                                 }
                             }
 
                         });
-
-                        //$("#predictButtonid-"+gameIdData).hide();
-
+                        document.getElementById("outputP-"+gameIdData).innerHTML ="Confidence: "+ predictionData.Percentage;
+                        $("#output-"+gameIdData).show();
 
 
                     },

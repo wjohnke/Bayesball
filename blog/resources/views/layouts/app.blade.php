@@ -133,7 +133,7 @@
         display: inline-block;
         position: absolute;
         top: 0;
-        background-color: #33FFE0;
+        background-color: #333333;
         border-radius: 100%;
 
         -webkit-animation: sk-bounce 2.0s infinite ease-in-out;
@@ -163,6 +163,52 @@
               transform: scale(1.0);
               -webkit-transform: scale(1.0);
           }
+    }
+    .borderClass{
+        /*border-color: #39DE3E;*/
+        /*border-width:10px;*/
+        /*border-style: solid;*/
+        border-bottom-style:solid;
+        border-bottom: 5px solid #4cbb17;
+        /** OR USE INLINE
+        border: 1px solid #C1E0FF;
+        **/
+    }
+
+
+    .gameBackground{
+        /*position:absolute;*/
+        z-index:0;
+        /*background:white;*/
+        display:block;
+        /*min-height:50%;*/
+        /*min-width:50%;*/
+        color:yellow;
+    }
+
+    .gameContent{
+        margin-top: -8vh;
+        margin-left: 0vw;
+        position:absolute;
+        height: auto;
+        max-width: 15%;
+        z-index:1;
+    }
+    .teamImg {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        max-width: 45%;
+        height: auto;
+    }
+    #bg-text
+    {
+        display: block;
+
+        color:lawngreen;
+        font-size:4vw;
+        transform:rotate(330deg);
+        -webkit-transform:rotate(330deg);
     }
 
     .chart-container {
