@@ -352,8 +352,9 @@
                         url: '{{route('predict')}}',
                         data: {'home_team':gameHome,'away_team':gameVisitor,'game_date':gameDate},
                         success: function (data) {
-
+                            $("#spinner").show();
                             //do when ajax success
+
                             console.log(data);
                             var predictionData = jQuery.parseJSON(data);
                             if(predictionData.Prediction==1){
@@ -373,7 +374,7 @@
 
                             $("#chart-containerId-"+gameIdData).show();
                             var ctx = document.getElementById("myChart-"+gameIdData);
-
+                            $("#spinner").hide();
 
                             lineChartData = {
                                 datasets: [{
