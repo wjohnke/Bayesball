@@ -493,8 +493,9 @@
 
                         },
                         error: function(){
-                            $(".spinner").hide();
+
                             alert("Nope");
+                            $(".spinner").hide();
 
                         }
                     });
