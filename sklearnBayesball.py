@@ -50,17 +50,22 @@ def main():
     result = None
     if(len(sys.argv)>=3):
         #The next chain of logic predicts a single game's outcome
-        team1=sys.argv[1]
-        team2=sys.argv[2]
+        #Away is first parameter, home is second parameter
+        team2=sys.argv[1]
+        team1=sys.argv[2]
         if(len(sys.argv)>=4 and sys.argv[3]=="1"):
             with_players = True
             #Get prediction including player data
             if(len(sys.argv)>=5):
                 #Try and get past game by game date, home team vs away team.
+                #Called Most Often
                 game_date = sys.argv[4]
                 m.callproc('getPlayerWithDate', (team1, team2, game_date))
                 for temp in m.stored_results():
                     result = temp.fetchall()
+                if not result:
+                    print("Invalid Game Date")
+                    sys.exit()
                 game_data = getPDPlayerWithDate(result)
             else:
                 #predicted_home_game_query = GetPlayerGameDataWithoutDateHomeTeam(team1)
@@ -107,6 +112,18 @@ def main():
     used_features = GetFeatures(with_players)
     used_features.remove('id')
     used_features.remove('Outcome')
+    #Removing team stats to weight changing player stats more heavily
+    used_features.remove('R_G')
+    used_features.remove('R')
+    used_features.remove('OBP')
+    used_features.remove('RBI')
+    used_features.remove('RA')
+    used_features.remove('ERA')
+    used_features.remove('SV')
+    used_features.remove('HA')
+    used_features.remove('ER')
+    
+    #Testing removing team based features
     
     #Do further feature selection here -> used_features.remove('___')
     #                                  -> del used_features[index]
@@ -117,8 +134,9 @@ def main():
     #del used_features[19]
     #del used_features[17]
     
-    runNaiveBayes(data, game_data, used_features)
-    runLogisticRegression(data, game_data, used_features)
+    naive = runNaiveBayes(data, game_data, used_features)
+    logR = runLogisticRegression(data, game_data, used_features)
+    print(max(naive, logR))
     #runLinearRegression(data, game_data, used_features)
     #RandomPredictor(data)
     
@@ -142,7 +160,7 @@ def runNaiveBayes(data, game_data, used_features):
                 X_train[used_features].values,
                 X_train["Outcome"]
         )
-        y_pred1 = gnb1.predict(X_test[used_features])
+        final_pred = gnb1.predict(X_test[used_features])
     
     X_train, X_test = train_test_split(data, test_size=0.33, random_state=int(time.time()))
     gnb = GaussianNB()
@@ -163,7 +181,7 @@ def runNaiveBayes(data, game_data, used_features):
     #          total_correct,
     #          percentage_correct)
     #)
-          
+    '''
     if(game_data is not None):
         #print(y_pred1[0])    
         amount_correct = int(percentage_correct)
@@ -176,9 +194,11 @@ def runNaiveBayes(data, game_data, used_features):
         choice = random.randint(0,100)
         final_pred = ("1" if probability_array[choice] else "0")
         #print("Final Prediction: " + final_pred)
+    '''
     
-    jsonVal = {'Prediction':final_pred, 'Percentage': percentage_correct}
-    print(json.dumps(jsonVal))
+    jsonVal = {'Percentage': percentage_correct,'Prediction':str(final_pred[0])}
+    #print(json.dumps(jsonVal))
+    return(json.dumps(jsonVal))
     
     
 def runLogisticRegression(data, game_data, used_features):
@@ -196,7 +216,7 @@ def runLogisticRegression(data, game_data, used_features):
                 X_train[used_features].values,
                 X_train["Outcome"]
         )
-        y_pred1 = logR1.predict(X_test[used_features])
+        final_pred = logR1.predict(X_test[used_features])
     
     #Solver = Limited Memory BFGS - optimizes problem of mismatched # of features in Hessian matrix
     logR = LogisticRegression(max_iter=15000, random_state=0, solver='lbfgs',multi_class="ovr")
@@ -219,6 +239,7 @@ def runLogisticRegression(data, game_data, used_features):
               #total_correct,
               #percentage_correct)
     #)
+    '''
     if(game_data is not None):
         #print(y_pred1[0])    
         amount_correct = int(percentage_correct)
@@ -231,9 +252,11 @@ def runLogisticRegression(data, game_data, used_features):
         choice = random.randint(0,99)
         final_pred = ("1" if probability_array[choice] else "0")
         #print("Final Prediction: " + final_pred)
+    '''
     
-    jsonVal = {'Prediction':final_pred, 'Percentage': percentage_correct}
-    print(json.dumps(jsonVal))
+    jsonVal = {'Percentage': percentage_correct,'Prediction':str(final_pred[0])}
+    #print(json.dumps(jsonVal))
+    return(json.dumps(jsonVal))
     #return percentage_correct -> Use for testing features
     
 def optimizeFeatures(used_features):
