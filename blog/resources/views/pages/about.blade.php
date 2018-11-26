@@ -77,26 +77,17 @@
 		<div class="about-bottom">
 			<!-- container-wrap -->
 			<div class="container-wrap">
-				<h3>Your Guarantees</h3>
+				<h3>NO Guarantees</h3>
 				<div class="about-bottom-grids">
-					<div class="col-md-6 about-bottom-left">
-						<h4>Morbi convallis urna sit amet feugiat</h4>
-						<p>Vivamus sit amet molestie orci. Nullam porttitor porta lobortis. Mauris semper feugiat varius. Mauris nec ligula 
-							diam. Cras ullamcorper lorem eu sapien viverra cursus. Pellentesque commodo libero eget malesuada blandit. 
-							<span>Integer at imperdiet orci. Donec laoreet dignissim ex, vitae hendrerit nulla. Praesent efficitur ex vel tempus 
-							blandit. Nunc sed purus ac sapien cursus eleifend vitae id ipsum. Mauris nec vehicula est. </span>
-							Nullam ac odio massa nullam et condimentum magna, eget congue dui.Sed sit amet laoreet libero. Duis faucibus 
-							felis et dolor ultrices pulvinar eu at orci.
+					<div  class="col-md-6 about-bottom-left">
+						<h4>Use this site at your own risk</h4>
+						<p>We are not responsible for any monetary or other losses related to the use of this site.
+							This includes losses related to the use of this site to aid in gambling.
 						</p>
 					</div>
 					<div class="col-md-6 about-bottom-left about-bottom-right">
-						<h4>Morbi convallis urna sit amet feugiat</h4>
-						<p>Vivamus sit amet molestie orci. Nullam porttitor porta lobortis. Mauris semper feugiat varius. Mauris nec ligula 
-							diam. Cras ullamcorper lorem eu sapien viverra cursus. Pellentesque commodo libero eget malesuada blandit. 
-							<span>Integer at imperdiet orci. Donec laoreet dignissim ex, vitae hendrerit nulla. Praesent efficitur ex vel tempus 
-							blandit. Nunc sed purus ac sapien cursus eleifend vitae id ipsum. Mauris nec vehicula est. </span>
-							Nullam ac odio massa nullam et condimentum magna, eget congue dui.Sed sit amet laoreet libero. Duis faucibus 
-							felis et dolor ultrices pulvinar eu at orci.
+						<h4>Enjoy using this Website</h4>
+						<p>
 						</p>
 					</div>
 					<div class="clearfix"> </div>
