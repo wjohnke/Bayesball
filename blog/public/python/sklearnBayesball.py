@@ -194,9 +194,12 @@ def runNaiveBayes(data, game_data, used_features):
         #choice = random.randint(0,100)
         #final_pred = ("1" if probability_array[choice] else "0")
         #print("Final Prediction: " + final_pred)
+    final_val = "1"
+    if(final_pred[0]==1):
+        final_val="0"
     
     
-    jsonVal = {'Percentage': percentage_correct,'Prediction':str(final_pred[0])}
+    jsonVal = {'Percentage': percentage_correct,'Prediction':final_val}
     #print(json.dumps(jsonVal))
     return(json.dumps(jsonVal))
     
@@ -253,8 +256,11 @@ def runLogisticRegression(data, game_data, used_features):
     #    final_pred = ("1" if probability_array[choice] else "0")
         #print("Final Prediction: " + final_pred)
     
+    final_val = "1"
+    if(final_pred[0]==1):
+        final_val="0"
     
-    jsonVal = {'Percentage': percentage_correct,'Prediction':str(final_pred[0])}
+    jsonVal = {'Percentage': percentage_correct,'Prediction':final_val}
     #print(json.dumps(jsonVal))
     return(json.dumps(jsonVal))
     #return percentage_correct -> Use for testing features
