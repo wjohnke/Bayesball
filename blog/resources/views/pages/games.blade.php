@@ -108,6 +108,7 @@
 
                     </ul>
                 </nav>
+                {{--all games--}}
                 <div class="content-wrap">
                     <section id="section-iconfall-1">
                         @if(count($games)>0)

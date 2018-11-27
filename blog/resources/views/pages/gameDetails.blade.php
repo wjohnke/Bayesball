@@ -61,7 +61,7 @@
         <h3 align="left">{{$games->game_date}} {{$games->day}}</h3>
         <div id="container">
         <div id="left">
-            <img src="{{URL::asset("images/teamLogos/{$games->visitor}.png")}}" height="128" alt="" />
+            <img class="teamImg" src="{{URL::asset("images/teamLogos/{$games->visitor}.png")}}" height="128" alt="" />
             <div > <h2 style="text-align: center">{{BayesBall\Enums\TeamName::getDescription($games->visitor)}}</h2></div>
         </div>
             <div id="center">
@@ -73,7 +73,7 @@
                 </p>
             </div>
         <div id="right">
-                <img src="{{URL::asset("images/teamLogos/{$games->home}.png")}}" height="128"  alt="" />
+                <img class="teamImg"src="{{URL::asset("images/teamLogos/{$games->home}.png")}}" height="128"  alt="" />
             <div>
               <h2 style="text-align: center">{{BayesBall\Enums\TeamName::getDescription($games->home)}}</h2>
             </div>
