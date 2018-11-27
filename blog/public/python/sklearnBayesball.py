@@ -501,7 +501,7 @@ def GetFeatures(with_players):
 
 def getPDModel(result, with_players):
     #All encompassing pandas dataframe. Called regardless
-    with open("yearBreakdown.csv","w") as fp:
+    with open("yearBreakdown.csv",mode="w") as fp:
         myFile = csv.writer(fp, lineterminator='\n')
         myFile.writerow(GetFeatures(with_players))
         myFile.writerows(result)
