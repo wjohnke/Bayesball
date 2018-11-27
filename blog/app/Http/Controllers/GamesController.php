@@ -239,7 +239,7 @@ class GamesController extends Controller
 
         $path= public_path().'/python/sklearnBayesball.py';
         $testpath= public_path().'/python/test.py';
-        $one ="1";
+        $one ='1';
         //echo "Path is $testpath \n";
 
 //        if(!File::exists($path)) {
