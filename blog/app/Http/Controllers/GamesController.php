@@ -239,6 +239,7 @@ class GamesController extends Controller
 
         $path= public_path().'/python/sklearnBayesball.py';
         $testpath= public_path().'/python/test.py';
+        $one ="1";
         //echo "Path is $testpath \n";
 
 //        if(!File::exists($path)) {
@@ -251,7 +252,7 @@ class GamesController extends Controller
 
         //$process = new Process("python $path $team1 $team2" );
 
-        $process = new Process("python $path $team1 $team2 '1' $date" );
+        $process = new Process("python $path $team1 $team2 $one $date" );
         //$process = new Process("python $testpath ");
 
         $process->run();
