@@ -1,4 +1,6 @@
-@extends('layouts.test')
+{{--@extends('layouts.test')--}}
+
+@extends('layouts.app')
 
 @section('content')
     <style>
