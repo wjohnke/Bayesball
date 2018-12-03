@@ -7,15 +7,21 @@ import pandas as pd
 import numpy as np
 import time
 from sklearn.model_selection import train_test_split
+#Naive Bayes
 from sklearn.naive_bayes import GaussianNB
+#Support Vector Machine
+from sklearn import svm
 #import matplotlib.pyplot as plt
 #Linear Regression
 from sklearn.linear_model import LinearRegression
 from sklearn.linear_model import LogisticRegression
+from sklearn.tree import DecisionTreeClassifier as DTC
+#import tensorflow as tf
+#from tensorflow.keras import layers
 import random
 import sys
 import json
-import os
+
 
 def main():
     try:
@@ -51,8 +57,8 @@ def main():
     if(len(sys.argv)>=3):
         #The next chain of logic predicts a single game's outcome
         #Away is first parameter, home is second parameter
-        team2=sys.argv[1]
-        team1=sys.argv[2]
+        home_team=sys.argv[2]
+        away_team=sys.argv[1]
         if(len(sys.argv)>=4 and sys.argv[3]=="1"):
             with_players = True
             #Get prediction including player data
@@ -60,7 +66,7 @@ def main():
                 #Try and get past game by game date, home team vs away team.
                 #Called Most Often
                 game_date = sys.argv[4]
-                m.callproc('getPlayerWithDate', (team1, team2, game_date))
+                m.callproc('getPlayerWithDate', (home_team, away_team, game_date))
                 for temp in m.stored_results():
                     result = temp.fetchall()
                 if not result:
@@ -72,10 +78,10 @@ def main():
                 #predicted_opponent_game_query = GetPlayerGameDataWithoutDateOpponentTeam(team2)
                 
                # m.execute(predicted_home_game_query)
-                m.callproc('getPlayerHomeTeam', (team1,))
+                m.callproc('getPlayerHomeTeam', (home_team,))
                 for temp in m.stored_results():
                     predicted_home_game_dataset = temp.fetchall()
-                m.callproc('getPlayerOpponentTeam',(team2,))
+                m.callproc('getPlayerOpponentTeam',(away_team,))
                 for temp in m.stored_results():
                     predicted_opponent_game_dataset = temp.fetchall()
                 game_data = getPDPlayerWithoutDate(predicted_home_game_dataset,predicted_opponent_game_dataset)
@@ -85,11 +91,11 @@ def main():
             #predicted_opponent_game_query = GetGameDataOpponentTeam(team2)
             
             #m.execute(predicted_home_game_query)
-            m.callproc('getGameHomeTeam', (team1,))
+            m.callproc('getGameHomeTeam', (home_team,))
             for temp in m.stored_results():
                 predicted_home_game_dataset = temp.fetchall()
             #m.execute(predicted_opponent_game_query)
-            m.callproc('getGameOpponentTeam', (team2,))
+            m.callproc('getGameOpponentTeam', (away_team,))
             for temp in m.stored_results():
                 predicted_opponent_game_dataset = temp.fetchall()
             game_data = getPDGame(predicted_home_game_dataset, predicted_opponent_game_dataset)
@@ -112,55 +118,47 @@ def main():
     used_features = GetFeatures(with_players)
     used_features.remove('id')
     used_features.remove('Outcome')
-    #Removing team stats to weight changing player stats more heavily
-    used_features.remove('R_G')
-    used_features.remove('R')
-    used_features.remove('OBP')
-    used_features.remove('RBI')
-    used_features.remove('RA')
-    used_features.remove('ERA')
-    used_features.remove('SV')
-    used_features.remove('HA')
-    used_features.remove('ER')
     
     #Testing removing team based features
     
     #Do further feature selection here -> used_features.remove('___')
     #                                  -> del used_features[index]
     #****************************************************************
-    #del used_features[13]
-    #del used_features[18]
-    #del used_features[12]
-    #del used_features[19]
-    #del used_features[17]
+    
+    #Removing team stats to weight changing player stats more heavily
+    #used_features.remove('R_G')
+    #used_features.remove('R')
+    #used_features.remove('OBP')
+    #used_features.remove('RBI')
+    #used_features.remove('RA')
+    #used_features.remove('ERA')
+    #used_features.remove('SV')
+    #used_features.remove('HA')
+    #used_features.remove('ER')
     
     naive = runNaiveBayes(data, game_data, used_features)
     logR = runLogisticRegression(data, game_data, used_features)
-    print(max(naive, logR))
-    #runLinearRegression(data, game_data, used_features)
-    #RandomPredictor(data)
+    svc = runSVM(data,game_data,used_features)
+    dec = runDecisionTree(data, game_data, used_features)
+    results =[]
+    results.append(naive)
+    results.append(logR)
+    results.append(svc)
+    results.append(dec)
+    maximum = max(json.dumps(naive),json.dumps(logR),json.dumps(svc),json.dumps(dec))
+    results.append(eval(maximum))
+    print(json.dumps(results))
     
-    #optimizeFeatures(used_features)
+    #runNeuralNetwork(data, game_data, used_features)
+    
 
 def runNaiveBayes(data, game_data, used_features):
     #print("Running Naive Bayes on Dataset<br>")
-    final_pred = "0"
     
     #Establish what features are to be used, based off of player inclusion
     #Features either include players or they don't
     #No in between. Base Model to make prediction must have the exact
     #same features as prediction data model
-    if(game_data is not None):    
-        X_train = data
-        X_test = game_data
-        
-        gnb1 = GaussianNB()
-        
-        gnb1.fit(
-                X_train[used_features].values,
-                X_train["Outcome"]
-        )
-        final_pred = gnb1.predict(X_test[used_features])
     
     X_train, X_test = train_test_split(data, test_size=0.33, random_state=int(time.time()))
     gnb = GaussianNB()
@@ -170,59 +168,23 @@ def runNaiveBayes(data, game_data, used_features):
     )
     y_pred = gnb.predict(X_test[used_features])
     
+    game_prediction=[]
+    if(game_data is not None):
+        game_prediction = gnb.predict(game_data[used_features])
+    
     total_tested = X_test.shape[0]
     total_correct = (X_test["Outcome"] == y_pred).sum()
-    percentage_correct = 100*float((float(total_correct)/float(total_tested) ))
-
-    # Print results
-    #print("Total Predicted: {}<br>Predicted Correctly: {}<br>Percentage Correct: {:05.2f}%<br>"
-    #     .format(
-    #          total_tested,
-    #          total_correct,
-    #          percentage_correct)
-    #)
+    accuracy = 100*float((float(total_correct)/float(total_tested) )) 
     
-    #if(game_data is not None):
-        #print(y_pred1[0])    
-        #amount_correct = int(percentage_correct)
-        #probability_array = [100]    
-        #for i in range(0,amount_correct):
-        #    probability_array.append(y_pred1[0])
-        #for i in range(amount_correct+1, 100):
-        #    probability_array.append(not y_pred1[0])
-        #random.shuffle(probability_array)
-        #choice = random.randint(0,100)
-        #final_pred = ("1" if probability_array[choice] else "0")
-        #print("Final Prediction: " + final_pred)
-    final_val = "1"
-    if(final_pred[0]==1):
-        final_val="0"
-    
-    
-    jsonVal = {'Percentage': percentage_correct,'Prediction':final_val}
+    jsonVal = {'Percentage': accuracy,'Prediction':str(int(not game_prediction[0]))}
     #print(json.dumps(jsonVal))
-    return(json.dumps(jsonVal))
+    return(jsonVal)
     
     
 def runLogisticRegression(data, game_data, used_features):
-    #print("Running Logistic Regression on Dataset<br>")
-
-    final_pred="0"
-
-    
-    if(game_data is not None):    
-        X_train = data
-        X_test = game_data
-        logR1 = LogisticRegression(max_iter=15000, random_state=0, solver='lbfgs',multi_class="ovr")
-        
-        logR1.fit(
-                X_train[used_features].values,
-                X_train["Outcome"]
-        )
-        final_pred = logR1.predict(X_test[used_features])
-    
+    #print("Running Logistic Regression on Dataset<br>")  
     #Solver = Limited Memory BFGS - optimizes problem of mismatched # of features in Hessian matrix
-    logR = LogisticRegression(max_iter=15000, random_state=0, solver='lbfgs',multi_class="ovr")
+    logR = LogisticRegression(max_iter=15000, random_state=0, solver='lbfgs',multi_class="ovr",class_weight={1:1.082, 0:0.918})
     
     #Edit LogisticRegression() to have class weights attached to features
     X_train, X_test = train_test_split(data, test_size=0.33, random_state=int(time.time()))
@@ -230,40 +192,87 @@ def runLogisticRegression(data, game_data, used_features):
     logR.fit(X_train[used_features].values, X_train["Outcome"])
     #print(logR.coef_[0])
     prediction = logR.predict(X_test[used_features])
+    game_prediction = []
+    if(game_data is not None):
+        game_prediction = logR.predict(game_data[used_features])
     
     total_tested = prediction.size
     total_correct = (X_test["Outcome"] == prediction).sum()
-    percentage_correct = 100*float((float(total_correct)/float(total_tested) ))
+    accuracy = 100*float((float(total_correct)/float(total_tested) ))
 
-    # Print resultss
-    #print("Total Predicted: {}<br>Predicted Correctly: {}<br>Percentage Correct: {:05.2f}%<br>"
-          #.format(
-              #total_tested,
-              #total_correct,
-              #percentage_correct)
-    #)
-    
-    #if(game_data is not None):
-        #print(y_pred1[0])    
-    #    amount_correct = int(percentage_correct)
-    #    probability_array = [100]    
-    #    for i in range(0,amount_correct):
-    #        probability_array.append(y_pred1[0])
-    #    for i in range(amount_correct+1, 100):
-    #        probability_array.append(not y_pred1[0])
-    #    random.shuffle(probability_array)
-    #    choice = random.randint(0,99)
-    #    final_pred = ("1" if probability_array[choice] else "0")
-        #print("Final Prediction: " + final_pred)
-    
-    final_val = "1"
-    if(final_pred[0]==1):
-        final_val="0"
-    
-    jsonVal = {'Percentage': percentage_correct,'Prediction':final_val}
+    jsonVal = {'Percentage': accuracy, 'Prediction': str(int(not game_prediction[0]))}
     #print(json.dumps(jsonVal))
-    return(json.dumps(jsonVal))
-    #return percentage_correct -> Use for testing features
+    return(jsonVal)
+    
+    
+def runSVM(data, game_data, used_features):
+    vector = svm.SVC(class_weight={1:1.082, 0:0.918}, gamma='scale', kernel='rbf', max_iter = 15000)
+    X_train, X_test = train_test_split(data, test_size=0.33, random_state=int(time.time()))
+    
+    vector.fit(
+            X_train[used_features].values,
+            X_train['Outcome']
+            )
+    prediction = vector.predict(X_test[used_features])
+    
+    game_prediction=[]
+    if(game_data is not None):
+        game_prediction = vector.predict(game_data[used_features])
+    
+    total_tested = prediction.size
+    total_correct = (X_test["Outcome"] == prediction).sum()
+    accuracy = 100*float((float(total_correct)/float(total_tested) ))
+    
+    jsonVal = {'Percentage': accuracy, 'Prediction': str(game_prediction[0])}
+    #print(json.dumps(jsonVal))
+    return ((jsonVal))
+
+def runDecisionTree(data, game_data, used_features):
+    dec_tree = DTC(random_state=0, class_weight={1:1.082,0:0.918})
+    X_train, X_test = train_test_split(data, test_size=0.33, random_state=int(time.time()))
+    dec_tree.fit(X_train[used_features].values,
+                 X_train["Outcome"])
+
+    
+    prediction = dec_tree.predict(X_test[used_features])
+    
+    game_prediction=[]
+    if(game_data is not None):
+        game_prediction = dec_tree.predict(game_data[used_features])
+        #print(dec_tree.decision_path(game_data[used_features]))
+
+    total_tested = prediction.size
+    total_correct = (X_test["Outcome"] == prediction).sum()
+    accuracy = 100*float((float(total_correct)/float(total_tested) ))
+    
+    jsonVal = {'Percentage': accuracy, 'Prediction': str(game_prediction[0])}
+    #print((json.dumps(jsonVal)))
+    return ((jsonVal))
+
+
+#Currently Unused
+def runNeuralNetwork(data, game_data, used_features):
+    X_train, X_test = train_test_split(data, test_size=0.33, random_state=int(time.time()))
+    
+    model = tf.keras.Sequential([
+            layers.Dense(64, activation=tf.sigmoid),
+            layers.Dense(64, activation=tf.sigmoid),
+            layers.Dense(10, activation='softmax')
+            ])
+    
+    model.compile(optimizer=tf.train.GradientDescentOptimizer(0.01),
+                  loss = tf.keras.losses.binary_crossentropy,
+                  metrics=[tf.keras.metrics.binary_accuracy]
+                  )
+    model.fit(X_train[used_features].values, 
+              X_train["Outcome"].values, 
+              epochs=10, 
+              batch_size = 32 
+              #validation_data = (X_test[used_features].values, X_test["Outcome"])
+              )
+    
+    
+    
     
 def optimizeFeatures(used_features):
     max_percentage=0
@@ -501,7 +510,7 @@ def GetFeatures(with_players):
 
 def getPDModel(result, with_players):
     #All encompassing pandas dataframe. Called regardless
-    with open("yearBreakdown.csv",mode="w") as fp:
+    with open("yearBreakdown.csv","w") as fp:
         myFile = csv.writer(fp, lineterminator='\n')
         myFile.writerow(GetFeatures(with_players))
         myFile.writerows(result)
