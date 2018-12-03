@@ -386,7 +386,7 @@
                                 // These labels appear in the legend and in the tooltips when hovering different arcs
 
                             };
-                            if(predictionData[4].Prediction==0){
+                            if(predictionData[4].Prediction==1){
                                 console.log(predictionData[4].Prediction+'means team1 '+gameVisitor+' win');
                                 // $("#visitor-"+gameIdData).css("background-color","#ddffb6");
                                 // $("#home-"+gameIdData).css("background-color","#fa9a8b");
