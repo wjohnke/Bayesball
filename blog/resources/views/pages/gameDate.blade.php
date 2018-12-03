@@ -315,32 +315,39 @@
                         var predictionData = jQuery.parseJSON(data);
                         barChartData = {
 
-                            labels:["accuracy"],
+                            labels:["naive bayes","logistic regression","support vector machines","decision tree"],
                             datasets: [{
                                 label:["Winning Percentage"],
-                                data: [predictionData.Percentage],
+                                data: [predictionData[0].Percentage,predictionData[1].Percentage,predictionData[2].Percentage,
+                                    predictionData[3].Percentage],
                                 fill: false,
                                 backgroundColor:[
-                                    '#4cbb17',
-                                    // '#9966FF'
+                                    //'#4cbb17',
+                                    //'#9966FF'
+                                    "rgba(255, 99, 132, 0.2)",
+                                    "rgba(255, 159, 64, 0.2)",
+                                    "rgba(255, 205, 86, 0.2)",
+                                    "rgba(75, 192, 192, 0.2)"
 
                                 ],
                                 borderColor: [
-                                    '#4cbb17',
-                                    // '#9966FF',
-
+                                    //'#4cbb17',
+                                    //'#9966FF',
+                                    "rgba(255, 99, 132, 0.2)",
+                                    "rgba(255, 159, 64, 0.2)",
+                                    "rgba(255, 205, 86, 0.2)",
+                                    "rgba(75, 192, 192, 0.2)"
 
 
                                 ]
                                 ,
                                 borderWidth: 1
                             }],
-
                             // These labels appear in the legend and in the tooltips when hovering different arcs
 
                         };
-                        if(predictionData.Prediction==1){
-                            console.log(predictionData.Prediction+'means team1 '+gameVisitor+' win');
+                        if(predictionData[4].Prediction==0){
+                            console.log(predictionData[4].Prediction+'means team1 '+gameVisitor+' win');
                             $("#visitorContent-"+gameIdData).show();
                             $("#homeContent-"+gameIdData).hide();
                             $("#visitor-"+gameIdData).addClass('borderClass');
@@ -349,7 +356,7 @@
 
                         }
                         else {
-                            console.log(predictionData.Prediction+'means team1 '+gameVisitor+' lose');
+                            console.log(predictionData[4].Prediction+'means team1 '+gameVisitor+' lose');
                             $("#visitorContent-"+gameIdData).hide();
                             $("#homeContent-"+gameIdData).show();
                             $("#home-"+gameIdData).addClass('borderClass');
@@ -369,17 +376,19 @@
                         $(".spinner").hide();
 
                         var myBarChart = new Chart(ctx,{
-                            type: 'horizontalBar',
+                            type: 'bar',
                             data:
                             barChartData,
 
                             options: {
                                 scales: {
                                     yAxes: [{
-                                        barPercentage:0.4,
-                                        stacked: true,
+                                        barPercentage:0.9,
+                                        //stacked: true,
+                                        display:true,
                                         ticks:{
-                                            beginAtZero:true
+                                            suggestedMin: 55
+                                            //beginAtZero:true
                                         }
                                     }],
                                     xAxes: [{
@@ -392,7 +401,7 @@
                             }
 
                         });
-                        document.getElementById("outputP-"+gameIdData).innerHTML ="Confidence: "+ predictionData.Percentage;
+                        document.getElementById("outputP-"+gameIdData).innerHTML ="Confidence: "+ predictionData[4].Percentage;
                         $("#output-"+gameIdData).show();
 
 
