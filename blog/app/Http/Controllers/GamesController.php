@@ -2,11 +2,15 @@
 
 namespace BayesBall\Http\Controllers;
 
+use BayesBall\FavoriteGame;
 use Illuminate\Http\Request;
 use BayesBall\Game;
+use Illuminate\Support\Facades\DB;
+
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
 use JavaScript;
+use Illuminate\Database\Eloquent\Model;
 use Symfony\Component\Process\Process;
 use Symfony\Component\Process\Exception\ProcessFailedException;
 use Illuminate\Support\Facades\Storage;
@@ -109,6 +113,37 @@ class GamesController extends Controller
     public function store(Request $request)
     {
         //
+
+        $request->validate([
+            'userId' => 'required',
+            'gameId' => 'required',
+        ]);
+
+
+        if($request->ajax()){
+            echo "its ajax \n";
+//            $favGame = new FavoriteGame();
+//            $favGame->userId = $request->userId;
+//            $favGame->gameId= $request->gameId;
+//            $favGame->userName= $request->userName;
+
+            $favGame= FavoriteGame::firstOrCreate([
+                'userId'=>$request->userId,
+                'gameId'=>$request->gameId
+
+            ],[
+                'userName'=>$request->userName
+
+            ]);
+
+            // Retrieve flight by name, or create it if it doesn't exist...
+        echo "user id is ".$request->userId;
+        echo "game Id is ".$request->gameId." user Name is ".$request->userName;
+
+
+        }
+
+
     }
 
     /**
@@ -122,8 +157,43 @@ class GamesController extends Controller
         //
         $games= Game::find($id);
 
+//        if(count($games>0)) {
+//            for ($games as $game)
+//        }
 
-            return view('pages.gameDetails')->with('games',$games);
+        $homeBatStats = DB::table('BattingPos')
+            ->select('*')
+            ->where([
+                ['team', '=', $games->home],
+                ['game_date_9', '=', $games->game_date],
+            ])
+            ->first();
+
+        $visitBatStats= DB::table('BattingPos')
+            ->select('*')
+            ->where([
+                ['team', '=', $games->visitor],
+                ['game_date_9', '=', $games->game_date],
+            ])
+            ->first();
+
+
+//        $homeBatStats =DB::table('playerSTDBatting')
+//            ->select('full_name','R','H','2B','RBI')
+//            ->where('playerSTDBatting.full_name','=',$games->home_batter_1_name,'AND','playerSTDBatting.team','=',$games->home)
+//            ->orWhere('playerSTDBatting.full_name','=',$games->home_batter_2_name,'AND','playerSTDBatting.team','=',$games->home)
+//            ->orWhere('playerSTDBatting.full_name','=',$games->home_batter_3_name,'AND','playerSTDBatting.team','=',$games->home)
+//            ->orWhere('playerSTDBatting.full_name','=',$games->home_batter_4_name,'AND','playerSTDBatting.team','=',$games->home)
+//            ->orWhere('playerSTDBatting.full_name','=',$games->home_batter_5_name,'AND','playerSTDBatting.team','=',$games->home)
+//            ->orWhere('playerSTDBatting.full_name','=',$games->home_batter_6_name,'AND','playerSTDBatting.team','=',$games->home)
+//            ->orWhere('playerSTDBatting.full_name','=',$games->home_batter_7_name,'AND','playerSTDBatting.team','=',$games->home)
+//            ->orWhere('playerSTDBatting.full_name','=',$games->home_batter_8_name,'AND','playerSTDBatting.team','=',$games->home)
+//            ->orWhere('playerSTDBatting.full_name','=',$games->home_batter_9_name,'AND','playerSTDBatting.team','=',$games->home)
+//
+//            ->get();
+
+
+            return view('pages.gameDetails')->with('games',$games)->with('homeBatStats',$homeBatStats)->with('visitBatStats',$visitBatStats);
     }
 
     /**
@@ -162,13 +232,14 @@ class GamesController extends Controller
     public function predict(){
         $team2 = empty($_GET['home_team']) ? "" : $_GET['home_team'];
         $team1 = empty($_GET['away_team']) ? "" : $_GET['away_team'];
-
+        $date= empty($_GET['game_date']) ? "" : $_GET['game_date'];
 
 //        $command = escapeshellcmd("python /../../../python/sklearnBayesball.py $team1 $team2");
 //        $output = shell_exec($command);
 
         $path= public_path().'/python/sklearnBayesball.py';
         $testpath= public_path().'/python/test.py';
+        $one ='1';
         //echo "Path is $testpath \n";
 
 //        if(!File::exists($path)) {
@@ -179,7 +250,9 @@ class GamesController extends Controller
 //            echo "$path \n";
 //        }
 
-        $process = new Process("python $path $team1 $team2 ");
+        //$process = new Process("python $path $team1 $team2" );
+
+        $process = new Process("python $path $team1 $team2 $one $date" );
         //$process = new Process("python $testpath ");
 
         $process->run();
@@ -189,7 +262,7 @@ class GamesController extends Controller
         //echo $process->getOutput();
 
 
-
+       // echo "away team 1 is ".$team1." home team2 is $team2";
 //        $command = escapeshellcmd("python $path $team1 $team2");
 //        $output = shell_exec($command);
 //        echo 'py path is '.$path;

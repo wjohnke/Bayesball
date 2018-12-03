@@ -22,7 +22,9 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
     <!-- Styles -->
     <link href="{{ URL::asset('css/datepicker.min.css') }}" rel="stylesheet">
-    {{--<link href="{{ URL::asset('css/heart.css') }}" rel="stylesheet">--}}
+    <link href="{{ URL::asset('css/heart.css') }}" rel="stylesheet">
+    <link href="{{ URL::asset('css/button.css') }}" rel="stylesheet">
+
     {{--<link rel="stylesheet" href="{{mix('css/app.css')}}">--}}
 
     <link href="{{ URL::asset('css/app.css') }}" rel="stylesheet">
@@ -32,8 +34,7 @@
             rel="stylesheet" type="text/css" media="all" />
     <!--// bootstrap-css -->
     <!-- css -->
-    <link rel="stylesheet" href="    {{URL::asset("css/style.css")}}
-            " type="text/css" media="all" />
+    <link rel="stylesheet" href="{{URL::asset("css/style.css")}}" type="text/css" media="all" />
     <link href="{{URL::asset('css/styles.css?v=1.6')}}" rel="stylesheet">
 
     <!--// css -->
@@ -95,6 +96,13 @@
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.min.js"></script>
 
 
+    <link rel="stylesheet" type="text/css" href="{{asset('css/normalize.css')}}" />
+    <link rel="stylesheet" type="text/css" href="{{asset('css/demo.css')}}" />
+    <link rel="stylesheet" type="text/css" href="{{asset('css/tabs.css')}}" />
+    <link rel="stylesheet" type="text/css" href="{{asset('css/tabstyles.css')}}" />
+    <script src="{{asset('js/modernizr.custom.js')}}"></script>
+
+
     <script>
         $( "li a.menu1" ).click(function() {
             $( "ul.nav-sub" ).slideToggle( 300, function() {
@@ -106,6 +114,102 @@
 </head>
 
 <style>
+    .spinner {
+        margin: 100px auto;
+        width: 40px;
+        height: 40px;
+        top: 50%;
+        left: 50%;
+        position: fixed;
+        text-align: center;
+        z-index: 1000;
+        -webkit-animation: sk-rotate 2.0s infinite linear;
+        animation: sk-rotate 2.0s infinite linear;
+    }
+
+    .dot1, .dot2 {
+        width: 60%;
+        height: 60%;
+        display: inline-block;
+        position: absolute;
+        top: 0;
+        background-color: #333333;
+        border-radius: 100%;
+
+        -webkit-animation: sk-bounce 2.0s infinite ease-in-out;
+        animation: sk-bounce 2.0s infinite ease-in-out;
+    }
+
+    .dot2 {
+        top: auto;
+        bottom: 0;
+        -webkit-animation-delay: -1.0s;
+        animation-delay: -1.0s;
+    }
+
+    @-webkit-keyframes sk-rotate { 100% { -webkit-transform: rotate(360deg) }}
+    @keyframes sk-rotate { 100% { transform: rotate(360deg); -webkit-transform: rotate(360deg) }}
+
+    @-webkit-keyframes sk-bounce {
+        0%, 100% { -webkit-transform: scale(0.0) }
+        50% { -webkit-transform: scale(1.0) }
+    }
+
+    @keyframes sk-bounce {
+        0%, 100% {
+            transform: scale(0.0);
+            -webkit-transform: scale(0.0);
+        } 50% {
+              transform: scale(1.0);
+              -webkit-transform: scale(1.0);
+          }
+    }
+    .borderClass{
+        /*border-color: #39DE3E;*/
+        /*border-width:10px;*/
+        /*border-style: solid;*/
+        border-bottom-style:solid;
+        border-bottom: 5px solid #4cbb17;
+        /** OR USE INLINE
+        border: 1px solid #C1E0FF;
+        **/
+    }
+
+
+    .gameBackground{
+        /*position:absolute;*/
+        z-index:0;
+        /*background:white;*/
+        display:block;
+        /*min-height:50%;*/
+        /*min-width:50%;*/
+        color:yellow;
+    }
+
+    .gameContent{
+        margin-top: -8vh;
+        margin-left: 0vw;
+        position:absolute;
+        height: auto;
+        max-width: 15%;
+        z-index:1;
+    }
+    .teamImg {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        max-width: 45%;
+        height: auto;
+    }
+    #bg-text
+    {
+        display: block;
+
+        color:lawngreen;
+        font-size:4vw;
+        transform:rotate(330deg);
+        -webkit-transform:rotate(330deg);
+    }
 
     .chart-container {
         /*border: 1px dotted red;*/
@@ -115,45 +219,24 @@
         width: 40vw;
     }
 
-    button{
-        background:#10AAF7;
-        color:#fff;
-        border:none;
-        position:relative;
-        height:60px;
-        font-size:1.6em;
-        padding:0 2em;
-        cursor:pointer;
-        transition:800ms ease all;
-        outline:none;
-    }
-    button:hover{
-        background:#fff;
-        color:#10AAF7;
-    }
-    button:before,button:after{
-        content:'';
-        position:absolute;
-        top:0;
-        right:0;
-        height:2px;
-        width:0;
-        background: #10AAF7;
-        transition:400ms ease all;
-    }
-    button:after{
-        right:inherit;
-        top:inherit;
-        left:0;
-        bottom:0;
-    }
-    button:hover:before,button:hover:after{
-        width:100%;
-        transition:800ms ease all;
-    }
-
 </style>
 <body>
+
+@if ($errors->any())
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
+
+<div class="spinner" style="display:none">
+    <div class="dot1"></div>
+    <div class="dot2"></div>
+</div>
+
 <div class="main-content">
     <div id="app">
         <div class="navigation">
@@ -212,6 +295,7 @@
                             </a>
 
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="{{route('home')}}">Dashboard</a>
                                 <a class="dropdown-item" href="{{ route('logout') }}"
                                    onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">

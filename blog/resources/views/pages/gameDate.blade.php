@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('content')
     <style>
-        #container{
+        .discontainer{
 
 
             display: flex;                  /* establish flex container */
@@ -13,7 +13,7 @@
 
 
         }
-        #container > div {
+        .discontainer > div {
             width: 100%;
             height: 100%;
             /*border: 2px dashed red;*/
@@ -22,24 +22,20 @@
 
         }
 
-        img {
-            display: block;
-            margin-left: auto;
-            margin-right: auto;
-            max-width: 100%;
-            max-height: 100%;
-        }
-        #bottomright {
-            position: absolute;
-            bottom: 0px;
-            right: 0px;
-        }
+
         .center {
             display: block;
             margin-left: auto;
             margin-right: auto;
             width: 50%;
         }
+
+        #bottomright {
+            position: absolute;
+            bottom: 0px;
+            right: 0px;
+        }
+
     </style>
 
     <div class="footer">
@@ -77,71 +73,173 @@
     <!-- //footer -->
 
     <div  class="about-grids about-top-grids">
-        @if(count($dates)>0)
-            @foreach($dates as $date)
-                <div  class="well" style="position: relative;">
+        <section>
+            <div class="tabs tabs-style-iconfall">
+                <nav>
+                    <ul>
+                        <li><a href="#section-iconfall-1" class="icon icon-home"><span>
+                                    {{$specifiedDate}}
+                                </span></a></li>
+                        <li><a href="#section-iconfall-2" class="icon icon-coffee"><span>Today's Game</span></a></li>
+
+                    </ul>
+                </nav>
+                <div class="content-wrap">
+                    <section id="section-iconfall-1">
+                        @if(count($dates)>0)
+                            @foreach($dates as $date)
+                                <div  class="well" style="position: relative;">
 
 
-                    <h1 align="center">{{$date->game_date}}</h1>
-
-                    {{--<p  style="font-size:50px;" align="center">--}}
-
-                        {{--<a href="{{route('games.show', ['id' => $date->id])}}"   >--}}
-                            {{--<img src={{URL::asset("images/teamLogos/{$date->visitor}.png")}}--}}
-                                 {{--height="128" alt="" />--}}
-                            {{--{{$date->visitor}} vs {{$date->home}}--}}
-                            {{--<img src={{URL::asset("images/teamLogos/{$date->home}.png")}}--}}
-
-                                 {{--height="128"  alt="" />--}}
-                        {{--</a>--}}
-                    {{--</p>--}}
-
-                    <div id="container">
-                        <div id="visitor-{{$date->id}}">
-                            <img src="{{URL::asset("images/teamLogos/{$date->visitor}.png")}}" height="128" alt="" />
-                        </div>
-                        <div id="center">
-                            <p class="title" style="font-size:2vw;" align="center">
-                                <a href="{{route('games.show', ['id' => $date->id])}}"   >
+                                    <h1 align="center">{{$date->game_date}}</h1>
 
 
 
-                                    {{\BayesBall\Enums\TeamName::getDescription($date->visitor)}} vs {{\BayesBall\Enums\TeamName::getDescription($date->home)}}
-                                </a>
-                            </p>
-                        </div>
-                        <div id="home-{{$date->id}}">
-                            <img src="{{URL::asset("images/teamLogos/{$date->home}.png")}}" height="128"  alt="" />
-                        </div >
+                                    <div class="discontainer">
+                                        <div id="visitor-{{$date->id}}">
+                                            <div style="display:none" class="gameContent" id="visitorContent-{{$date->id}}">
+                                                <img id="bg-text" class="teamImg" src="{{URL::asset("images/win.png")}}">
 
-                    </div>
-                    @if(Auth::check())
+                                                {{--<p id="bg-text"> WIN &#9989</p>--}}
 
-                        <div class="heart" id="bottomright" onclick="likeTheGame()"></div>
+                                            </div>
+                                            <img src="{{URL::asset("images/teamLogos/{$date->visitor}.png")}}" class="teamImg" height="128" alt="" />
+                                            <div > <h2 style="text-align: center ;font-size:2vw;">{{\BayesBall\Enums\TeamName::getDescription($date->visitor)}}</h2></div>
 
-                        <div class="predict" align="center">
-                            <button id="predictButtonid-{{$date->id}}"> predict</button>
-                        </div>
-                        {{--<p>  {{$userId}} {{$userEmail}}</p>--}}
-                        <input type="hidden" class="gameId"  id="gameId-{{$date->id}}"value="{{$date->id}}"/>
-                        <input type="hidden" class="visitor" id="visitor-{{$date->id}}" value="{{$date->visitor}}">
-                        <input type="hidden" class="home" id="home-{{$date->id}}" value="{{$date->home}}">
-                        <div id="output-{{$date->id}}"> </div>
+                                        </div>
+                                        <div >
+                                            <p class="title" style="font-size: 5vw;" align="center">
+                                                <a href="{{route('games.show', ['id' => $date->id])}}">vs
+                                                </a>
+                                            </p>
+                                        </div>
+                                        <div id="home-{{$date->id}}">
+                                            <div style="display:none" class="gameContent" id="homeContent-{{$date->id}}">
+                                                <img id="bg-text" class="teamImg" src="{{URL::asset("images/win.png")}}">
 
-                        <div class="chart-container" id="chart-containerId-{{$date->id}}" style="display:none">
-                            <canvas id="myChart-{{$date->id}}"></canvas>
-                        </div>
-                    @endif
+                                                {{--<p id="bg-text"> WIN &#9989</p>--}}
 
-                </div>
-            @endforeach
+                                            </div>
+                                            <img src="{{URL::asset("images/teamLogos/{$date->home}.png")}}" class="teamImg" height="128"  alt="" />
+                                            <div > <h2 style="text-align: center ;font-size:2vw;">{{\BayesBall\Enums\TeamName::getDescription($date->home)}}</h2></div>
 
-            @else
-            <div class="well">
-                <h3 align="center">There is no game on {{$specifiedDate}}</h3>
-            </div>
+                                        </div >
 
-        @endif
+                                    </div>
+                                    @if(Auth::check())
+
+                                        <div class="heart" id="bottomright" onclick=""></div>
+
+                                        <div class="predict" align="center">
+                                            <button class="grebutton" id="predictButtonid-{{$date->id}}"> PREDICT</button>
+                                        </div>
+                                        {{--<p>  {{$userId}} {{$userEmail}}</p>--}}
+                                        <input type="hidden" class="gameId"  id="gameId-{{$date->id}}"value="{{$date->id}}"/>
+                                        <input type="hidden" class="visitor" id="visitor-{{$date->id}}" value="{{$date->visitor}}">
+                                        <input type="hidden" class="home" id="home-{{$date->id}}" value="{{$date->home}}">
+
+
+                                        <div class="chart-container" id="chart-containerId-{{$date->id}}" style="display:none">
+                                            <canvas id="myChart-{{$date->id}}"></canvas>
+                                        </div>
+                                        <div style="display:none" id="output-{{$date->id}}">
+                                            <h3 id="outputP-{{$date->id}}">lala</h3>
+
+                                        </div>
+                                    @endif
+
+                                </div>
+                            @endforeach
+
+                        @else
+                            <div class="well">
+                                <h3 align="center">There is no game on {{$specifiedDate}}</h3>
+                            </div>
+
+                        @endif
+
+                    </section>
+                    <section id="section-iconfall-2">
+
+                        @if(count($dates)>0)
+                            @foreach($dates as $todayGame)
+                                @if($todayGame->game_date===$date)
+                                    @php
+                                        $count++;
+                                    @endphp
+                                    <div class="well" style="position: relative;">
+
+                                        <h1 style="font-size:1vw;"  align="center"><a href="{{route('games.date',['date'=>$todayGame->game_date])}}">{{$todayGame->game_date}}</a></h1>
+
+                                        <div class="discontainer">
+                                            <div  >
+
+                                                <img src="{{URL::asset("images/teamLogos/{$todayGame->visitor}.png")}}" class="center" border="0" alt="" />
+
+                                            </div>
+
+                                            <div >
+                                                <p style="font-size:2vw;" >
+                                                    <a href="{{route('games.show', ['id' => $todayGame->id])}}"   >
+
+
+
+                                                        {{\BayesBall\Enums\TeamName::getDescription($todayGame->visitor)}} vs {{\BayesBall\Enums\TeamName::getDescription($todayGame->home)}}
+                                                    </a>
+                                                </p>
+                                            </div>
+                                            <div >
+                                                <img src="{{URL::asset("images/teamLogos/{$todayGame->home}.png")}}" class="center" border="0"  alt="" />
+
+
+                                            </div >
+
+                                            <div class="heart" id="bottomright"></div>
+
+
+                                        </div>
+                                    </div>
+
+                                            @if(Auth::check())
+
+                                                <div class="heart" id="bottomright" onclick=""></div>
+
+                                                <div class="predict" align="center">
+                                                    <button class="grebutton" id="predictButtonid-{{$date->id}}"> predict</button>
+                                                </div>
+                                                {{--<p>  {{$userId}} {{$userEmail}}</p>--}}
+                                                <input type="hidden" class="gameId"  id="gameId-{{$date->id}}"value="{{$date->id}}"/>
+                                                <input type="hidden" class="visitor" id="visitor-{{$date->id}}" value="{{$date->visitor}}">
+                                                <input type="hidden" class="home" id="home-{{$date->id}}" value="{{$date->home}}">
+
+                                                <div class="chart-container" id="chart-containerId-{{$date->id}}" style="display:none">
+                                                    <canvas id="myChart-{{$date->id}}"></canvas>
+                                                </div>
+
+
+                                    @endif
+
+                                @endif
+                            @endforeach
+
+
+                                @if($count==0)
+                                    <div class="well">
+                                        <h3 style="font-size:3vw;" align="center">There is no game today</h3>
+                                    </div>
+                                @endif
+
+                        @endif
+
+                    </section>
+
+                </div><!-- /content -->
+            </div><!-- /tabs -->
+
+        </section>
+
+
+
         {{--{{$dates->links()}}--}}
     </div>
     @include('includes.footer')
@@ -149,32 +247,19 @@
 @endsection
 
 @section('script')
+    <script src="{{asset('js/cbpFWTabs.js')}}"></script>
+    <script>
+        (function() {
 
-    <script type="text/javascript">
-        var data;
-        $(".heart").click(function() {
-            data=$(this).nextAll("#gameId").val();
-            //console.log("game Id is " + data);
-        });
-
-        function likeTheGame(){
-
-            // $('.heart').on('click',function () {
-            // var value = $(this).nextAll("input[type=text]").first().val();
-            var isbn = $('.gameId').val();
-            var value= $(this).find("input:text").val();
-
-            $(document).ready(function () {
-                console.log("heart is clicked \n" + "userId: " + userId + "\nUser Email: " + userEmail + "\nName: " + userName);
-
-                console.log("game Id is " + data);
-
-                var count = 0;
-
-                //});
+            [].slice.call( document.querySelectorAll( '.tabs' ) ).forEach( function( el ) {
+                new CBPFWTabs( el );
             });
 
-        }
+        })();
+    </script>
+
+    <script type="text/javascript">
+
 
 
         var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
@@ -186,19 +271,34 @@
         $(".heart").click(function() {
             console.log("click");
             gameIdData=$(this).nextAll(".gameId").val();
-            gameHome=$(this).nextAll(".visitor").val();
-            gameVisitor=$(this).nextAll(".home").val();
-            console.log("game Id is " + gameIdData +"game home is " + gameHome+" gameVisitor is " + gameVisitor);
+            gameHome=$(this).nextAll(".home").val();
+            gameVisitor=$(this).nextAll(".visitor").val();
+            console.log("userId is "+userId+" game Id is " + gameIdData +"game home is " + gameHome+" gameVisitor is " + gameVisitor);
+
+
+            if(!$.active){
+                $.ajax({
+                    type:'POST',
+                    url:'{{route('games.store')}}',
+                    data:{'userId':userId,'gameId':gameIdData,'userName':userName ,_token: '{{csrf_token()}}'},
+                    success:function(data){
+                        console.log(data);
+                    },
+                    error: function(){
+                        alert("Nope");
+                    }
+                });
+            }
 
         });
-
 
         $(".predict").click(function() {
             console.log("predict click");
             gameIdData=$(this).nextAll(".gameId").val();
-            gameHome=$(this).nextAll(".visitor").val();
-            gameVisitor=$(this).nextAll(".home").val();
+            gameHome=$(this).nextAll(".home").val();
+            gameVisitor=$(this).nextAll(".visitor").val();
             console.log("game Id is " + gameIdData +"game home is " + gameHome+" gameVisitor is " + gameVisitor);
+            $(".spinner").show();
 
             if(!$.active){
                 //By making sure $.active is zero
@@ -209,68 +309,107 @@
                     success: function (data) {
 
                         //do when ajax success
+                        $("#predictButtonid-"+gameIdData).hide();
+
                         console.log(data);
                         var predictionData = jQuery.parseJSON(data);
-                        if(predictionData.Prediction==1){
-                            $("#visitor-"+gameIdData).css("background-color","#ddffb6");
-                            $("#home-"+gameIdData).css("background-color","#fa9a8b");
+                        barChartData = {
+
+                            labels:["naive bayes","logistic regression","support vector machines","decision tree"],
+                            datasets: [{
+                                label:["Winning Percentage"],
+                                data: [predictionData[0].Percentage,predictionData[1].Percentage,predictionData[2].Percentage,
+                                    predictionData[3].Percentage],
+                                fill: false,
+                                backgroundColor:[
+                                    //'#4cbb17',
+                                    //'#9966FF'
+                                    "rgba(255, 99, 132, 0.2)",
+                                    "rgba(255, 159, 64, 0.2)",
+                                    "rgba(255, 205, 86, 0.2)",
+                                    "rgba(75, 192, 192, 0.2)"
+
+                                ],
+                                borderColor: [
+                                    //'#4cbb17',
+                                    //'#9966FF',
+                                    "rgba(255, 99, 132, 0.2)",
+                                    "rgba(255, 159, 64, 0.2)",
+                                    "rgba(255, 205, 86, 0.2)",
+                                    "rgba(75, 192, 192, 0.2)"
+
+
+                                ]
+                                ,
+                                borderWidth: 1
+                            }],
+                            // These labels appear in the legend and in the tooltips when hovering different arcs
+
+                        };
+                        if(predictionData[4].Prediction==0){
+                            console.log(predictionData[4].Prediction+'means team1 '+gameVisitor+' win');
+                            $("#visitorContent-"+gameIdData).show();
+                            $("#homeContent-"+gameIdData).hide();
+                            $("#visitor-"+gameIdData).addClass('borderClass');
+                            $("#home-"+gameIdData).removeClass('borderClass');
+                            //barChartData.labels=[gameVisitor,gameHome];
 
                         }
                         else {
-                            $("#home-"+gameIdData).css("background-color","#ddffb6");
-                            $("#visitor-"+gameIdData).css("background-color","#fa9a8b");
+                            console.log(predictionData[4].Prediction+'means team1 '+gameVisitor+' lose');
+                            $("#visitorContent-"+gameIdData).hide();
+                            $("#homeContent-"+gameIdData).show();
+                            $("#home-"+gameIdData).addClass('borderClass');
+                            $("#visitor-"+gameIdData).removeClass('borderClass');
+                            //barChartData.labels=[gameHome,gameVisitor];
+
 
 
                         }
                         //$("#output-"+gameIdData).html(data);
 
                         $("#chart-containerId-"+gameIdData).show();
+
+
                         var ctx = document.getElementById("myChart-"+gameIdData);
 
+                        $(".spinner").hide();
 
-                        lineChartData = {
-                            datasets: [{
-                                label:"Prediction Curve",
-                                data: [0,50,predictionData.Percentage,50,0],
-                                fill: false,
-                                borderColor: [
-                                    '#10F7E6'
-
-
-                                ]
-                            }],
-
-                            // These labels appear in the legend and in the tooltips when hovering different arcs
-                            labels: [
-                                "","half","Our Confidence","half",""
-                            ]
-                        };
-                        // new Chart(document.getElementById("chartjs-0"),
-                        //     {"type":"line",
-                        //         "data":{"labels":["January","February","March","April","May","June","July"],
-                        //             "datasets":[{"label":"My First Dataset","data":[65,59,80,81,56,55,40],"fill":false,"borderColor":"rgb(75, 192, 192)","lineTension":0.1}]},"options":{}});
-                        //
-                        var myPieChart = new Chart(ctx,{
-                            type: 'line',
-                            data: lineChartData,
+                        var myBarChart = new Chart(ctx,{
+                            type: 'bar',
+                            data:
+                            barChartData,
 
                             options: {
                                 scales: {
                                     yAxes: [{
-                                        stacked: true
+                                        barPercentage:0.9,
+                                        //stacked: true,
+                                        display:true,
+                                        ticks:{
+                                            suggestedMin: 55
+                                            //beginAtZero:true
+                                        }
+                                    }],
+                                    xAxes: [{
+                                        stacked: true,
+                                        ticks:{
+                                            beginAtZero:true
+                                        }
                                     }]
                                 }
                             }
 
                         });
-
-                        //$("#predictButtonid-"+gameIdData).hide();
-
+                        document.getElementById("outputP-"+gameIdData).innerHTML ="Confidence: "+ predictionData[4].Percentage;
+                        $("#output-"+gameIdData).show();
 
 
                     },
                     error: function(){
                         alert("Nope");
+                        $(".spinner").hide();
+
                     }
                 });
 

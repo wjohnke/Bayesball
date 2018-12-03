@@ -20,34 +20,34 @@ final class BattingPos extends Enum
     public static function getDescription( $value): string{
         switch ($value) {
             case self::Pitcher:
-                return 'Pitcher';
+                return 'P';
                 break;
             case self::Catcher:
-                return 'Catcher';
+                return 'C';
                 break;
             case self::FirstBaseman:
-                return 'First Baseman';
+                return '1B';
                 break;
             case self::SecondBaseman:
-                return 'Second Baseman';
+                return '2B';
                 break;
             case self::ThirdBaseman:
-                return 'Third Baseman';
+                return '3B';
                 break;
             case self::Shortstop:
-                return 'Short Stop';
+                return 'SS';
                 break;
             case self::LeftFielder:
-                return 'Left Fielder';
+                return 'LF';
                 break;
             case self::CenterFielder:
-                return 'Center Fielder';
+                return 'CF';
                 break;
             case self::RightFielder:
-                return 'Right Fielder';
+                return 'RF';
                 break;
             case self::DesignatedHitter:
-                return 'Designated Hitter';
+                return 'DH';
                 break;
             default:
                 return self::getKey($value);

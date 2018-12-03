@@ -16,7 +16,7 @@ return [
     |
     */
 
-    'driver' => env('MAIL_DRIVER', 'smtp'),
+    'driver' => env('MAIL_DRIVER', 'sendmail'),
 
     /*
     |--------------------------------------------------------------------------
@@ -56,8 +56,8 @@ return [
     */
 
     'from' => [
-        'address' => env('MAIL_FROM_ADDRESS', 'Do not reply'),
-        'name' => env('MAIL_FROM_NAME', 'RandallCapstone'),
+        'address' => env('MAIL_FROM_ADDRESS', 'RandallCapstone@gmail.com'),
+        'name' => env('MAIL_FROM_NAME', 'Do Not Reply'),
     ],
 
     /*

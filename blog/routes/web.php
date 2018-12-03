@@ -29,5 +29,5 @@ Route::resource('games','GamesController');
 Route::get('/games/goToDate/{date}','GamesController@someAction')->name('games.date');
 Route::get('/game/goToDate','GamesController@goToDate')->name('goToDate');
 Route::get('/predict','GamesController@predict')->name('predict');
-
+Route::post('/destroyFav','HomeController@delteFavGame')->name('favGames.destroy');
 //Route::any('/test',['uses'=>'AboutController@test']);
